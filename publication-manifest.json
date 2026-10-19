@@ -53,8 +53,8 @@
     },
     {
       "path": ".gitattributes",
-      "bytes": 176,
-      "sha256": "1fd849e6e616e0eddaff9009cf621c8c6729abdfcff7f5a8de14f3f5ae5a0d60"
+      "bytes": 357,
+      "sha256": "b9ad063de785a7d109a45a50aa49d94009ef875598b5d7242010b3966181a357"
     },
     {
       "path": ".github/workflows/tests.yml",
@@ -1421,13 +1421,14 @@
     "privacy_scan": "configured secrets and common credential patterns absent",
     "source_commit": "f8ddb6d9d815890c6c0b111d8f64622afb28eacb"
   },
-  "updated_utc": "2026-10-19T02:47:01.179300+00:00",
+  "updated_utc": "2026-10-19T02:48:46.697951+00:00",
   "public_presentation_updates": [
     "README.md",
     "docs/architecture.md",
     "docs/debugging.md",
     "docs/decisions.md",
-    "docs/running.md"
+    "docs/running.md",
+    ".gitattributes"
   ],
   "evidence_integrity": "Original runtime, tests, frozen corpus and measured reports unchanged",
   "local_document_links_checked": 16

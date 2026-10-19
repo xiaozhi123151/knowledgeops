@@ -3,3 +3,6 @@
 # Frozen source snapshots and measured evidence must retain the bytes their hashes attest.
 evals/public_technical/** -text
 reports/** -text
+reports/** linguist-generated=true linguist-detectable=false
+evals/public_technical/documents/** linguist-vendored=true
+src/knowledgeops/providers/*.tiktoken linguist-vendored=true

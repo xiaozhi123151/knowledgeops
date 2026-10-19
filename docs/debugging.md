@@ -1,7 +1,7 @@
 # Debugging log
 
-Only observed failures and their fixes belong here. Deliberate fault-injection scenarios are identified
-as tests, not represented as production incidents. Commit references are filled after verification.
+This log records observed failures, root causes and regression evidence. Fault injection is identified
+separately from model or infrastructure failures. Historical commit IDs refer to the original local repository.
 
 ## B01 — Bootstrap invoked from the parent directory
 

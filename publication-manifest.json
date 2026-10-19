@@ -67,6 +67,16 @@
       "sha256": "c7430ba3a1b87963d2c4b1b0736d6294b1bb5a0e8b5852b4ccd9b94743fadcdc"
     },
     {
+      "path": "Dockerfile",
+      "bytes": 1009,
+      "sha256": "89653cf2b5cf2a5e66c2d49a8169d95d56bafa85ec6a42c67b15514db5c53384"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6793,
+      "sha256": "20360be5e2a0a4b10788fbee95772851404a8a06b5a8f447a58a26d0bd0c2347"
+    },
+    {
       "path": "compose.acceptance.yaml",
       "bytes": 1785,
       "sha256": "0ce0423484fe0c2d2c1fcfd434faf24302214e8bbb6708bceb90fbc23cdcc10a"
@@ -82,29 +92,59 @@
       "sha256": "c8fb3bbc50d1787e57553b74826e879a46c65c3d68049274221f9c1ac8fb4518"
     },
     {
-      "path": "Dockerfile",
-      "bytes": 1009,
-      "sha256": "89653cf2b5cf2a5e66c2d49a8169d95d56bafa85ec6a42c67b15514db5c53384"
-    },
-    {
       "path": "docs/architecture.md",
-      "bytes": 2468,
-      "sha256": "c22cb5640682b4fa0b3b672d1daf43b20cc8dbb67fc942c49399e5f495ebde80"
+      "bytes": 3382,
+      "sha256": "0f832258e4d6b2248899c4e74bab379c601b2ac217b279df2314624559b469f5"
     },
     {
       "path": "docs/debugging.md",
-      "bytes": 31733,
-      "sha256": "54de6583aa2bc99118839d99dad63d04c6d91674c976ca7d53d6dad4c5f60cda"
+      "bytes": 31744,
+      "sha256": "29234a75bbce84a6219d49822fe839b127fe770e2e661021975e1b8fe5837c91"
     },
     {
       "path": "docs/decisions.md",
-      "bytes": 24942,
-      "sha256": "fb2be1ee637ae3059827415bbf914d0659d81a0e70c39dbf708b3874f32bcc62"
+      "bytes": 24936,
+      "sha256": "1ec75a274ecf80388e1f2a22db44787b8c022a4bbe45b72a89c93be3e1f6852d"
     },
     {
       "path": "docs/publication.md",
       "bytes": 1199,
       "sha256": "f60e40f375bd788c9af8d5cc68b6f88cb60e7896def3080b0748d54070341c1c"
+    },
+    {
+      "path": "docs/running.md",
+      "bytes": 6839,
+      "sha256": "723e4587ca00a2cedd5b542c709f1deace590588bb24de5013e49fc94ec26fa6"
+    },
+    {
+      "path": "evals/README.md",
+      "bytes": 1051,
+      "sha256": "9528b7068471fb157ea9eab0a2ad9777cc37e204472b43e8489aff79e5a7094f"
+    },
+    {
+      "path": "evals/public_technical/LICENSE.python",
+      "bytes": 13936,
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+    },
+    {
+      "path": "evals/public_technical/README.md",
+      "bytes": 2315,
+      "sha256": "4d2902ee3e069c5c0e6d6b05fd80269d441d2422494543e57b46301a74d4d5e3"
+    },
+    {
+      "path": "evals/public_technical/documents/DeepSeek-V2.md",
+      "bytes": 20391,
+      "sha256": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4"
+    },
+    {
+      "path": "evals/public_technical/documents/DeepSeek-V3.md",
+      "bytes": 20851,
+      "sha256": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e"
+    },
+    {
+      "path": "evals/public_technical/documents/DeepSeek-V4.1-Flash.md",
+      "bytes": 13110,
+      "sha256": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251"
     },
     {
       "path": "evals/public_technical/documents/asyncio-queue.txt",
@@ -137,21 +177,6 @@
       "sha256": "669909adb902fdec7db713917c82b0f6ca74c9548ac43b25f2db5e06e45c5716"
     },
     {
-      "path": "evals/public_technical/documents/DeepSeek-V2.md",
-      "bytes": 20391,
-      "sha256": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4"
-    },
-    {
-      "path": "evals/public_technical/documents/DeepSeek-V3.md",
-      "bytes": 20851,
-      "sha256": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e"
-    },
-    {
-      "path": "evals/public_technical/documents/DeepSeek-V4.1-Flash.md",
-      "bytes": 13110,
-      "sha256": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251"
-    },
-    {
       "path": "evals/public_technical/documents/python-3.10.txt",
       "bytes": 90288,
       "sha256": "95e013392ecaedcbe9a8e89e09c704e778866829e81aee297416ee860bd0549a"
@@ -182,11 +207,6 @@
       "sha256": "45d0317686354b09029dbdd9907950924cb9c99d0a6e7ec8a059bfbe2237d235"
     },
     {
-      "path": "evals/public_technical/LICENSE.python",
-      "bytes": 13936,
-      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
-    },
-    {
       "path": "evals/public_technical/manifest.json",
       "bytes": 5367,
       "sha256": "1e49b2732cc9f86de219bea64526e6f7ef38237636a5a8ef4b364d4e663d9019"
@@ -205,16 +225,6 @@
       "path": "evals/public_technical/questions.sha256",
       "bytes": 66,
       "sha256": "2a22452d74c40692732c8e46093db019b5746c6caef426764790db9a5f7c054f"
-    },
-    {
-      "path": "evals/public_technical/README.md",
-      "bytes": 2315,
-      "sha256": "4d2902ee3e069c5c0e6d6b05fd80269d441d2422494543e57b46301a74d4d5e3"
-    },
-    {
-      "path": "evals/README.md",
-      "bytes": 1051,
-      "sha256": "9528b7068471fb157ea9eab0a2ad9777cc37e204472b43e8489aff79e5a7094f"
     },
     {
       "path": "examples/corpus/bm25.md",
@@ -300,11 +310,6 @@
       "path": "pyproject.toml",
       "bytes": 2103,
       "sha256": "400e85c14962f96d72602b17f0b52a594c02a0c949028bacd86e18540a34ed22"
-    },
-    {
-      "path": "README.md",
-      "bytes": 26309,
-      "sha256": "a352cdd897f4e6a82fcee27330e009f9269746073da7ce9a2f421f8905c7ea61"
     },
     {
       "path": "reports/agent-offline.json",
@@ -1415,5 +1420,15 @@
     "historical_full_validation": "reports/verification.md; original 107-test run preserved",
     "privacy_scan": "configured secrets and common credential patterns absent",
     "source_commit": "f8ddb6d9d815890c6c0b111d8f64622afb28eacb"
-  }
+  },
+  "updated_utc": "2026-10-19T02:45:23.608434+00:00",
+  "public_presentation_updates": [
+    "README.md",
+    "docs/architecture.md",
+    "docs/debugging.md",
+    "docs/decisions.md",
+    "docs/running.md"
+  ],
+  "evidence_integrity": "Original runtime, tests, frozen corpus and measured reports unchanged",
+  "local_document_links_checked": 16
 }

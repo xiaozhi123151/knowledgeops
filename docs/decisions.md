@@ -2,7 +2,7 @@
 
 ## D01 — Explicit offline and live modes
 
-The development machine has no Docker and no configured API credentials. A deterministic offline mode
+At project bootstrap, Docker and API credentials were unavailable. A deterministic offline mode
 allows the actual extraction, vector storage, BM25, graph, API and recovery paths to be exercised without
 pretending that lexical substitutes measure semantic model quality. Live mode never falls back on errors.
 The offline Qdrant client owns its local directory in one process; production API and Worker use a Qdrant

@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-18T15:42:20.917893+00:00",
+    "mode": "offline",
+    "source_sha256": "49692e7c2fdb24a6b60262032d1b21cb8fc46f2d2b5e0120dd75e6331aa3c742",
+    "git_commit": "95dc8e976db89bc06dfb35bfa84c7a8082e2cc4f",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "OFFLINE TEST DOUBLES; NOT real model quality or production latency"
+  },
+  "passed": true,
+  "checks": [
+    "PDF upload and completed indexing",
+    "Hybrid retrieval and rerank with retained scores",
+    "Report citations map to stored PDF pages and verbatim text",
+    "Persistent task events available"
+  ],
+  "providers": {
+    "llm": "offline-scripted-v1",
+    "embedding": "offline-hash-v1",
+    "reranker": "offline-overlap-v1"
+  },
+  "task": {
+    "task_id": "44643a56f8fa48e8a6dd48ee2aaeef2b",
+    "kind": "research",
+    "session_id": "6a19d59d0eea4ae886516cf200b2027e",
+    "status": "succeeded",
+    "result": {
+      "citations": [
+        {
+          "chunk_id": "9044aa59-86ab-5192-8014-28bb12aa0bc5",
+          "citation_id": "E-9044aa59-86ab-5192-8014-28bb12aa0bc5",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "page": 2,
+          "quote": "Qdrant stores dense vectors and metadata.",
+          "section": "",
+          "source": "sample.pdf"
+        },
+        {
+          "chunk_id": "e1bd425d-ef08-5201-bd0b-e6de14504954",
+          "citation_id": "E-e1bd425d-ef08-5201-bd0b-e6de14504954",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "page": 1,
+          "quote": "Redis AOF persistence records every write command.\nRDB creates periodic snapshots for backups.",
+          "section": "",
+          "source": "sample.pdf"
+        }
+      ],
+      "conclusion": "以下为检索证据摘录（离线测试替身）。",
+      "disagreements": [],
+      "findings": [
+        {
+          "citation_ids": [
+            "E-9044aa59-86ab-5192-8014-28bb12aa0bc5"
+          ],
+          "text": "Qdrant stores dense vectors and metadata."
+        },
+        {
+          "citation_ids": [
+            "E-e1bd425d-ef08-5201-bd0b-e6de14504954"
+          ],
+          "text": "Redis AOF persistence records every write command.\nRDB creates periodic snapshots for backups."
+        }
+      ],
+      "insufficient_evidence": false,
+      "limitations": [
+        "OFFLINE_TEST_DOUBLE: not a real LLM research-quality evaluation."
+      ],
+      "title": "KnowledgeOps 离线证据报告"
+    },
+    "error": null,
+    "created": 1792338145.172437,
+    "updated": 1792338145.6403666,
+    "started": 1792338145.247259,
+    "deadline": 1792338325.247259,
+    "limits_json": {
+      "max_llm_calls": 8,
+      "max_steps": 12,
+      "max_tool_calls": 12,
+      "task_timeout": 180.0,
+      "token_budget": 80000
+    },
+    "budget": {
+      "estimated": true,
+      "llm_calls": 4,
+      "pending_estimates": 4,
+      "steps": 6,
+      "tokens": 30619,
+      "tool_calls": 3
+    },
+    "mode": "offline"
+  },
+  "event_count": 23,
+  "elapsed_ms": 4886.569700000109
+}

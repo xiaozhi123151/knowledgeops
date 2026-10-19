@@ -1,0 +1,17 @@
+{
+  "at_utc": "2026-10-18T15:50:35.834257+00:00",
+  "images": {
+    "api": "sha256:b3fcff45a418889bb203fcc29863c444028bc489708336206478b3545ef53595",
+    "worker": "sha256:b3fcff45a418889bb203fcc29863c444028bc489708336206478b3545ef53595"
+  },
+  "python_base_repo_digests": [
+    "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1"
+  ],
+  "docker_server": "29.1.3",
+  "files_sha256": {
+    "Dockerfile": "89653cf2b5cf2a5e66c2d49a8169d95d56bafa85ec6a42c67b15514db5c53384",
+    "compose.yaml": "c8fb3bbc50d1787e57553b74826e879a46c65c3d68049274221f9c1ac8fb4518",
+    "compose.acceptance.yaml": "0ce0423484fe0c2d2c1fcfd434faf24302214e8bbb6708bceb90fbc23cdcc10a",
+    "uv.lock": "d78a3b41185c1f5facfde38ab3ff6fff228b83bd00d2bf4513090295a14cc07f"
+  }
+}

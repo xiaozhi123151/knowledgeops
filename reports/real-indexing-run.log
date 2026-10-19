@@ -1,0 +1,22 @@
+D:\download\ʵϰ\knowledgeops\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py:284: UserWarning: Qdrant client version 1.19.1 is incompatible with server version 1.17.0. Major versions should match and minor version difference must not exceed 1. Set check_compatibility=False to skip version check.
+  show_warning(
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 391/391 [00:00<00:00, 32519.14it/s]
+D:\download\ʵϰ\knowledgeops\src\knowledgeops\providers\local_embedding.py:22: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  pipe.send(("ready", encoder.get_sentence_embedding_dimension()))
+python-3.8 133 chunks 52.37 s
+python-3.9 104 chunks 39.64 s
+python-3.10 150 chunks 56.44 s
+python-3.11 170 chunks 68.9 s
+python-3.12 172 chunks 70.9 s
+python-3.13 182 chunks 73.62 s
+asyncio-task 67 chunks 23.3 s
+asyncio-sync 19 chunks 6.64 s
+asyncio-queue 8 chunks 3.12 s
+asyncio-stream 23 chunks 8.65 s
+asyncio-subprocess 18 chunks 6.71 s
+concurrent.futures 36 chunks 13.16 s
+DeepSeek-V2 48 chunks 21.41 s
+DeepSeek-V3 44 chunks 21.21 s
+DeepSeek-V4.1-Flash 27 chunks 14.5 s

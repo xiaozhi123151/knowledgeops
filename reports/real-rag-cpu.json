@@ -1,0 +1,729 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T09:48:11.555343+00:00",
+    "mode": "real_rag",
+    "source_sha256": "ba7d7033e4e01bc71944c47c771bf186bc063a80522b2d2f2ce98fd71df93131",
+    "git_commit": "69a2190a8a35ac4c3c7ebb3d6443f064f054abb6",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Small owned fixture corpus; not representative production accuracy."
+  },
+  "boundary": {
+    "llm": "deepseek-flash",
+    "embedding": "BAAI/bge-m3",
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "qdrant": "real HTTP server",
+    "redis": "real Streams service; direct runner invoked for measured tasks",
+    "agent": "actual LangGraph + durable Harness",
+    "fault_injection": "none",
+    "device": "cpu",
+    "precision": "float32",
+    "collection": "knowledgeops_v1_ab2d8e7c2ea2d96de98d9933",
+    "index_fingerprint": "ab2d8e7c2ea2d96de98d99331bb1757948785ec7714a0885295c3176108413cf"
+  },
+  "question_sha256": "1f92b0dd071168e63fd39a01991f356cfe6234d889f4ea51ceb08a4c7e8c9c32",
+  "provider_load_ms": 29626.915600001666,
+  "cases": [
+    {
+      "name": "three_versions",
+      "task_id": "b73ea708287c43608aec57a14f8825b0",
+      "session_id": "real-rag-0d51211cf0254d65a539206035adcc8e",
+      "question": "请分别检索 DeepSeek-V2、DeepSeek-V3、DeepSeek-V4.1-Flash 的官方文档，比较三个版本的总参数量、每 token 激活参数量、上下文长度。必须调用 knowledge_search（可按版本分别检索并把 top_k 设为 4 或更大），再调用 compare_evidence 对比实际检索证据，最后调用 build_report。findings 应覆盖三个版本，每个版本写一条，指标必须直接见于对应版本证据，不能用其他版本的值替代。quotes 使用最短指标原文，不要改写，尽量小于100字符。结论用中文。三个版本在同一台 A100 80GB、batch=1 下的准确吞吐量是多少？如果这些文档缺乏同条件实测依据，在 limitations 明确写“无法确认”，不要用论文相对提升率代替绝对吞吐量。\n输出约束：最多3条 findings，conclusion不超过200个汉字，limitations最多3条。每个版本优先只选1条同时包含参数量和上下文的证据；quotes键必须是相同的E-...引用ID，每个quote尽量短于80字符且是对应那一条证据text的连续子串。不要添加训练量、KV缓存等题外指标。不要为了缺失的吞吐量制造引用；明确无法确认即可。若有已知指标但吞吐量未知，insufficient_evidence必须为false，未知部分写入limitations。只有完全没有支持性发现时才设为true并清空findings/quotes。\n可检索来源目录（只含标识，不含答案）：[{\"source_id\": \"python-3.8\", \"doc_id\": \"3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96\"}, {\"source_id\": \"python-3.9\", \"doc_id\": \"6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a\"}, {\"source_id\": \"python-3.10\", \"doc_id\": \"a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578\"}, {\"source_id\": \"python-3.11\", \"doc_id\": \"8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07\"}, {\"source_id\": \"python-3.12\", \"doc_id\": \"8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009\"}, {\"source_id\": \"python-3.13\", \"doc_id\": \"ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29\"}, {\"source_id\": \"asyncio-task\", \"doc_id\": \"8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035\"}, {\"source_id\": \"asyncio-sync\", \"doc_id\": \"8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c\"}, {\"source_id\": \"asyncio-queue\", \"doc_id\": \"3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b\"}, {\"source_id\": \"asyncio-stream\", \"doc_id\": \"00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4\"}, {\"source_id\": \"asyncio-subprocess\", \"doc_id\": \"70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9\"}, {\"source_id\": \"concurrent.futures\", \"doc_id\": \"be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2\"}, {\"source_id\": \"DeepSeek-V2\", \"doc_id\": \"282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2\"}, {\"source_id\": \"DeepSeek-V3\", \"doc_id\": \"72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2\"}, {\"source_id\": \"DeepSeek-V4.1-Flash\", \"doc_id\": \"210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde\"}]",
+      "success": true,
+      "status": "succeeded",
+      "error": null,
+      "elapsed_ms": 79630.04970000111,
+      "budget": {
+        "estimated": false,
+        "llm_calls": 4,
+        "pending_estimates": 0,
+        "steps": 6,
+        "tokens": 30830,
+        "tool_calls": 6
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 600.0,
+        "token_budget": 100000
+      },
+      "budget_consistent": true,
+      "reported_tokens": 30830,
+      "llm_responses": [
+        {
+          "cached_tokens": 1408,
+          "completion_tokens": 348,
+          "elapsed_ms": 3152.7709999973013,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 2470,
+          "reasoning_content_present": false,
+          "response_id": "f25b67d7-e17c-4bd2-94b6-43691c79715c",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 3,
+          "total_tokens": 2818,
+          "usage": 2818
+        },
+        {
+          "cached_tokens": 2816,
+          "completion_tokens": 307,
+          "elapsed_ms": 1397.1539999984088,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 9852,
+          "reasoning_content_present": false,
+          "response_id": "fd776ce5-e403-42d4-b243-b9abced5bd3c",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 2,
+          "total_tokens": 10159,
+          "usage": 10159
+        },
+        {
+          "cached_tokens": 1536,
+          "completion_tokens": 1068,
+          "elapsed_ms": 4900.033399997483,
+          "estimated": false,
+          "finish_reason": "stop",
+          "prompt_tokens": 2338,
+          "reasoning_content_present": false,
+          "response_id": "8f9fd4ae-cb5b-4afa-a0ca-e12266b6ec0f",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 0,
+          "total_tokens": 3406,
+          "usage": 3406
+        },
+        {
+          "cached_tokens": 10112,
+          "completion_tokens": 825,
+          "elapsed_ms": 4016.522099998838,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 13622,
+          "reasoning_content_present": false,
+          "response_id": "8aa1c85a-6fdf-42a1-b669-22a5e064c104",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 1,
+          "total_tokens": 14447,
+          "usage": 14447
+        }
+      ],
+      "context_metrics": [
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 3568,
+          "input_messages": 2,
+          "request_fingerprint": "422d09d6e60a3f4af3701ad774a4f0603a1c14e47d90b6215379adad8a245ee2",
+          "reserved_tokens": 8562,
+          "tool_messages": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 21786,
+          "input_messages": 6,
+          "request_fingerprint": "9478d25c5de80624ca39f5ab75ac380de854193b0b9d165b719c02aa1a06221d",
+          "reserved_tokens": 16103,
+          "tool_messages": 3
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 6637,
+          "input_messages": 2,
+          "request_fingerprint": "26bd632f4e8061e0349885697dae41174be9e948f0efdd1a1f57fa06fa63cf00",
+          "reserved_tokens": 8663,
+          "tool_messages": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 31828,
+          "input_messages": 9,
+          "request_fingerprint": "8ae7a42d3491177e1789f8ddd58cde96067fc16166a98d04cfa0dce05080b946",
+          "reserved_tokens": 20026,
+          "tool_messages": 5
+        }
+      ],
+      "tool_metrics": [
+        {
+          "elapsed_ms": 17250.412499997765,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 19787.170100000367,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 14572.310699997615,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 13887.686500002019,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 4932.091800001217,
+          "name": "compare_evidence"
+        },
+        {
+          "elapsed_ms": 23.94080000158283,
+          "name": "build_report"
+        }
+      ],
+      "calls": [
+        {
+          "id": "call_00_YQbab7L8Rsaxk6U7eQMr9024",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V2 total parameters activated parameters context length",
+            "doc_ids": [
+              "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2"
+            ],
+            "top_k": 5
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_Op0QUMfUMc20OowwwXkL9662",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V3 total parameters activated parameters per token context length",
+            "doc_ids": [
+              "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2"
+            ],
+            "top_k": 5
+          },
+          "valid": true
+        },
+        {
+          "id": "call_02_MAcf5rpERoJFG9ds6vjN0080",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash total parameters activated parameters context length",
+            "doc_ids": [
+              "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde"
+            ],
+            "top_k": 5
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_fTkQs1BfPHRFSEqZQSE93566",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash context length 1M tokens parameters table",
+            "doc_ids": [
+              "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde"
+            ],
+            "top_k": 6
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_fXTKyzjkW2qfnrsdurpG4613",
+          "name": "compare_evidence",
+          "arguments": {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+              "E-e3df752b-bc2c-5c51-bbce-93e9ab0fd7fc",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+              "E-b64fd0a6-f0b7-5313-842d-734527a3832d",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+              "E-7f06f4c9-c846-5169-a725-054c600921c8"
+            ]
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_tnZxjo6KULO9XX2CkUKt8675",
+          "name": "build_report",
+          "arguments": {
+            "title": "DeepSeek-V2 / V3 / V4.1-Flash 参数量与上下文长度对比（吞吐量无法确认）",
+            "conclusion": "官方文档给出的规格：V2 总参数236B、每token激活21B、上下文128k；V3 总参数671B、每token激活37B、上下文128K；V4.1-Flash 主干参数552B、预填充激活8B/解码16B、上下文最长100万token。三者非同类可比。至于三版本在A100 80GB、batch=1下的准确吞吐量，所检索文档缺乏同条件实测依据，无法确认，不得以相对提升率代替绝对吞吐量。",
+            "findings": [
+              {
+                "text": "DeepSeek-V2：官方模型下载表列出总参数236B、每token激活参数21B、上下文长度128k，三项指标直接见于该版本证据。",
+                "citation_ids": [
+                  "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+                ]
+              },
+              {
+                "text": "DeepSeek-V3：官方模型下载表列出总参数671B、每token激活参数37B、上下文长度128K。",
+                "citation_ids": [
+                  "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+                ]
+              },
+              {
+                "text": "DeepSeek-V4.1-Flash：文档称其为552B主干参数的多模态MoE模型，支持最长100万token上下文；基础模型表给出激活参数8B/16B。其激活参数按预填充与解码分列。",
+                "citation_ids": [
+                  "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+                  "E-7f06f4c9-c846-5169-a725-054c600921c8"
+                ]
+              }
+            ],
+            "disagreements": [],
+            "limitations": [
+              "A100 80GB、batch=1 同条件下的实测吞吐量：所检索文档缺乏同条件实测依据，无法确认；文档中的相对提升率不能代替绝对吞吐量。",
+              "V4.1-Flash 的激活参数按预填充8B与解码16B分列，无单一“每token激活参数量”值，跨版本比较其含义并不一致。",
+              "没有检索到关于 DeepSeek-V4.1-Flash 训练量、KV缓存等其他指标的证据（未纳入本报告）。"
+            ],
+            "quotes": {
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9": "| DeepSeek-V2 | 236B | 21B | 128k |",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4": "| DeepSeek-V3 | 671B | 37B | 128K |",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7": "552B backbone parameters and support for contexts of up to one million tokens",
+              "E-7f06f4c9-c846-5169-a725-054c600921c8": "| # Activated Params | — | 13B | 49B | 8B / 16B |"
+            },
+            "insufficient_evidence": false
+          },
+          "valid": true
+        }
+      ],
+      "invalid_calls": [],
+      "citations": 4,
+      "valid_citations": 4,
+      "report": {
+        "citations": [
+          {
+            "chunk_id": "7f06f4c9-c846-5169-a725-054c600921c8",
+            "citation_id": "E-7f06f4c9-c846-5169-a725-054c600921c8",
+            "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+            "page": null,
+            "quote": "| # Activated Params | — | 13B | 49B | 8B / 16B |",
+            "section": "Base Model",
+            "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md"
+          },
+          {
+            "chunk_id": "7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "citation_id": "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+            "page": null,
+            "quote": "| DeepSeek-V3 | 671B | 37B | 128K |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md"
+          },
+          {
+            "chunk_id": "871d7088-b673-56b3-b55a-11fa06391bf9",
+            "citation_id": "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+            "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+            "page": null,
+            "quote": "| DeepSeek-V2 | 236B | 21B | 128k |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md"
+          },
+          {
+            "chunk_id": "a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "citation_id": "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+            "page": null,
+            "quote": "552B backbone parameters and support for contexts of up to one million tokens",
+            "section": "Introduction",
+            "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md"
+          }
+        ],
+        "conclusion": "官方文档给出的规格：V2 总参数236B、每token激活21B、上下文128k；V3 总参数671B、每token激活37B、上下文128K；V4.1-Flash 主干参数552B、预填充激活8B/解码16B、上下文最长100万token。三者非同类可比。至于三版本在A100 80GB、batch=1下的准确吞吐量，所检索文档缺乏同条件实测依据，无法确认，不得以相对提升率代替绝对吞吐量。",
+        "disagreements": [],
+        "findings": [
+          {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+            ],
+            "text": "DeepSeek-V2：官方模型下载表列出总参数236B、每token激活参数21B、上下文长度128k，三项指标直接见于该版本证据。"
+          },
+          {
+            "citation_ids": [
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+            ],
+            "text": "DeepSeek-V3：官方模型下载表列出总参数671B、每token激活参数37B、上下文长度128K。"
+          },
+          {
+            "citation_ids": [
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+              "E-7f06f4c9-c846-5169-a725-054c600921c8"
+            ],
+            "text": "DeepSeek-V4.1-Flash：文档称其为552B主干参数的多模态MoE模型，支持最长100万token上下文；基础模型表给出激活参数8B/16B。其激活参数按预填充与解码分列。"
+          }
+        ],
+        "insufficient_evidence": false,
+        "limitations": [
+          "A100 80GB、batch=1 同条件下的实测吞吐量：所检索文档缺乏同条件实测依据，无法确认；文档中的相对提升率不能代替绝对吞吐量。",
+          "V4.1-Flash 的激活参数按预填充8B与解码16B分列，无单一“每token激活参数量”值，跨版本比较其含义并不一致。",
+          "没有检索到关于 DeepSeek-V4.1-Flash 训练量、KV缓存等其他指标的证据（未纳入本报告）。"
+        ],
+        "title": "DeepSeek-V2 / V3 / V4.1-Flash 参数量与上下文长度对比（吞吐量无法确认）"
+      },
+      "retrieved_sources": [
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "cited_sources": [
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "history_messages_before_current_question": 0,
+      "duplicate_tool_arguments": 0,
+      "tool_cache_hits": 0,
+      "search_calls": 4,
+      "overretrieval_diagnostic": false,
+      "abstained": false,
+      "unknown_acknowledged": true,
+      "events": [
+        {
+          "seq": 1,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057691.7273042,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 2,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057691.7483773,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 3,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057691.7916915,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 4,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057691.916949,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 3568,
+            "input_messages": 2,
+            "request_fingerprint": "422d09d6e60a3f4af3701ad774a4f0603a1c14e47d90b6215379adad8a245ee2",
+            "reserved_tokens": 8562,
+            "tool_messages": 0
+          }
+        },
+        {
+          "seq": 5,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057695.1017737,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1408,
+            "completion_tokens": 348,
+            "elapsed_ms": 3152.7709999973013,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 2470,
+            "reasoning_content_present": false,
+            "response_id": "f25b67d7-e17c-4bd2-94b6-43691c79715c",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 3,
+            "total_tokens": 2818,
+            "usage": 2818
+          }
+        },
+        {
+          "seq": 6,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057695.1196926,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 7,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057695.1338365,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 8,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057712.3932562,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 17250.412499997765,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 9,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057712.4288292,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 10,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057732.2266846,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 19787.170100000367,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 11,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057732.243556,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 12,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057746.8260322,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 14572.310699997615,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 13,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057746.8714108,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 14,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057746.91349,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 21786,
+            "input_messages": 6,
+            "request_fingerprint": "9478d25c5de80624ca39f5ab75ac380de854193b0b9d165b719c02aa1a06221d",
+            "reserved_tokens": 16103,
+            "tool_messages": 3
+          }
+        },
+        {
+          "seq": 15,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057748.3372114,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 2816,
+            "completion_tokens": 307,
+            "elapsed_ms": 1397.1539999984088,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 9852,
+            "reasoning_content_present": false,
+            "response_id": "fd776ce5-e403-42d4-b243-b9abced5bd3c",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 2,
+            "total_tokens": 10159,
+            "usage": 10159
+          }
+        },
+        {
+          "seq": 16,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057748.3616354,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 17,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057748.3783064,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 18,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057762.2748058,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 13887.686500002019,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 19,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057762.2853153,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 20,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057762.2979145,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 6637,
+            "input_messages": 2,
+            "request_fingerprint": "26bd632f4e8061e0349885697dae41174be9e948f0efdd1a1f57fa06fa63cf00",
+            "reserved_tokens": 8663,
+            "tool_messages": 0
+          }
+        },
+        {
+          "seq": 21,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057767.2121246,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1536,
+            "completion_tokens": 1068,
+            "elapsed_ms": 4900.033399997483,
+            "estimated": false,
+            "finish_reason": "stop",
+            "prompt_tokens": 2338,
+            "reasoning_content_present": false,
+            "response_id": "8f9fd4ae-cb5b-4afa-a0ca-e12266b6ec0f",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 0,
+            "total_tokens": 3406,
+            "usage": 3406
+          }
+        },
+        {
+          "seq": 22,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057767.2227468,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 4932.091800001217,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 23,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057767.2364461,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 24,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057767.2542534,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 31828,
+            "input_messages": 9,
+            "request_fingerprint": "8ae7a42d3491177e1789f8ddd58cde96067fc16166a98d04cfa0dce05080b946",
+            "reserved_tokens": 20026,
+            "tool_messages": 5
+          }
+        },
+        {
+          "seq": 25,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057771.283529,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 10112,
+            "completion_tokens": 825,
+            "elapsed_ms": 4016.522099998838,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 13622,
+            "reasoning_content_present": false,
+            "response_id": "8aa1c85a-6fdf-42a1-b669-22a5e064c104",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 1,
+            "total_tokens": 14447,
+            "usage": 14447
+          }
+        },
+        {
+          "seq": 26,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057771.2952073,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 27,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057771.3121006,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 28,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057771.342282,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 23.94080000158283,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 29,
+          "task_id": "b73ea708287c43608aec57a14f8825b0",
+          "at": 1792057771.3553944,
+          "type": "succeeded",
+          "data": {}
+        }
+      ]
+    }
+  ],
+  "note": "Small engineering acceptance sample; citation structure validity is not semantic answer accuracy.",
+  "summary": {
+    "tasks": 1,
+    "successful_tasks": 1,
+    "task_success_rate": 1.0,
+    "citations": 4,
+    "valid_citations": 4,
+    "provider_tokens": 30830,
+    "llm_calls": 4,
+    "tool_executions": 6,
+    "llm_latency_p50_ms": 3584.6465499980695,
+    "llm_latency_p95_ms": 4767.506704997686,
+    "duplicate_tool_arguments": 0,
+    "overretrieval_flags": 0
+  },
+  "passed": true
+}

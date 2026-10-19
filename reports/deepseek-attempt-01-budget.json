@@ -1,0 +1,425 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T08:20:53.723303+00:00",
+    "mode": "real_deepseek_local_retrieval",
+    "source_sha256": "9774b451844cfe098b482459898e34f39cdc3ec6a74d8e722122584d7265e1c1",
+    "git_commit": "84010c9e8451454d83d7e661e2101dc2e550ef02",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.19.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Small owned fixture corpus; not representative production accuracy."
+  },
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "sources": [
+    {
+      "version": "DeepSeek-V2",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md",
+      "filename": "DeepSeek-V2.md",
+      "sha256": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4",
+      "bytes": 20391,
+      "fetched_at_utc": "2026-10-15T08:20:50.771959+00:00",
+      "etag": "W/\"7f646b67efc2341506a87bba60105724d7e29a347a63b03829b8cac086507ad7\"",
+      "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+      "chunk_count": 48
+    },
+    {
+      "version": "DeepSeek-V3",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md",
+      "filename": "DeepSeek-V3.md",
+      "sha256": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e",
+      "bytes": 20851,
+      "fetched_at_utc": "2026-10-15T08:20:51.169432+00:00",
+      "etag": "W/\"2c2a3a06c64b71a903e1ca3c17e4d11adedbcb3c1c60059415ea3b2c71753c55\"",
+      "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+      "chunk_count": 44
+    },
+    {
+      "version": "DeepSeek-V4.1-Flash",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md",
+      "resolved_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md",
+      "filename": "DeepSeek-V4.1-Flash.md",
+      "sha256": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251",
+      "bytes": 13110,
+      "fetched_at_utc": "2026-10-15T08:20:52.982195+00:00",
+      "etag": "W/\"211b83857abd5e8420df3a4f10db1096294227e6\"",
+      "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+      "chunk_count": 27
+    }
+  ],
+  "cases": [
+    {
+      "name": "version_comparison",
+      "question": "请分别检索 DeepSeek-V2、DeepSeek-V3、DeepSeek-V4.1-Flash 的官方文档，比较三个版本的总参数量、每 token 激活参数量、上下文长度。必须调用 knowledge_search（可按版本分别检索并把 top_k 设为 4 或更大），再调用 compare_evidence 对比实际检索证据，最后调用 build_report。findings 应覆盖三个版本，每个版本写一条，指标必须直接见于对应版本证据，不能用其他版本的值替代。quotes 使用最短指标原文，不要改写，尽量小于100字符。结论用中文。三个版本在同一台 A100 80GB、batch=1 下的准确吞吐量是多少？如果这些文档缺乏同条件实测依据，在 limitations 明确写“无法确认”，不要用论文相对提升率代替绝对吞吐量。",
+      "success": false,
+      "task_id": "3f97134bc5dd418f8153b91588ede167",
+      "status": "failed",
+      "error": "BUDGET_EXCEEDED: tokens",
+      "budget": {
+        "estimated": false,
+        "llm_calls": 2,
+        "pending_estimates": 0,
+        "steps": 5,
+        "tokens": 8165,
+        "tool_calls": 5
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 180.0,
+        "token_budget": 20000
+      },
+      "report": null,
+      "events": [
+        {
+          "seq": 1,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052454.6216314,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 2,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052454.6292791,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 3,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052454.6507628,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 4,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052454.7451775,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "reserved_tokens": 3308
+          }
+        },
+        {
+          "seq": 5,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3102515,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 0,
+            "completion_tokens": 179,
+            "elapsed_ms": 2550.850100000389,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 1297,
+            "response_id": "425f093e-4b7e-4222-8108-f0baa86e9fb0",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 3,
+            "total_tokens": 1476,
+            "usage": 1476
+          }
+        },
+        {
+          "seq": 6,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3202841,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 7,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3278575,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 8,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3512366,
+          "type": "tool_completed",
+          "data": {
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 9,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.360195,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 10,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3736508,
+          "type": "tool_completed",
+          "data": {
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 11,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3841496,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 12,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.3984458,
+          "type": "tool_completed",
+          "data": {
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 13,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.4084067,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 14,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052457.4201531,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "reserved_tokens": 8672
+          }
+        },
+        {
+          "seq": 15,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.9139826,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1408,
+            "completion_tokens": 180,
+            "elapsed_ms": 1480.4547000021557,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 6509,
+            "response_id": "f7b91401-78e7-4fe8-92be-2312268bf187",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 2,
+            "total_tokens": 6689,
+            "usage": 6689
+          }
+        },
+        {
+          "seq": 16,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.9255118,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 17,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.9353783,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 18,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.949332,
+          "type": "tool_completed",
+          "data": {
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 19,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.9590292,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 20,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.9744694,
+          "type": "tool_completed",
+          "data": {
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 21,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052458.986759,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 22,
+          "task_id": "3f97134bc5dd418f8153b91588ede167",
+          "at": 1792052459.0055604,
+          "type": "failed",
+          "data": {
+            "error": "BUDGET_EXCEEDED: tokens"
+          }
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_00_KWkbE79lcT8WrX5T9xH42374",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V2 total parameters activated parameters per token context length",
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_cMcR7lrBm3AUNBX72RM38796",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V3 total parameters activated parameters per token context length",
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_02_LKIOYSojOGK3jmNR65UQ6329",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash total parameters activated parameters context length official documentation",
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_qGR4247XjwXdbKHAXUdn0731",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash total parameters activated parameters table Model Downloads",
+            "doc_ids": [
+              "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde"
+            ],
+            "top_k": 6
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_1KkRS2b3TChVS0kQovwD7049",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "A100 80GB batch=1 throughput tokens per second DeepSeek inference",
+            "top_k": 5
+          },
+          "valid": true
+        }
+      ],
+      "invalid_tool_calls": [],
+      "valid_citations": 0,
+      "citations": 0,
+      "cited_versions": [],
+      "unknown_acknowledged": false,
+      "budget_consistent": true,
+      "provider_usage_total": 8165,
+      "llm_responses": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 179,
+          "elapsed_ms": 2550.850100000389,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 1297,
+          "response_id": "425f093e-4b7e-4222-8108-f0baa86e9fb0",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 3,
+          "total_tokens": 1476,
+          "usage": 1476
+        },
+        {
+          "cached_tokens": 1408,
+          "completion_tokens": 180,
+          "elapsed_ms": 1480.4547000021557,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 6509,
+          "response_id": "f7b91401-78e7-4fe8-92be-2312268bf187",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 2,
+          "total_tokens": 6689,
+          "usage": 6689
+        }
+      ],
+      "tool_attempts": 5,
+      "tool_completed": 5,
+      "injected_local_failures": 0,
+      "elapsed_ms": 4389.195799998561
+    }
+  ],
+  "integration_boundary": {
+    "llm": "real official DeepSeek HTTP API",
+    "agent": "real LangGraph",
+    "harness": "real durable budgets/checkpoints/retries",
+    "search": "actual BM25 + Qdrant Local",
+    "embedding": "offline hash test double",
+    "reranker": "offline lexical-overlap test double",
+    "redis": "not used in single-process local validation"
+  },
+  "fault_boundary": "tool_failure_recovery injects one local ConnectionError; API replies remain real. HTTP 429/5xx/timeouts are tested separately with labeled synthetic transports.",
+  "summary": {
+    "tasks": 1,
+    "tasks_passed": 0,
+    "task_success_rate": 0.0,
+    "llm_requests": 2,
+    "llm_successful_responses": 2,
+    "prompt_tokens": 7806,
+    "completion_tokens": 359,
+    "total_tokens": 8165,
+    "tool_attempts": 5,
+    "tools_completed": 5,
+    "tool_attempt_success_rate": 1.0,
+    "model_function_calls": 5,
+    "invalid_model_function_calls": 0,
+    "citations": 0,
+    "valid_citations": 0,
+    "api_p50_ms": 2015.6524000012723,
+    "api_p95_ms": 2497.3303300004773,
+    "task_p50_ms": 4389.195799998561,
+    "task_p95_ms": 4389.195799998561
+  },
+  "passed": false
+}

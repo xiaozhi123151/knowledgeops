@@ -1,0 +1,776 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-18T15:44:33.951652+00:00",
+    "mode": "real_four_container",
+    "source_sha256": "49692e7c2fdb24a6b60262032d1b21cb8fc46f2d2b5e0120dd75e6331aa3c742",
+    "git_commit": "95dc8e976db89bc06dfb35bfa84c7a8082e2cc4f",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "See the per-provider and corpus boundary in this artifact; small samples are not production accuracy."
+  },
+  "base_url": "http://127.0.0.1:18000",
+  "checks": {
+    "both_container_sources_match_checkout": true,
+    "four_live_services": true,
+    "api_queues_while_worker_stopped": true,
+    "restarted_worker_consumes_durable_task": true,
+    "real_dense_hybrid_cross_encoder": true,
+    "pdf_http_ingestion": true,
+    "inflight_worker_sigkill_checkpoint_and_budget_recovery": true,
+    "deepseek_tool_call_and_exact_citations": true
+  },
+  "configuration": "compose.yaml + compose.acceptance.yaml; CPU float32 BGE pair, real DeepSeek",
+  "containers_before": [
+    {
+      "ID": "9ae6623f4efa",
+      "Service": "api",
+      "Image": "knowledgeops-acceptance:cpu",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "ID": "8e85771b74a6",
+      "Service": "qdrant",
+      "Image": "qdrant/qdrant:v1.17.0",
+      "State": "running",
+      "Health": ""
+    },
+    {
+      "ID": "729087afebcd",
+      "Service": "redis",
+      "Image": "redis:7.4-alpine",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "ID": "f036d2414a9b",
+      "Service": "worker",
+      "Image": "knowledgeops-acceptance:cpu",
+      "State": "running",
+      "Health": ""
+    }
+  ],
+  "deployed_environment": {
+    "api": {
+      "source_sha256": "774547a6a4dfbd2b8d9936fe77ac05ce3e8d03b873a6e72e22c82ea16c430aa0",
+      "files": 38,
+      "python": "3.12.15",
+      "dependencies": {
+        "torch": "2.14.1+cpu",
+        "sentence-transformers": "5.7.0",
+        "transformers": "5.19.0",
+        "qdrant-client": "1.17.1"
+      }
+    },
+    "worker": {
+      "source_sha256": "774547a6a4dfbd2b8d9936fe77ac05ce3e8d03b873a6e72e22c82ea16c430aa0",
+      "files": 38,
+      "python": "3.12.15",
+      "dependencies": {
+        "torch": "2.14.1+cpu",
+        "sentence-transformers": "5.7.0",
+        "transformers": "5.19.0",
+        "qdrant-client": "1.17.1"
+      }
+    }
+  },
+  "readiness": {
+    "ready": true,
+    "checks": {
+      "sqlite": true,
+      "qdrant": true,
+      "redis": true,
+      "worker": true
+    },
+    "mode": "live",
+    "trace": "disabled",
+    "index_fingerprint": "ab2d8e7c2ea2d96de98d99331bb1757948785ec7714a0885295c3176108413cf",
+    "llm_provider": "deepseek",
+    "llm_is_mock": false,
+    "retrieval_is_mock": false,
+    "qdrant_backend": "server",
+    "providers": {
+      "llm": "deepseek-flash",
+      "embedding": "BAAI/bge-m3",
+      "reranker": "BAAI/bge-reranker-v2-m3"
+    }
+  },
+  "queued_task_id": "92d2189a2a7e4d748d979edd575252ac",
+  "ingest_result": {
+    "chunk_count": 1,
+    "doc_id": "147dad3ece146304070e5c1349e6dadfd2e6554cb2d2397673ed706874f84ef9",
+    "duplicate": true
+  },
+  "query": {
+    "hits": [
+      {
+        "chunk": {
+          "chunk_id": "e1bd425d-ef08-5201-bd0b-e6de14504954",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "text": "Redis AOF persistence records every write command.\nRDB creates periodic snapshots for backups.",
+          "page": 1,
+          "section": "",
+          "start": 0,
+          "end": 94,
+          "source": "sample.pdf",
+          "title": "sample.pdf"
+        },
+        "dense_score": 0.63991165,
+        "dense_rank": 2,
+        "bm25_score": 0.0,
+        "bm25_rank": 2,
+        "rrf_score": 0.03225806451612903,
+        "rerank_score": 3.506049394607544
+      },
+      {
+        "chunk": {
+          "chunk_id": "d00ec1e6-0304-5b00-89a6-272d0798ab8b",
+          "doc_id": "147dad3ece146304070e5c1349e6dadfd2e6554cb2d2397673ed706874f84ef9",
+          "text": "Four-container durable queue probe: Redis AOF persists writes to an append-only file.",
+          "page": null,
+          "section": "",
+          "start": 0,
+          "end": 85,
+          "source": "four-container-probe.txt",
+          "title": "four-container-probe.txt"
+        },
+        "dense_score": 0.6594945,
+        "dense_rank": 1,
+        "bm25_score": 0.0,
+        "bm25_rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "rerank_score": 2.5798561573028564
+      },
+      {
+        "chunk": {
+          "chunk_id": "5441ddfe-97d5-5f6b-b4cf-1cde509513e3",
+          "doc_id": "4f65eba0328a313ef7aa316d23eb1c736caecf7372ccf23da36700c3411c9571",
+          "text": "Live probe: vector index readiness.",
+          "page": null,
+          "section": "",
+          "start": 0,
+          "end": 35,
+          "source": "live-probe.txt",
+          "title": "live-probe.txt"
+        },
+        "dense_score": 0.31292847,
+        "dense_rank": 3,
+        "bm25_score": null,
+        "bm25_rank": null,
+        "rrf_score": 0.015873015873015872,
+        "rerank_score": -10.856606483459473
+      },
+      {
+        "chunk": {
+          "chunk_id": "9044aa59-86ab-5192-8014-28bb12aa0bc5",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "text": "Qdrant stores dense vectors and metadata.",
+          "page": 2,
+          "section": "",
+          "start": 96,
+          "end": 137,
+          "source": "sample.pdf",
+          "title": "sample.pdf"
+        },
+        "dense_score": 0.2755472,
+        "dense_rank": 4,
+        "bm25_score": null,
+        "bm25_rank": null,
+        "rrf_score": 0.015625,
+        "rerank_score": -11.012415885925293
+      }
+    ],
+    "mode": "live",
+    "elapsed_ms": 6038.863563999712,
+    "index_version": 3,
+    "warnings": []
+  },
+  "budget_at_worker_kill": {
+    "estimated": false,
+    "llm_calls": 1,
+    "pending_estimates": 0,
+    "steps": 2,
+    "tokens": 1625,
+    "tool_calls": 2
+  },
+  "research_elapsed_ms": 39737.27620000136,
+  "research": {
+    "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+    "kind": "research",
+    "session_id": "d44ab03805f14f8ca30a41900928b013",
+    "status": "succeeded",
+    "result": {
+      "citations": [
+        {
+          "chunk_id": "5441ddfe-97d5-5f6b-b4cf-1cde509513e3",
+          "citation_id": "E-5441ddfe-97d5-5f6b-b4cf-1cde509513e3",
+          "doc_id": "4f65eba0328a313ef7aa316d23eb1c736caecf7372ccf23da36700c3411c9571",
+          "page": null,
+          "quote": "Live probe: vector index readiness.",
+          "section": "",
+          "source": "live-probe.txt"
+        },
+        {
+          "chunk_id": "9044aa59-86ab-5192-8014-28bb12aa0bc5",
+          "citation_id": "E-9044aa59-86ab-5192-8014-28bb12aa0bc5",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "page": 2,
+          "quote": "Qdrant stores dense vectors and metadata.",
+          "section": "",
+          "source": "sample.pdf"
+        },
+        {
+          "chunk_id": "d00ec1e6-0304-5b00-89a6-272d0798ab8b",
+          "citation_id": "E-d00ec1e6-0304-5b00-89a6-272d0798ab8b",
+          "doc_id": "147dad3ece146304070e5c1349e6dadfd2e6554cb2d2397673ed706874f84ef9",
+          "page": null,
+          "quote": "Redis AOF persists writes to an append-only file.",
+          "section": "",
+          "source": "four-container-probe.txt"
+        },
+        {
+          "chunk_id": "e1bd425d-ef08-5201-bd0b-e6de14504954",
+          "citation_id": "E-e1bd425d-ef08-5201-bd0b-e6de14504954",
+          "doc_id": "36a4bda0211e01bc9c521aac93b0fed98c2e095333a1bcf8c93a7ae87b7bbf38",
+          "page": 1,
+          "quote": "Redis AOF persistence records every write command.",
+          "section": "",
+          "source": "sample.pdf"
+        }
+      ],
+      "conclusion": "The imported documents support only a minimal description of Redis AOF persistence: AOF records every write command and persists writes to an append-only file, and it is contrasted with RDB, which creates periodic snapshots for backups. Two independent sources agree on the append-only-file/write-recording characterization. No retrieved evidence covers fsync policies (always/everysec/no), AOF rewrite or background rewrite buffers, file format details, recovery behavior, or any performance measurement, so production throughput cannot be confirmed from these documents.",
+      "disagreements": [],
+      "findings": [
+        {
+          "citation_ids": [
+            "E-e1bd425d-ef08-5201-bd0b-e6de14504954"
+          ],
+          "text": "AOF persistence is described as recording every write command, and is distinguished from RDB, which creates periodic snapshots for backups. This is the only source that mentions RDB as a contrast."
+        },
+        {
+          "citation_ids": [
+            "E-d00ec1e6-0304-5b00-89a6-272d0798ab8b"
+          ],
+          "text": "A second, independent document corroborates the core mechanism: Redis AOF persists writes to an append-only file. Together with the sample.pdf statement, this is the only cross-source agreement found."
+        },
+        {
+          "citation_ids": [
+            "E-5441ddfe-97d5-5f6b-b4cf-1cde509513e3",
+            "E-9044aa59-86ab-5192-8014-28bb12aa0bc5"
+          ],
+          "text": "The remaining retrieved chunks are unrelated to Redis persistence (a vector index readiness probe and a statement about Qdrant storing dense vectors and metadata); they provide no supporting or contradicting detail on AOF."
+        }
+      ],
+      "insufficient_evidence": false,
+      "limitations": [
+        "No retrieved evidence describes fsync/appendfsync policies (always, everysec, no) or the resulting durability trade-offs, so durability guarantees cannot be characterized.",
+        "No evidence covers AOF rewrite, background rewrite, rewrite buffers, or file growth/compaction behavior.",
+        "No evidence covers AOF file format, loading/recovery on restart, or interaction with RDB (e.g., mixed persistence).",
+        "No performance data of any kind was retrieved; production throughput (ops/sec, latency, fsync overhead) cannot be confirmed.",
+        "The evidence base is very thin: only two short statements address AOF, and both are brief summaries rather than specifications.",
+        "Search budget was exhausted (4 searches); additional documents on AOF configuration may exist but were not retrievable."
+      ],
+      "title": "Redis AOF Persistence: What the Imported Documents Support"
+    },
+    "error": null,
+    "created": 1792338302.3041556,
+    "updated": 1792338341.9721503,
+    "started": 1792338302.3120894,
+    "deadline": 1792338902.3120894,
+    "limits_json": {
+      "max_llm_calls": 8,
+      "max_steps": 12,
+      "max_tool_calls": 12,
+      "task_timeout": 600.0,
+      "token_budget": 100000
+    },
+    "budget": {
+      "estimated": false,
+      "llm_calls": 5,
+      "pending_estimates": 0,
+      "steps": 9,
+      "tokens": 13029,
+      "tool_calls": 7
+    },
+    "mode": "live"
+  },
+  "events": [
+    {
+      "seq": 153,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338302.3084636,
+      "type": "queued",
+      "data": {
+        "kind": "research"
+      }
+    },
+    {
+      "seq": 154,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338302.315735,
+      "type": "claimed",
+      "data": {
+        "resumed": false
+      }
+    },
+    {
+      "seq": 155,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338302.3353698,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 156,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338302.4439657,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "duplicate_tool_messages": 0,
+        "input_characters": 1985,
+        "input_messages": 2,
+        "repeated_search_evidence_chunks": 0,
+        "request_fingerprint": "de1f2ca6aa3101b9a62c0e7d508b90b1c1d4daaa7ae3aa00d0cbd00fe5ce8f0f",
+        "reserved_tokens": 7434,
+        "search_evidence_occurrences": 0,
+        "tool_messages": 0,
+        "unique_search_evidence_chunks": 0
+      }
+    },
+    {
+      "seq": 157,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338303.8439524,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 1280,
+        "completion_tokens": 109,
+        "elapsed_ms": 1388.3505120002155,
+        "estimated": false,
+        "finish_reason": "tool_calls",
+        "prompt_tokens": 1516,
+        "reasoning_content_present": false,
+        "response_id": "4bcbc8fb-9e29-4c7e-926b-febe20505435",
+        "response_model": "deepseek-flash",
+        "temperature": 0.0,
+        "tool_call_count": 2,
+        "total_tokens": 1625,
+        "usage": 1625
+      }
+    },
+    {
+      "seq": 158,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338303.8570855,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 159,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338303.863938,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 160,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338304.3897421,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 522.0605859999523,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 161,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338304.3983443,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 162,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338332.5806506,
+      "type": "claimed",
+      "data": {
+        "resumed": true
+      }
+    },
+    {
+      "seq": 163,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338332.5962508,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 164,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338332.600033,
+      "type": "tool_cache_hit",
+      "data": {
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 165,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338332.6074784,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 166,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338333.1117492,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 501.06834600001093,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 167,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338333.1240733,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 168,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338333.2340946,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "duplicate_tool_messages": 0,
+        "input_characters": 4920,
+        "input_messages": 5,
+        "repeated_search_evidence_chunks": 0,
+        "request_fingerprint": "6a6bd68aa35d8464d45229a70d7e6fce06fb31c6ccb0c5567831c00c27dc71dd",
+        "reserved_tokens": 8921,
+        "search_evidence_occurrences": 4,
+        "tool_messages": 2,
+        "unique_search_evidence_chunks": 4
+      }
+    },
+    {
+      "seq": 169,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338334.7560806,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 1536,
+        "completion_tokens": 128,
+        "elapsed_ms": 1509.5997630000966,
+        "estimated": false,
+        "finish_reason": "tool_calls",
+        "prompt_tokens": 2865,
+        "reasoning_content_present": false,
+        "response_id": "49b9b00b-f0b3-4d16-bafa-6a0b9e907cec",
+        "response_model": "deepseek-flash",
+        "temperature": 0.0,
+        "tool_call_count": 2,
+        "total_tokens": 2993,
+        "usage": 2993
+      }
+    },
+    {
+      "seq": 170,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338334.7680156,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 171,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338334.7761648,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 172,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338335.0088408,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 228.94176599993443,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 173,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338335.0161927,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 174,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338335.4671152,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 447.41847100021914,
+        "name": "knowledge_search"
+      }
+    },
+    {
+      "seq": 175,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338335.479276,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 176,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338335.4907532,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "duplicate_tool_messages": 0,
+        "input_characters": 6619,
+        "input_messages": 9,
+        "repeated_search_evidence_chunks": 0,
+        "request_fingerprint": "514e3b0aac3e4fba07826fb67a3d4879b91b406619e58cfcc0594f4f7e35925b",
+        "reserved_tokens": 9263,
+        "search_evidence_occurrences": 4,
+        "tool_messages": 4,
+        "unique_search_evidence_chunks": 4
+      }
+    },
+    {
+      "seq": 177,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338336.6080322,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 512,
+        "completion_tokens": 139,
+        "elapsed_ms": 1106.2949009997283,
+        "estimated": false,
+        "finish_reason": "tool_calls",
+        "prompt_tokens": 2849,
+        "reasoning_content_present": false,
+        "response_id": "fdc2d7c0-9142-49a4-991f-ea114cab76a8",
+        "response_model": "deepseek-flash",
+        "temperature": 0.0,
+        "tool_call_count": 1,
+        "total_tokens": 2988,
+        "usage": 2988
+      }
+    },
+    {
+      "seq": 178,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338336.6194246,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 179,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338336.6272733,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "compare_evidence"
+      }
+    },
+    {
+      "seq": 180,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338336.6353717,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "duplicate_tool_messages": 0,
+        "input_characters": 2120,
+        "input_messages": 2,
+        "repeated_search_evidence_chunks": 0,
+        "request_fingerprint": "266275f31dff3f5b2a2bd05b07514a703f8e673d066ceba181e3fbaff15f7751",
+        "reserved_tokens": 7115,
+        "search_evidence_occurrences": 0,
+        "tool_messages": 0,
+        "unique_search_evidence_chunks": 0
+      }
+    },
+    {
+      "seq": 181,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338337.957495,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 0,
+        "completion_tokens": 196,
+        "elapsed_ms": 1310.7807100000173,
+        "estimated": false,
+        "finish_reason": "stop",
+        "prompt_tokens": 805,
+        "reasoning_content_present": false,
+        "response_id": "09194e3e-cd89-440a-839c-1107053a9871",
+        "response_model": "deepseek-flash",
+        "temperature": 0.0,
+        "tool_call_count": 0,
+        "total_tokens": 1001,
+        "usage": 1001
+      }
+    },
+    {
+      "seq": 182,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338337.9669533,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 1336.0750580000058,
+        "name": "compare_evidence"
+      }
+    },
+    {
+      "seq": 183,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338337.9785984,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 184,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338337.988614,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "duplicate_tool_messages": 0,
+        "input_characters": 7246,
+        "input_messages": 11,
+        "repeated_search_evidence_chunks": 0,
+        "request_fingerprint": "669387111992ee9013589e0855993777d14574ab04004ee66fd33e44ada12a63",
+        "reserved_tokens": 10051,
+        "search_evidence_occurrences": 4,
+        "tool_messages": 5,
+        "unique_search_evidence_chunks": 4
+      }
+    },
+    {
+      "seq": 185,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338341.9323745,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 896,
+        "completion_tokens": 803,
+        "elapsed_ms": 3929.4012560003466,
+        "estimated": false,
+        "finish_reason": "tool_calls",
+        "prompt_tokens": 3619,
+        "reasoning_content_present": false,
+        "response_id": "835355a8-1d00-41b6-9390-20a3e9cd6771",
+        "response_model": "deepseek-flash",
+        "temperature": 0.0,
+        "tool_call_count": 1,
+        "total_tokens": 4422,
+        "usage": 4422
+      }
+    },
+    {
+      "seq": 186,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338341.9450932,
+      "type": "agent_step",
+      "data": {}
+    },
+    {
+      "seq": 187,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338341.9532034,
+      "type": "tool_started",
+      "data": {
+        "attempt": 1,
+        "name": "build_report"
+      }
+    },
+    {
+      "seq": 188,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338341.9630313,
+      "type": "tool_completed",
+      "data": {
+        "elapsed_ms": 6.446101000165072,
+        "name": "build_report"
+      }
+    },
+    {
+      "seq": 189,
+      "task_id": "81ffdbcb79484bb7821d724c97a5e1fc",
+      "at": 1792338341.9765034,
+      "type": "succeeded",
+      "data": {}
+    }
+  ],
+  "tool_names": [
+    "build_report",
+    "compare_evidence",
+    "knowledge_search"
+  ],
+  "validated_citations": 4,
+  "containers_after": [
+    {
+      "ID": "9ae6623f4efa",
+      "Service": "api",
+      "Image": "knowledgeops-acceptance:cpu",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "ID": "8e85771b74a6",
+      "Service": "qdrant",
+      "Image": "qdrant/qdrant:v1.17.0",
+      "State": "running",
+      "Health": ""
+    },
+    {
+      "ID": "729087afebcd",
+      "Service": "redis",
+      "Image": "redis:7.4-alpine",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "ID": "f036d2414a9b",
+      "Service": "worker",
+      "Image": "knowledgeops-acceptance:cpu",
+      "State": "running",
+      "Health": ""
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,2372 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T09:52:16.700411+00:00",
+    "mode": "real_retrieval",
+    "source_sha256": "64550a157c47212c35458b56da8cc3df1b8708562e982f9ffb0674f377f4a7d3",
+    "git_commit": "db8c2636ed5bf9c127ecce45e3b37ecc8802c770",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Real models; small public corpus, incomplete assistant-authored qrels; no production-quality claim."
+  },
+  "question_sha256": "1f92b0dd071168e63fd39a01991f356cfe6234d889f4ea51ceb08a4c7e8c9c32",
+  "repetitions": 3,
+  "question_count": 120,
+  "answerable_count": 100,
+  "categories": {
+    "keyword": 40,
+    "semantic": 40,
+    "cross_document": 10,
+    "version_conflict": 10,
+    "unanswerable": 20
+  },
+  "models": {
+    "embedding": "BAAI/bge-m3",
+    "embedding_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+  },
+  "configuration": {
+    "device": "cuda",
+    "threads": 8,
+    "dimensions": 1024,
+    "normalize": true,
+    "precision": "float16",
+    "max_length": 512,
+    "batch": 8,
+    "reranker_max_length": 512,
+    "candidates": 50,
+    "rrf_k": 60,
+    "top_k": 10
+  },
+  "dependencies": {
+    "torch": "2.7.1+cu128",
+    "sentence-transformers": "5.7.0",
+    "transformers": "5.19.0",
+    "numpy": "2.5.4"
+  },
+  "environment": {
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "execution_device": "cuda float16",
+    "gpu_inventory": "NVIDIA GeForce RTX 5060 Laptop GPU, 573.24, 8151 MiB, 2521 MiB"
+  },
+  "qdrant": {
+    "server_version": "1.17.0",
+    "collection": "knowledgeops_v1_eb409db7cb27b4b86af05760",
+    "fingerprint": "eb409db7cb27b4b86af057603692c4d83e408de2f22e0df5c03c21212be6bf50",
+    "backend": "HTTP server"
+  },
+  "chunk_count": 1201,
+  "timings": {
+    "embedding_load_ms": 30005.23239999893,
+    "reranker_load_ms": 11945.379499997216,
+    "import_ms": 11622.56780000098,
+    "warmup_ms": 1283.1225000009
+  },
+  "summary": {
+    "Dense": {
+      "recall_at_5": 0.5325,
+      "mrr_at_10": 0.4717103174603174,
+      "ndcg_at_10": 0.48738791000756615,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 42.19855000155803,
+      "p95_ms": 49.797460000809224,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    },
+    "BM25": {
+      "recall_at_5": 0.295,
+      "mrr_at_10": 0.2664682539682539,
+      "ndcg_at_10": 0.27910648308022834,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 5.198700000619283,
+      "p95_ms": 7.042775000081748,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 0.85
+    },
+    "Hybrid": {
+      "recall_at_5": 0.4633333333333333,
+      "mrr_at_10": 0.40079761904761907,
+      "ndcg_at_10": 0.43160555445277016,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 45.813799999450566,
+      "p95_ms": 53.30798999839317,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    },
+    "Hybrid+Rerank": {
+      "recall_at_5": 0.7308333333333333,
+      "mrr_at_10": 0.5876666666666667,
+      "ndcg_at_10": 0.6146116728810104,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 443.852300000799,
+      "p95_ms": 542.9157800004759,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    }
+  },
+  "by_category": {
+    "Dense": {
+      "keyword": {
+        "recall_at_5": 0.6375,
+        "mrr_at_10": 0.5722123015873016,
+        "ndcg_at_10": 0.5950508201098508,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 42.43729999870993,
+        "p95_ms": 49.988424998446135,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "semantic": {
+        "recall_at_5": 0.4875,
+        "mrr_at_10": 0.4038095238095238,
+        "ndcg_at_10": 0.4210132458169003,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 42.24450000037905,
+        "p95_ms": 51.15823499927501,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "cross_document": {
+        "recall_at_5": 0.4333333333333333,
+        "mrr_at_10": 0.44357142857142856,
+        "ndcg_at_10": 0.44909027733711415,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 41.7433999991772,
+        "p95_ms": 47.34498000143503,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "version_conflict": {
+        "recall_at_5": 0.39166666666666666,
+        "mrr_at_10": 0.36944444444444446,
+        "ndcg_at_10": 0.36053255903154297,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 41.85979999965639,
+        "p95_ms": 47.62178499840957,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      }
+    },
+    "BM25": {
+      "keyword": {
+        "recall_at_5": 0.5,
+        "mrr_at_10": 0.4285714285714286,
+        "ndcg_at_10": 0.4524654979743685,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 4.61860000177694,
+        "p95_ms": 6.4139300002352675,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "semantic": {
+        "recall_at_5": 0.15,
+        "mrr_at_10": 0.11875,
+        "ndcg_at_10": 0.1321720936295354,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 5.3361499994935,
+        "p95_ms": 7.38504500077397,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "cross_document": {
+        "recall_at_5": 0.13333333333333333,
+        "mrr_at_10": 0.1976190476190476,
+        "ndcg_at_10": 0.18517627414127277,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 5.470550000609364,
+        "p95_ms": 6.590655000945843,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "version_conflict": {
+        "recall_at_5": 0.21666666666666667,
+        "mrr_at_10": 0.27777777777777773,
+        "ndcg_at_10": 0.26733819024539485,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 6.187300001329277,
+        "p95_ms": 8.205005000309024,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      }
+    },
+    "Hybrid": {
+      "keyword": {
+        "recall_at_5": 0.575,
+        "mrr_at_10": 0.4928769841269841,
+        "ndcg_at_10": 0.5289181750467115,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 44.24339999968652,
+        "p95_ms": 52.614715000163415,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "semantic": {
+        "recall_at_5": 0.3875,
+        "mrr_at_10": 0.30599206349206354,
+        "ndcg_at_10": 0.3516705708017065,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 46.174899998732144,
+        "p95_ms": 53.19616499837139,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "cross_document": {
+        "recall_at_5": 0.38333333333333325,
+        "mrr_at_10": 0.45666666666666667,
+        "ndcg_at_10": 0.3953202370716849,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 44.90050000094925,
+        "p95_ms": 52.71936999997706,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "version_conflict": {
+        "recall_at_5": 0.4,
+        "mrr_at_10": 0.3558333333333333,
+        "ndcg_at_10": 0.3983803240623446,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 47.875699998257915,
+        "p95_ms": 53.36869000111619,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      }
+    },
+    "Hybrid+Rerank": {
+      "keyword": {
+        "recall_at_5": 0.9,
+        "mrr_at_10": 0.6945833333333333,
+        "ndcg_at_10": 0.7450043685782421,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 429.68480000126874,
+        "p95_ms": 526.0770600023534,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "semantic": {
+        "recall_at_5": 0.625,
+        "mrr_at_10": 0.4977083333333333,
+        "ndcg_at_10": 0.5261278029823847,
+        "queries": 40,
+        "attempts": 120,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 460.54745000037656,
+        "p95_ms": 567.4716150017048,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "cross_document": {
+        "recall_at_5": 0.5166666666666667,
+        "mrr_at_10": 0.5958333333333332,
+        "ndcg_at_10": 0.541339875739079,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 428.2585000019026,
+        "p95_ms": 531.6625900006329,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      },
+      "version_conflict": {
+        "recall_at_5": 0.6916666666666667,
+        "mrr_at_10": 0.5116666666666667,
+        "ndcg_at_10": 0.5202481668285162,
+        "queries": 10,
+        "attempts": 30,
+        "failures": 0,
+        "failure_rate": 0.0,
+        "p50_ms": 451.0275000011461,
+        "p95_ms": 509.8014900002454,
+        "failed_latency_ms": [],
+        "unanswerable_nonempty_rate": null
+      }
+    }
+  },
+  "bad_cases": [
+    {
+      "query_id": "Q014",
+      "question": "不想把前缀当作字符集合删掉，3.9 有什么精确删除办法？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q056",
+      "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q044",
+      "question": "3.13 是否已把无解释器锁执行作为全面稳定的默认模式？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q089",
+      "question": "结合 3.11 发布说明与任务文档解释新增任务组及其失败语义。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q057",
+      "question": "asyncio.Lock 获取顺序是否公平？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q065",
+      "question": "TaskGroup 子任务失败后其余任务怎样处理？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q050",
+      "question": "异步队列默认先处理最早还是最近加入的项目？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q098",
+      "question": "比较 Python 3.9 内置集合泛型注解与 3.12 类型参数语法。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V4.1-Flash",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q095",
+      "question": "能否把 Python 3.11 性能摘要与 3.13 默认关闭的 JIT 当成同一项保证？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q081",
+      "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.3333333333333333,
+      "first_relevant_rank": 2,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q052",
+      "question": "如何配置异步队列使其容量不受正数上限限制？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q038",
+      "question": "3.12 为泛型声明和类型别名提供了什么新的表达方式？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q089",
+      "question": "结合 3.11 发布说明与任务文档解释新增任务组及其失败语义。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q012",
+      "question": "怎样在 3.9 中用运算符组合两个映射？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q099",
+      "question": "比较 Python 3.8 vectorcall 与 3.13 JIT 的作用和默认启用情况。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q086",
+      "question": "对比队列完成计数溢出与释放未持有异步锁时的异常类型。",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q074",
+      "question": "未显式指定流读取缓冲大小时，官方文档给出的容量是多少？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q049",
+      "question": "asyncio.Queue 按什么顺序取出项目？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q047",
+      "question": "Python 3.13 导入未声明 free-threading 支持的扩展可能发生什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q001",
+      "question": "Python 3.8 的 := 运算符做什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q016",
+      "question": "哪个 3.9 改动允许直接给内置容器写元素类型？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q013",
+      "question": "Python 3.9 有哪些删除字符串前后缀的方法？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q085",
+      "question": "对比异步子进程等待风险与线程池 map 分块参数的限制。",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q004",
+      "question": "怎样在 3.8 中禁止调用方用关键字传递部分参数？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q037",
+      "question": "Python 3.12 PEP 695 引入什么语法？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q006",
+      "question": "3.8 用什么协议降低 Python 对象调用开销？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q072",
+      "question": "怎样让内部协程不随外层等待者一起被取消？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q095",
+      "question": "能否把 Python 3.11 性能摘要与 3.13 默认关闭的 JIT 当成同一项保证？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q097",
+      "question": "比较 Python 3.8 赋值表达式与 3.10 结构化模式匹配，分别解决什么问题？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q005",
+      "question": "Python 3.8 新增哪个 C API 调用协议？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q046",
+      "question": "安装 3.13 就会自动开启即时编译器吗？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q040",
+      "question": "3.12 如何让不同子解释器各自拥有解释器锁？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q086",
+      "question": "对比队列完成计数溢出与释放未持有异步锁时的异常类型。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q043",
+      "question": "Python 3.13 无 GIL 支持属于什么成熟度？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q036",
+      "question": "为什么升级 3.12 后不能再假定标准库自带旧构建工具包？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q087",
+      "question": "异步 TCP 流的默认缓冲容量和服务器 backlog 分别是什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q056",
+      "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q011",
+      "question": "Python 3.9 引入哪些字典合并操作？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q032",
+      "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q076",
+      "question": "异步 TCP 服务的默认待接受连接队列参数是多少？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q046",
+      "question": "安装 3.13 就会自动开启即时编译器吗？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q092",
+      "question": "比较 Python 3.10 联合类型竖线写法与 3.12 泛型类型参数语法。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q002",
+      "question": "哪个 3.8 语法能在较大表达式中同时给变量赋值？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q044",
+      "question": "3.13 是否已把无解释器锁执行作为全面稳定的默认模式？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q076",
+      "question": "异步 TCP 服务的默认待接受连接队列参数是多少？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q085",
+      "question": "对比异步子进程等待风险与线程池 map 分块参数的限制。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q066",
+      "question": "一个关联子协程出错时，结构化任务组会如何处置兄弟任务？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q038",
+      "question": "3.12 为泛型声明和类型别名提供了什么新的表达方式？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q056",
+      "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q004",
+      "question": "怎样在 3.8 中禁止调用方用关键字传递部分参数？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q067",
+      "question": "asyncio.gather 默认遇到首个异常会取消其他任务吗？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q096",
+      "question": "比较 Python 3.11 标准库新增的 TOML 解析能力与 3.12 移除的构建包。",
+      "variant": "Dense",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q089",
+      "question": "结合 3.11 发布说明与任务文档解释新增任务组及其失败语义。",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q038",
+      "question": "3.12 为泛型声明和类型别名提供了什么新的表达方式？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q031",
+      "question": "Python 3.11 asyncio 新增哪个任务组 API？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q040",
+      "question": "3.12 如何让不同子解释器各自拥有解释器锁？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q018",
+      "question": "升级 3.10 后，加密库的最低兼容基线是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q015",
+      "question": "Python 3.9 对内置集合泛型注解有什么改进？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q093",
+      "question": "从 3.10 到 3.12，OpenSSL 最低要求与 distutils 的移除分别是什么变化？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q003",
+      "question": "Python 3.8 函数参数中的 / 表示什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q016",
+      "question": "哪个 3.9 改动允许直接给内置容器写元素类型？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q086",
+      "question": "对比队列完成计数溢出与释放未持有异步锁时的异常类型。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q002",
+      "question": "哪个 3.8 语法能在较大表达式中同时给变量赋值？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 10,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q053",
+      "question": "asyncio.Queue.task_done 调用次数过多会怎样？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q083",
+      "question": "对比 TaskGroup 与 gather：一个任务失败后其他任务会被取消吗？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q022",
+      "question": "3.10 如何用竖线声明值可属于两种类型之一？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q003",
+      "question": "Python 3.8 函数参数中的 / 表示什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q054",
+      "question": "消费者把完成通知多发几次时，队列用什么错误揭示计数问题？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q091",
+      "question": "比较 Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading，两者是否同一能力？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q015",
+      "question": "Python 3.9 对内置集合泛型注解有什么改进？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q022",
+      "question": "3.10 如何用竖线声明值可属于两种类型之一？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q037",
+      "question": "Python 3.12 PEP 695 引入什么语法？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q038",
+      "question": "3.12 为泛型声明和类型别名提供了什么新的表达方式？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q006",
+      "question": "3.8 用什么协议降低 Python 对象调用开销？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q011",
+      "question": "Python 3.9 引入哪些字典合并操作？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q043",
+      "question": "Python 3.13 无 GIL 支持属于什么成熟度？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q071",
+      "question": "asyncio.shield 如何影响外部取消？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q024",
+      "question": "3.10 如何让配对迭代在输入长度不一致时暴露问题？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q092",
+      "question": "比较 Python 3.10 联合类型竖线写法与 3.12 泛型类型参数语法。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q076",
+      "question": "异步 TCP 服务的默认待接受连接队列参数是多少？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q046",
+      "question": "安装 3.13 就会自动开启即时编译器吗？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q004",
+      "question": "怎样在 3.8 中禁止调用方用关键字传递部分参数？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q084",
+      "question": "对比 wait_for 和 shield 对任务取消与等待时间的影响。",
+      "variant": "BM25",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q077",
+      "question": "asyncio 子进程在管道输出时直接 wait 有何风险？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-subprocess",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q078",
+      "question": "为什么子进程写满输出管道后，单纯等待进程退出可能永远卡住？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q048",
+      "question": "为什么无锁构建在导入旧 C 扩展后可能又恢复解释器锁？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q012",
+      "question": "怎样在 3.9 中用运算符组合两个映射？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V2",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q029",
+      "question": "Python 3.11 新增的异常组类型是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q068",
+      "question": "聚合等待中的一个协程失败后，其他协程默认还会继续运行吗？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q050",
+      "question": "异步队列默认先处理最早还是最近加入的项目？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q094",
+      "question": "比较 Python 3.12 与 3.13 的正式发布日期。",
+      "variant": "BM25",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q072",
+      "question": "怎样让内部协程不随外层等待者一起被取消？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q098",
+      "question": "比较 Python 3.9 内置集合泛型注解与 3.12 类型参数语法。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.25,
+      "first_relevant_rank": 2,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q029",
+      "question": "Python 3.11 新增的异常组类型是什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q098",
+      "question": "比较 Python 3.9 内置集合泛型注解与 3.12 类型参数语法。",
+      "variant": "Dense",
+      "recall_at_5": 0.25,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q097",
+      "question": "比较 Python 3.8 赋值表达式与 3.10 结构化模式匹配，分别解决什么问题？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q074",
+      "question": "未显式指定流读取缓冲大小时，官方文档给出的容量是多少？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V2",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q015",
+      "question": "Python 3.9 对内置集合泛型注解有什么改进？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q067",
+      "question": "asyncio.gather 默认遇到首个异常会取消其他任务吗？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q024",
+      "question": "3.10 如何让配对迭代在输入长度不一致时暴露问题？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q081",
+      "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+      "variant": "Dense",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q024",
+      "question": "3.10 如何让配对迭代在输入长度不一致时暴露问题？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q010",
+      "question": "3.9 标准库如何表示具有地区夏令时规则的时区？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q072",
+      "question": "怎样让内部协程不随外层等待者一起被取消？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q021",
+      "question": "Python 3.10 联合类型的新写法是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q088",
+      "question": "Python 3.11 的异常组与 TaskGroup 失败处理怎样联系起来？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 4,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q073",
+      "question": "asyncio 流读取器默认缓冲限制是多少？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q090",
+      "question": "异步 Event 的初始状态与 Queue 的默认取出顺序分别是什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 2,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q092",
+      "question": "比较 Python 3.10 联合类型竖线写法与 3.12 泛型类型参数语法。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q088",
+      "question": "Python 3.11 的异常组与 TaskGroup 失败处理怎样联系起来？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q073",
+      "question": "asyncio 流读取器默认缓冲限制是多少？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q066",
+      "question": "一个关联子协程出错时，结构化任务组会如何处置兄弟任务？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q031",
+      "question": "Python 3.11 asyncio 新增哪个任务组 API？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q081",
+      "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q047",
+      "question": "Python 3.13 导入未声明 free-threading 支持的扩展可能发生什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q036",
+      "question": "为什么升级 3.12 后不能再假定标准库自带旧构建工具包？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q016",
+      "question": "哪个 3.9 改动允许直接给内置容器写元素类型？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q097",
+      "question": "比较 Python 3.8 赋值表达式与 3.10 结构化模式匹配，分别解决什么问题？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q069",
+      "question": "asyncio.wait_for 的实际等待能否超过 timeout？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 10,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q046",
+      "question": "安装 3.13 就会自动开启即时编译器吗？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q064",
+      "question": "能否让不同操作系统线程安全地共享这些协程锁？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q090",
+      "question": "异步 Event 的初始状态与 Queue 的默认取出顺序分别是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.3333333333333333,
+      "first_relevant_rank": 2,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q090",
+      "question": "异步 Event 的初始状态与 Queue 的默认取出顺序分别是什么？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.3333333333333333,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q070",
+      "question": "为什么给异步任务设置等待上限后，真正返回仍可能更晚？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q048",
+      "question": "为什么无锁构建在导入旧 C 扩展后可能又恢复解释器锁？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q059",
+      "question": "asyncio.Lock 在未锁定时 release 会怎样？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q028",
+      "question": "3.11 不安装额外依赖时怎样读取 TOML 格式？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q082",
+      "question": "异步队列和同步原语在超时参数与 OS 线程使用上各有什么限制？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q045",
+      "question": "Python 3.13 的基本 JIT 默认是否启用？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q004",
+      "question": "怎样在 3.8 中禁止调用方用关键字传递部分参数？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q088",
+      "question": "Python 3.11 的异常组与 TaskGroup 失败处理怎样联系起来？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q088",
+      "question": "Python 3.11 的异常组与 TaskGroup 失败处理怎样联系起来？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q022",
+      "question": "3.10 如何用竖线声明值可属于两种类型之一？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q040",
+      "question": "3.12 如何让不同子解释器各自拥有解释器锁？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q085",
+      "question": "对比异步子进程等待风险与线程池 map 分块参数的限制。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q012",
+      "question": "怎样在 3.9 中用运算符组合两个映射？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q058",
+      "question": "多个协程争抢同一把异步锁时，谁应最先获得锁？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q047",
+      "question": "Python 3.13 导入未声明 free-threading 支持的扩展可能发生什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q097",
+      "question": "比较 Python 3.8 赋值表达式与 3.10 结构化模式匹配，分别解决什么问题？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 2,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q070",
+      "question": "为什么给异步任务设置等待上限后，真正返回仍可能更晚？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q015",
+      "question": "Python 3.9 对内置集合泛型注解有什么改进？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q029",
+      "question": "Python 3.11 新增的异常组类型是什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q017",
+      "question": "Python 3.10 要求的 OpenSSL 最低版本？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q081",
+      "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q083",
+      "question": "对比 TaskGroup 与 gather：一个任务失败后其他任务会被取消吗？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q082",
+      "question": "异步队列和同步原语在超时参数与 OS 线程使用上各有什么限制？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q070",
+      "question": "为什么给异步任务设置等待上限后，真正返回仍可能更晚？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "concurrent.futures",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q018",
+      "question": "升级 3.10 后，加密库的最低兼容基线是什么？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q017",
+      "question": "Python 3.10 要求的 OpenSSL 最低版本？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q077",
+      "question": "asyncio 子进程在管道输出时直接 wait 有何风险？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-subprocess",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q077",
+      "question": "asyncio 子进程在管道输出时直接 wait 有何风险？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-subprocess",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q099",
+      "question": "比较 Python 3.8 vectorcall 与 3.13 JIT 的作用和默认启用情况。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q013",
+      "question": "Python 3.9 有哪些删除字符串前后缀的方法？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 10,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q060",
+      "question": "重复释放一把已打开的异步锁会触发什么错误？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q065",
+      "question": "TaskGroup 子任务失败后其余任务怎样处理？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q077",
+      "question": "asyncio 子进程在管道输出时直接 wait 有何风险？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-subprocess",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q044",
+      "question": "3.13 是否已把无解释器锁执行作为全面稳定的默认模式？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q001",
+      "question": "Python 3.8 的 := 运算符做什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q012",
+      "question": "怎样在 3.9 中用运算符组合两个映射？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q087",
+      "question": "异步 TCP 流的默认缓冲容量和服务器 backlog 分别是什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 7,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q007",
+      "question": "Python 3.8 的发布日期是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q100",
+      "question": "比较 3.12 子解释器锁隔离与 3.13 旧扩展导致重新启用 GIL 的条件。",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 2,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q050",
+      "question": "异步队列默认先处理最早还是最近加入的项目？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q089",
+      "question": "结合 3.11 发布说明与任务文档解释新增任务组及其失败语义。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q022",
+      "question": "3.10 如何用竖线声明值可属于两种类型之一？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q099",
+      "question": "比较 Python 3.8 vectorcall 与 3.13 JIT 的作用和默认启用情况。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q043",
+      "question": "Python 3.13 无 GIL 支持属于什么成熟度？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q005",
+      "question": "Python 3.8 新增哪个 C API 调用协议？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q085",
+      "question": "对比异步子进程等待风险与线程池 map 分块参数的限制。",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "asyncio-subprocess",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q093",
+      "question": "从 3.10 到 3.12，OpenSSL 最低要求与 distutils 的移除分别是什么变化？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q026",
+      "question": "官方 3.11 发布摘要报告了怎样的性能区间，而非保证每个程序都一样快？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q095",
+      "question": "能否把 Python 3.11 性能摘要与 3.13 默认关闭的 JIT 当成同一项保证？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 2,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q050",
+      "question": "异步队列默认先处理最早还是最近加入的项目？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q043",
+      "question": "Python 3.13 无 GIL 支持属于什么成熟度？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q066",
+      "question": "一个关联子协程出错时，结构化任务组会如何处置兄弟任务？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q056",
+      "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q083",
+      "question": "对比 TaskGroup 与 gather：一个任务失败后其他任务会被取消吗？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 5,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q048",
+      "question": "为什么无锁构建在导入旧 C 扩展后可能又恢复解释器锁？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q080",
+      "question": "把线程池映射的分块参数调大，会像进程池一样改变任务批量吗？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q032",
+      "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q005",
+      "question": "Python 3.8 新增哪个 C API 调用协议？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q074",
+      "question": "未显式指定流读取缓冲大小时，官方文档给出的容量是多少？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V2",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q020",
+      "question": "哪个 3.10 语言特性能按对象结构分支而不仅是逐个布尔比较？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V2",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q064",
+      "question": "能否让不同操作系统线程安全地共享这些协程锁？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q029",
+      "question": "Python 3.11 新增的异常组类型是什么？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q018",
+      "question": "升级 3.10 后，加密库的最低兼容基线是什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q090",
+      "question": "异步 Event 的初始状态与 Queue 的默认取出顺序分别是什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q092",
+      "question": "比较 Python 3.10 联合类型竖线写法与 3.12 泛型类型参数语法。",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 9,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q075",
+      "question": "asyncio.start_server 默认 backlog 值？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 1,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q075",
+      "question": "asyncio.start_server 默认 backlog 值？",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 2,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q087",
+      "question": "异步 TCP 流的默认缓冲容量和服务器 backlog 分别是什么？",
+      "variant": "BM25",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q082",
+      "question": "异步队列和同步原语在超时参数与 OS 线程使用上各有什么限制？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q073",
+      "question": "asyncio 流读取器默认缓冲限制是多少？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-queue",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q074",
+      "question": "未显式指定流读取缓冲大小时，官方文档给出的容量是多少？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q040",
+      "question": "3.12 如何让不同子解释器各自拥有解释器锁？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q076",
+      "question": "异步 TCP 服务的默认待接受连接队列参数是多少？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "asyncio-stream",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q091",
+      "question": "比较 Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading，两者是否同一能力？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q048",
+      "question": "为什么无锁构建在导入旧 C 扩展后可能又恢复解释器锁？",
+      "variant": "Hybrid+Rerank",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-sync",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q018",
+      "question": "升级 3.10 后，加密库的最低兼容基线是什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q099",
+      "question": "比较 Python 3.8 vectorcall 与 3.13 JIT 的作用和默认启用情况。",
+      "variant": "Dense",
+      "recall_at_5": 0.5,
+      "first_relevant_rank": 3,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q064",
+      "question": "能否让不同操作系统线程安全地共享这些协程锁？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q096",
+      "question": "比较 Python 3.11 标准库新增的 TOML 解析能力与 3.12 移除的构建包。",
+      "variant": "BM25",
+      "recall_at_5": 0.6666666666666666,
+      "first_relevant_rank": 1,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q021",
+      "question": "Python 3.10 联合类型的新写法是什么？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q006",
+      "question": "3.8 用什么协议降低 Python 对象调用开销？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.8",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q017",
+      "question": "Python 3.10 要求的 OpenSSL 最低版本？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q069",
+      "question": "asyncio.wait_for 的实际等待能否超过 timeout？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "asyncio-task",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q095",
+      "question": "能否把 Python 3.11 性能摘要与 3.13 默认关闭的 JIT 当成同一项保证？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q010",
+      "question": "3.9 标准库如何表示具有地区夏令时规则的时区？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q098",
+      "question": "比较 Python 3.9 内置集合泛型注解与 3.12 类型参数语法。",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 10,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q030",
+      "question": "3.11 如何将多个不相关异常一起包装并处理？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q086",
+      "question": "对比队列完成计数溢出与释放未持有异步锁时的异常类型。",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": null,
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q024",
+      "question": "3.10 如何让配对迭代在输入长度不一致时暴露问题？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q091",
+      "question": "比较 Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading，两者是否同一能力？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "python-3.13",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q032",
+      "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q093",
+      "question": "从 3.10 到 3.12，OpenSSL 最低要求与 distutils 的移除分别是什么变化？",
+      "variant": "Dense",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 8,
+      "top_source": "python-3.10",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q030",
+      "question": "3.11 如何将多个不相关异常一起包装并处理？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": 6,
+      "top_source": "python-3.11",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q016",
+      "question": "哪个 3.9 改动允许直接给内置容器写元素类型？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "DeepSeek-V3",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q021",
+      "question": "Python 3.10 联合类型的新写法是什么？",
+      "variant": "Hybrid",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.12",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    },
+    {
+      "query_id": "Q006",
+      "question": "3.8 用什么协议降低 Python 对象调用开销？",
+      "variant": "BM25",
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null,
+      "top_source": "python-3.9",
+      "diagnostic": "Inspect raw hits and qrels: competing release notes and overlapping/unjudged passages can outrank the exact annotated evidence. This is a candidate explanation, not a causal proof."
+    }
+  ],
+  "rerank_regressions": [
+    {
+      "query_id": "Q032",
+      "hybrid": 0.3010299956639812,
+      "rerank": 0.0
+    },
+    {
+      "query_id": "Q049",
+      "hybrid": 0.8772153153380493,
+      "rerank": 0.5706417189553201
+    },
+    {
+      "query_id": "Q052",
+      "hybrid": 1.0,
+      "rerank": 0.5
+    },
+    {
+      "query_id": "Q056",
+      "hybrid": 0.3333333333333333,
+      "rerank": 0.0
+    },
+    {
+      "query_id": "Q076",
+      "hybrid": 0.20438239758848614,
+      "rerank": 0.1934264036172708
+    },
+    {
+      "query_id": "Q081",
+      "hybrid": 0.871078544000337,
+      "rerank": 0.45250815297345076
+    },
+    {
+      "query_id": "Q086",
+      "hybrid": 0.23719771276929622,
+      "rerank": 0.0
+    },
+    {
+      "query_id": "Q090",
+      "hybrid": 0.8126530453831332,
+      "rerank": 0.6105456988825856
+    },
+    {
+      "query_id": "Q099",
+      "hybrid": 0.5,
+      "rerank": 0.0
+    },
+    {
+      "query_id": "Q100",
+      "hybrid": 0.6509209298071326,
+      "rerank": 0.5437713091520254
+    }
+  ]
+}

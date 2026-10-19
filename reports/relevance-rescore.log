@@ -1,0 +1,12 @@
+{
+  "pool_sha256": "a1ab00082754e8bcb368cd906f7cf1eaafa284c7adb83be01d777547e8ff97ea",
+  "pooled_items": 2738,
+  "human_reviewed_items": 2,
+  "reviewers": [
+    "human user, current Codex conversation"
+  ],
+  "fully_reviewed_questions": [],
+  "status": "partial",
+  "metric_scope": "Only fully human-judged pools; pool Recall is not exhaustive-corpus Recall.",
+  "summary": {}
+}

@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "id": "python-3.8",
+      "filename": "python-3.8.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.8.0/Doc/whatsnew/3.8.rst",
+      "sha256": "aa8ce56fe96cc30445a4a96fbe62ba8d9d1cc89aba412cc1812fae762246071b",
+      "downloaded_utc": "2026-10-15T09:00:01.763760+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "python-3.9",
+      "filename": "python-3.9.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.9.0/Doc/whatsnew/3.9.rst",
+      "sha256": "45d0317686354b09029dbdd9907950924cb9c99d0a6e7ec8a059bfbe2237d235",
+      "downloaded_utc": "2026-10-15T09:00:04.056399+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "python-3.10",
+      "filename": "python-3.10.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.10.0/Doc/whatsnew/3.10.rst",
+      "sha256": "95e013392ecaedcbe9a8e89e09c704e778866829e81aee297416ee860bd0549a",
+      "downloaded_utc": "2026-10-15T09:00:06.541527+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "python-3.11",
+      "filename": "python-3.11.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+      "sha256": "85b4e5e58276416e853db92d7bda0c5aa1259d1cb4f1a063a84a01ab1182b62e",
+      "downloaded_utc": "2026-10-15T09:00:10.139627+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "python-3.12",
+      "filename": "python-3.12.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/whatsnew/3.12.rst",
+      "sha256": "4a0da7af729f2ba5d6f34d257f440d1700245531aad9cb2bf18bb78af24cfab9",
+      "downloaded_utc": "2026-10-15T09:00:11.434563+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "python-3.13",
+      "filename": "python-3.13.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst",
+      "sha256": "313d882ef4a593f3cca9bf73da1a6b16e5c55aecb3e044ee7864a1a07b5aac6c",
+      "downloaded_utc": "2026-10-15T09:00:12.446192+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "asyncio-task",
+      "filename": "asyncio-task.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+      "sha256": "0c1c68c396513e56f06b6709c02efe5095048e591f0e9e241041cbf8b8303b1e",
+      "downloaded_utc": "2026-10-15T09:00:13.445999+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "asyncio-sync",
+      "filename": "asyncio-sync.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+      "sha256": "760b1f60c6ef0e1c2b2a68b8a250c714e15b936f482290bf702d877ff48cca54",
+      "downloaded_utc": "2026-10-15T09:00:15.456709+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "asyncio-queue",
+      "filename": "asyncio-queue.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+      "sha256": "17520f19e9c42992534f35407bc94e613510f4791ab6dea50156d422cb3b5914",
+      "downloaded_utc": "2026-10-15T09:00:16.629433+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "asyncio-stream",
+      "filename": "asyncio-stream.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-stream.rst",
+      "sha256": "bae7f2e41427af07c917ae768f3b1cfc4757cc22c18ede7a941167cb3ea947bc",
+      "downloaded_utc": "2026-10-15T09:00:17.542761+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "asyncio-subprocess",
+      "filename": "asyncio-subprocess.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+      "sha256": "a3f819851b2a50e31e32824550e3eb0aad5eeff90a02a3c72d2bd721b4037c12",
+      "downloaded_utc": "2026-10-15T09:00:18.941076+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "concurrent.futures",
+      "filename": "concurrent.futures.txt",
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/concurrent.futures.rst",
+      "sha256": "669909adb902fdec7db713917c82b0f6ca74c9548ac43b25f2db5e06e45c5716",
+      "downloaded_utc": "2026-10-15T09:00:20.043054+00:00",
+      "license": "PSF-2.0"
+    },
+    {
+      "id": "DeepSeek-V2",
+      "filename": "DeepSeek-V2.md",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md",
+      "sha256": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4",
+      "downloaded_utc": null,
+      "license": "see upstream model card/repository"
+    },
+    {
+      "id": "DeepSeek-V3",
+      "filename": "DeepSeek-V3.md",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md",
+      "sha256": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e",
+      "downloaded_utc": null,
+      "license": "see upstream model card/repository"
+    },
+    {
+      "id": "DeepSeek-V4.1-Flash",
+      "filename": "DeepSeek-V4.1-Flash.md",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md",
+      "sha256": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251",
+      "downloaded_utc": null,
+      "license": "see upstream model card/repository"
+    }
+  ]
+}

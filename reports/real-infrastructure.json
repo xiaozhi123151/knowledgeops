@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T09:56:13.360174+00:00",
+    "mode": "real_infrastructure",
+    "source_sha256": "64550a157c47212c35458b56da8cc3df1b8708562e982f9ffb0674f377f4a7d3",
+    "git_commit": "db8c2636ed5bf9c127ecce45e3b37ecc8802c770",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "See the per-provider and corpus boundary in this artifact; small samples are not production accuracy."
+  },
+  "synthetic_probe": "sentinel vectors; not retrieval quality data",
+  "checks": {
+    "write": true,
+    "persistence_after_container_recreation": true,
+    "existing_real_indexes_preserved": true,
+    "search": true,
+    "delete": true
+  },
+  "compose_file": "compose.retrieval.yaml",
+  "compose_before": "{\"Command\":\"\\\"./entrypoint.sh\\\"\",\"CreatedAt\":\"2026-10-15 17:17:09 +0800 CST\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"3221c1a6583b\",\"Image\":\"qdrant/qdrant:v1.17.0\",\"Labels\":\"org.opencontainers.image.version=v1.17.0,com.docker.compose.depends_on=,com.docker.compose.project.config_files=/workspace/knowledgeops/compose.retrieval.yaml,org.opencontainers.image.description=Official Qdrant image,org.opencontainers.image.documentation=https://qdrant.com/docs,org.opencontainers.image.url=https://qdrant.com/,com.docker.compose.image=sha256:f1c7272cdac52b38c1a0e89313922d940ba50afd90d593a1605dbbc214e66ffb,com.docker.compose.project.working_dir=/workspace/knowledgeops,com.docker.compose.service=qdrant,org.opencontainers.image.source=https://github.com/qdrant/qdrant,com.docker.compose.container-number=1,com.docker.compose.replace=qdrant-1,com.docker.compose.config-hash=7b57d4dcb25a91c42490abd9a1d9997753c9f52245eb59602a766d433909a8c9,com.docker.compose.oneoff=False,com.docker.compose.project=knowledgeops-retrieval,com.docker.compose.version=2.40.3,org.opencontainers.image.title=Qdrant,org.opencontainers.image.vendor=Qdrant\",\"LocalVolumes\":\"1\",\"Mounts\":\"knowledgeops-r…\",\"Name\":\"knowledgeops-retrieval-qdrant-1\",\"Names\":\"knowledgeops-retrieval-qdrant-1\",\"Networks\":\"knowledgeops-retrieval_default\",\"Ports\":\"127.0.0.1:6333-\\u003e6333/tcp, 6334/tcp\",\"Project\":\"knowledgeops-retrieval\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":6333,\"PublishedPort\":6333,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":6334,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"39 minutes ago\",\"Service\":\"qdrant\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 39 minutes\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-15 17:17:09 +0800 CST\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"17ceef08f17f\",\"Image\":\"redis:7.4-alpine\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.project.config_files=/workspace/knowledgeops/compose.retrieval.yaml,com.docker.compose.project.working_dir=/workspace/knowledgeops,com.docker.compose.replace=redis-1,com.docker.compose.version=2.40.3,com.docker.compose.config-hash=a1067c13351933265d349b90fe267defd61e9ae72b4e3351300a7912554d9fcd,com.docker.compose.container-number=1,com.docker.compose.image=sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499,com.docker.compose.oneoff=False,com.docker.compose.project=knowledgeops-retrieval,com.docker.compose.service=redis\",\"LocalVolumes\":\"1\",\"Mounts\":\"knowledgeops-r…\",\"Name\":\"knowledgeops-retrieval-redis-1\",\"Names\":\"knowledgeops-retrieval-redis-1\",\"Networks\":\"knowledgeops-retrieval_default\",\"Ports\":\"127.0.0.1:6379-\\u003e6379/tcp\",\"Project\":\"knowledgeops-retrieval\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":6379,\"PublishedPort\":6379,\"Protocol\":\"tcp\"}],\"RunningFor\":\"39 minutes ago\",\"Service\":\"redis\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 39 minutes (healthy)\"}\n",
+  "server_version": "1.17.0",
+  "preexisting_collections": {
+    "knowledgeops_v1_ab2d8e7c2ea2d96de98d9933": 1201,
+    "knowledgeops_v1_eb409db7cb27b4b86af05760": 1201
+  },
+  "collections_after_recreation": {
+    "knowledgeops_v1_ab2d8e7c2ea2d96de98d9933": 1201,
+    "knowledgeops_v1_eb409db7cb27b4b86af05760": 1201
+  },
+  "compose_after": "{\"Command\":\"\\\"./entrypoint.sh\\\"\",\"CreatedAt\":\"2026-10-15 17:56:16 +0800 CST\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"77808a05d869\",\"Image\":\"qdrant/qdrant:v1.17.0\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.project.config_files=/workspace/knowledgeops/compose.retrieval.yaml,com.docker.compose.service=qdrant,org.opencontainers.image.description=Official Qdrant image,org.opencontainers.image.source=https://github.com/qdrant/qdrant,com.docker.compose.oneoff=False,com.docker.compose.version=2.40.3,org.opencontainers.image.documentation=https://qdrant.com/docs,org.opencontainers.image.vendor=Qdrant,com.docker.compose.container-number=1,com.docker.compose.project.working_dir=/workspace/knowledgeops,org.opencontainers.image.url=https://qdrant.com/,org.opencontainers.image.version=v1.17.0,com.docker.compose.config-hash=7b57d4dcb25a91c42490abd9a1d9997753c9f52245eb59602a766d433909a8c9,com.docker.compose.image=sha256:f1c7272cdac52b38c1a0e89313922d940ba50afd90d593a1605dbbc214e66ffb,com.docker.compose.project=knowledgeops-retrieval,com.docker.compose.replace=qdrant-1,org.opencontainers.image.title=Qdrant\",\"LocalVolumes\":\"1\",\"Mounts\":\"knowledgeops-r…\",\"Name\":\"knowledgeops-retrieval-qdrant-1\",\"Names\":\"knowledgeops-retrieval-qdrant-1\",\"Networks\":\"knowledgeops-retrieval_default\",\"Ports\":\"127.0.0.1:6333-\\u003e6333/tcp, 6334/tcp\",\"Project\":\"knowledgeops-retrieval\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":6333,\"PublishedPort\":6333,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":6334,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"2 seconds ago\",\"Service\":\"qdrant\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 1 second\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-10-15 17:56:16 +0800 CST\",\"ExitCode\":0,\"Health\":\"starting\",\"ID\":\"2c36f860b85b\",\"Image\":\"redis:7.4-alpine\",\"Labels\":\"com.docker.compose.version=2.40.3,com.docker.compose.config-hash=a1067c13351933265d349b90fe267defd61e9ae72b4e3351300a7912554d9fcd,com.docker.compose.depends_on=,com.docker.compose.image=sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/workspace/knowledgeops/compose.retrieval.yaml,com.docker.compose.project.working_dir=/workspace/knowledgeops,com.docker.compose.replace=redis-1,com.docker.compose.service=redis,com.docker.compose.container-number=1,com.docker.compose.project=knowledgeops-retrieval\",\"LocalVolumes\":\"1\",\"Mounts\":\"knowledgeops-r…\",\"Name\":\"knowledgeops-retrieval-redis-1\",\"Names\":\"knowledgeops-retrieval-redis-1\",\"Networks\":\"knowledgeops-retrieval_default\",\"Ports\":\"127.0.0.1:6379-\\u003e6379/tcp\",\"Project\":\"knowledgeops-retrieval\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":6379,\"PublishedPort\":6379,\"Protocol\":\"tcp\"}],\"RunningFor\":\"2 seconds ago\",\"Service\":\"redis\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 1 second (health: starting)\"}\n",
+  "passed": true
+}

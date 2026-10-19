@@ -1,0 +1,23 @@
+{
+  "pool_sha256": "a1ab00082754e8bcb368cd906f7cf1eaafa284c7adb83be01d777547e8ff97ea",
+  "reviewer": "human user, current Codex conversation",
+  "human_attestation": true,
+  "provenance": "Direct human reply in this conversation on 2026-10-18 (Asia/Shanghai)",
+  "verbatim_reply": "A = 2，B = 0。",
+  "judgments": [
+    {
+      "item_id": "956b0416d293f26e529b",
+      "grade": 2,
+      "quote": "All tasks are awaited when the context manager exits.",
+      "reason": "Human user explicitly supplied A=2 in response to the source-backed question. No additional rationale supplied.",
+      "reason_provenance": "Recorder description of the human response, not an invented reviewer rationale."
+    },
+    {
+      "item_id": "aaf9dad286e0a78809fe",
+      "grade": 0,
+      "quote": "",
+      "reason": "Human user explicitly supplied B=0 in response to the source-backed question. No additional rationale supplied.",
+      "reason_provenance": "Recorder description of the human response, not an invented reviewer rationale."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+.......F....F........................................................... [ 69%]
+................................                                         [100%]
+================================== FAILURES ===================================
+_______________ test_real_version_research_and_failure_recovery _______________
+tests\integration\test_deepseek_live.py:34: in test_real_version_research_and_failure_recovery
+    result = await run_validation(root,cases=3)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\validate_deepseek.py:68: in run_validation
+    runtime = await Runtime(settings).start()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\runtime.py:42: in start
+    self.engine = RetrievalEngine(self.settings, self.db, self.embedding, self.reranker)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\retrieval\engine.py:31: in __init__
+    self.client = (QdrantClient(path=str(settings.data_dir / 'qdrant'), force_disable_check_same_thread=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+data\venv-cuda\Lib\site-packages\qdrant_client\qdrant_client.py:127: in __init__
+    self._client = QdrantLocal(
+data\venv-cuda\Lib\site-packages\qdrant_client\local\qdrant_local.py:63: in __init__
+    self._load()
+data\venv-cuda\Lib\site-packages\qdrant_client\local\qdrant_local.py:113: in _load
+    config = rest_models.CreateCollection(**config_json)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   pydantic_core._pydantic_core.ValidationError: 10 validation errors for CreateCollection
+E   vectors.VectorParams.memory
+E     Extra inputs are not permitted [type=extra_forbidden, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden
+E   vectors.dict[str,VectorParams].size
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=256, input_type=int]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].distance
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value='Cosine', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].hnsw_config
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].quantization_config
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].on_disk
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].memory
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].datatype
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   vectors.dict[str,VectorParams].multivector_config
+E     Input should be a valid dictionary or instance of VectorParams [type=model_type, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/model_type
+E   payload
+E     Extra inputs are not permitted [type=extra_forbidden, input_value=None, input_type=NoneType]
+E       For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden
+______________ test_real_rag_tools_budgets_multiturn_and_sources ______________
+tests\integration\test_real_rag_live.py:30: in test_real_rag_tools_budgets_multiturn_and_sources
+    assert report["passed"], [
+E   AssertionError: [{'name': 'three_versions', 'status': 'failed', 'error': 'OUTPUT_VALIDATION_FAILED_AFTER_REPAIR', 'cited_sources': [],...-3.13'], ...}, {'name': 'private_metric_unanswerable', 'status': 'succeeded', 'error': None, 'cited_sources': [], ...}]
+E   assert False
+---------------------------- Captured stdout call -----------------------------
+three_versions failed success= False tokens= 24223 seconds= 11.06
+multi_turn_missing_metric succeeded success= True tokens= 30019 seconds= 12.68
+python_lock_versions succeeded success= False tokens= 24134 seconds= 9.92
+private_metric_unanswerable succeeded success= True tokens= 56937 seconds= 10.97
+---------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:   1%|▏         | 5/391 [00:00<00:16, 24.09it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 1396.72it/s]
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:   2%|▏         | 9/393 [00:00<00:05, 66.35it/s]Loading weights:  15%|█▌        | 59/393 [00:00<00:01, 283.20it/s]Loading weights:  24%|██▍       | 96/393 [00:00<00:00, 303.63it/s]Loading weights:  34%|███▍      | 133/393 [00:00<00:00, 323.98it/s]Loading weights:  44%|████▍     | 173/393 [00:00<00:00, 337.28it/s]Loading weights:  53%|█████▎    | 209/393 [00:00<00:00, 337.85it/s]Loading weights:  62%|██████▏   | 244/393 [00:00<00:00, 323.50it/s]Loading weights:  70%|███████   | 277/393 [00:00<00:00, 316.12it/s]Loading weights:  79%|███████▊  | 309/393 [00:01<00:00, 306.25it/s]Loading weights:  87%|████████▋ | 341/393 [00:01<00:00, 297.32it/s]Loading weights:  96%|█████████▋| 379/393 [00:01<00:00, 319.67it/s]Loading weights: 100%|██████████| 393/393 [00:01<00:00, 310.63it/s]
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\USER\AppData\Local\Temp\jieba.cache
+Loading model cost 0.416 seconds.
+Prefix dict has been built successfully.
+------------------------------ Captured log call ------------------------------
+DEBUG    jieba:__init__.py:113 Building prefix dict from the default dictionary ...
+DEBUG    jieba:__init__.py:132 Loading model from cache C:\Users\USER\AppData\Local\Temp\jieba.cache
+DEBUG    jieba:__init__.py:164 Loading model cost 0.416 seconds.
+DEBUG    jieba:__init__.py:166 Prefix dict has been built successfully.
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Coverage XML written to file reports/coverage.xml
+Coverage JSON written to file reports/coverage.json
+=========================== short test summary info ===========================
+FAILED tests/integration/test_deepseek_live.py::test_real_version_research_and_failure_recovery
+FAILED tests/integration/test_real_rag_live.py::test_real_rag_tools_budgets_multiturn_and_sources
+2 failed, 102 passed in 264.78s (0:04:24)

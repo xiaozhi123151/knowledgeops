@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T08:23:55.410963+00:00",
+    "mode": "real_deepseek_local_retrieval",
+    "source_sha256": "7f8995679b3391852f04455f8c0c4a1136a25a783ac75a53ad9c3917bc78f024",
+    "git_commit": "84010c9e8451454d83d7e661e2101dc2e550ef02",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.19.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Small owned fixture corpus; not representative production accuracy."
+  },
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "sources": [
+    {
+      "version": "DeepSeek-V2",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md",
+      "filename": "DeepSeek-V2.md",
+      "sha256": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4",
+      "bytes": 20391,
+      "fetched_at_utc": "2026-10-15T08:20:50.771959+00:00",
+      "etag": "W/\"7f646b67efc2341506a87bba60105724d7e29a347a63b03829b8cac086507ad7\"",
+      "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+      "chunk_count": 48
+    },
+    {
+      "version": "DeepSeek-V3",
+      "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md",
+      "filename": "DeepSeek-V3.md",
+      "sha256": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e",
+      "bytes": 20851,
+      "fetched_at_utc": "2026-10-15T08:20:51.169432+00:00",
+      "etag": "W/\"2c2a3a06c64b71a903e1ca3c17e4d11adedbcb3c1c60059415ea3b2c71753c55\"",
+      "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+      "chunk_count": 44
+    },
+    {
+      "version": "DeepSeek-V4.1-Flash",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md",
+      "resolved_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md",
+      "filename": "DeepSeek-V4.1-Flash.md",
+      "sha256": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251",
+      "bytes": 13110,
+      "fetched_at_utc": "2026-10-15T08:20:52.982195+00:00",
+      "etag": "W/\"211b83857abd5e8420df3a4f10db1096294227e6\"",
+      "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+      "chunk_count": 27
+    }
+  ],
+  "cases": [
+    {
+      "name": "version_comparison",
+      "question": "请分别检索 DeepSeek-V2、DeepSeek-V3、DeepSeek-V4.1-Flash 的官方文档，比较三个版本的总参数量、每 token 激活参数量、上下文长度。必须调用 knowledge_search（可按版本分别检索并把 top_k 设为 4 或更大），再调用 compare_evidence 对比实际检索证据，最后调用 build_report。findings 应覆盖三个版本，每个版本写一条，指标必须直接见于对应版本证据，不能用其他版本的值替代。quotes 使用最短指标原文，不要改写，尽量小于100字符。结论用中文。三个版本在同一台 A100 80GB、batch=1 下的准确吞吐量是多少？如果这些文档缺乏同条件实测依据，在 limitations 明确写“无法确认”，不要用论文相对提升率代替绝对吞吐量。",
+      "success": false,
+      "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+      "status": "failed",
+      "error": "LLM_PROTOCOL_ERROR: expected one to three function calls",
+      "budget": {
+        "estimated": false,
+        "llm_calls": 1,
+        "pending_estimates": 0,
+        "steps": 1,
+        "tokens": 1538,
+        "tool_calls": 0
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 180.0,
+        "token_budget": 80000
+      },
+      "report": null,
+      "events": [
+        {
+          "seq": 1,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052636.278382,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 2,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052636.2867172,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 3,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052636.3082294,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 4,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052636.3977642,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "reserved_tokens": 4308
+          }
+        },
+        {
+          "seq": 5,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052638.4771547,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1152,
+            "completion_tokens": 241,
+            "elapsed_ms": 2067.451799997798,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 1297,
+            "reasoning_content_present": false,
+            "response_id": "95e0c7af-dd7c-4073-85fe-25a364d1427e",
+            "response_model": "deepseek-flash",
+            "tool_call_count": 4,
+            "total_tokens": 1538,
+            "usage": 1538
+          }
+        },
+        {
+          "seq": 6,
+          "task_id": "04b5fb1ac0004721bb7dc77eaeefe9ee",
+          "at": 1792052638.4844522,
+          "type": "failed",
+          "data": {
+            "error": "LLM_PROTOCOL_ERROR: expected one to three function calls"
+          }
+        }
+      ],
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "valid_citations": 0,
+      "citations": 0,
+      "cited_versions": [],
+      "unknown_acknowledged": false,
+      "budget_consistent": true,
+      "provider_usage_total": 1538,
+      "llm_responses": [
+        {
+          "cached_tokens": 1152,
+          "completion_tokens": 241,
+          "elapsed_ms": 2067.451799997798,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 1297,
+          "reasoning_content_present": false,
+          "response_id": "95e0c7af-dd7c-4073-85fe-25a364d1427e",
+          "response_model": "deepseek-flash",
+          "tool_call_count": 4,
+          "total_tokens": 1538,
+          "usage": 1538
+        }
+      ],
+      "tool_attempts": 0,
+      "tool_completed": 0,
+      "injected_local_failures": 0,
+      "elapsed_ms": 2210.594200001651
+    }
+  ],
+  "integration_boundary": {
+    "llm": "real official DeepSeek HTTP API",
+    "agent": "real LangGraph",
+    "harness": "real durable budgets/checkpoints/retries",
+    "search": "actual BM25 + Qdrant Local",
+    "embedding": "offline hash test double",
+    "reranker": "offline lexical-overlap test double",
+    "redis": "not used in single-process local validation"
+  },
+  "fault_boundary": "tool_failure_recovery injects one local ConnectionError; API replies remain real. HTTP 429/5xx/timeouts are tested separately with labeled synthetic transports.",
+  "summary": {
+    "tasks": 1,
+    "tasks_passed": 0,
+    "task_success_rate": 0.0,
+    "llm_requests": 1,
+    "llm_successful_responses": 1,
+    "prompt_tokens": 1297,
+    "completion_tokens": 241,
+    "total_tokens": 1538,
+    "tool_attempts": 0,
+    "tools_completed": 0,
+    "tool_attempt_success_rate": null,
+    "model_function_calls": 0,
+    "invalid_model_function_calls": 0,
+    "citations": 0,
+    "valid_citations": 0,
+    "api_p50_ms": 2067.451799997798,
+    "api_p95_ms": 2067.451799997798,
+    "task_p50_ms": 2210.594200001651,
+    "task_p95_ms": 2210.594200001651
+  },
+  "passed": false
+}

@@ -1,0 +1,23 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  offline:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: uv sync --locked --extra dev
+      - run: uv run ruff check src tests scripts
+      - run: uv run pytest -q --junitxml=reports/pytest.xml --cov=knowledgeops --cov-report=json:reports/coverage.json --cov-report=xml:reports/coverage.xml
+      - run: uv run python -m scripts.smoke --mode offline
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-${{ matrix.os }}-${{ matrix.python }}
+          path: reports/

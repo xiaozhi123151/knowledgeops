@@ -1,0 +1,16 @@
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 391/391 [00:00<00:00, 33937.03it/s]
+
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]
+Loading weights:   6%|��         | 22/393 [00:00<00:01, 210.56it/s]
+Loading weights:  11%|����        | 45/393 [00:00<00:01, 221.47it/s]
+Loading weights:  18%|����        | 72/393 [00:00<00:01, 241.18it/s]
+Loading weights:  25%|������       | 97/393 [00:00<00:01, 226.07it/s]
+Loading weights:  31%|������       | 120/393 [00:00<00:01, 203.10it/s]
+Loading weights: 100%|��������������������| 393/393 [00:00<00:00, 688.77it/s]
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\USER\AppData\Local\Temp\jieba.cache
+Loading model cost 0.487 seconds.
+Prefix dict has been built successfully.
+[22034.17629999967, 21757.131299997127]

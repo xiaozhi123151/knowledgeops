@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="2" failures="0" skipped="1" tests="4" time="48.965" timestamp="2026-10-15T17:38:20.236327+08:00" hostname="LOCAL-HOST"><testcase classname="tests.integration.test_real_rag_live" name="test_real_rag_tools_budgets_multiturn_and_sources" time="0.002"><skipped type="pytest.skip" message="UNVERIFIED: set KO_RUN_RAG_TESTS=1 after real indexing; uses paid DeepSeek API">/workspace/knowledgeops\tests\integration\test_real_rag_live.py:16: UNVERIFIED: set KO_RUN_RAG_TESTS=1 after real indexing; uses paid DeepSeek API</skipped></testcase><testcase classname="tests.integration.test_real_retrieval" name="test_real_dense_embeddings_and_cross_encoder" time="22.451" /><testcase classname="tests.integration.test_real_retrieval" name="test_real_server_ingest_search_reopen_deduplicate_delete" time="17.438"><error message="failed on setup with &quot;RuntimeError: RERANKER_FAILED: KeyError: 'precision'&quot;">real_config = Settings(mode='offline', data_dir=WindowsPath('C:/Users/USER/AppData/Local/Temp/pytest-of-USER/pytest-46/test_re...seconds=0.3, langfuse_public_key='', langfuse_secret_key=SecretStr(''), langfuse_base_url='https://cloud.langfuse.com')
+
+    @pytest.fixture
+    async def real_stack(real_config):
+        from scripts.real_retrieval import RealStack
+    
+&gt;       stack = await RealStack(real_config).start()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_real_retrieval.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\real_retrieval.py:85: in start
+    ???
+src\knowledgeops\providers\reranker.py:71: in warmup
+    ???
+src\knowledgeops\providers\reranker.py:83: in _start
+    self.process = ctx.Process(target=target, args=args, daemon=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;knowledgeops.providers.reranker.IsolatedCrossEncoder object at 0x0000018AC8CB1E20&gt;
+timeout = 600.0
+
+        self.process = self.pipe = None
+        self.lock = asyncio.Lock()
+    
+    async def _receive(self, timeout):
+        if not await asyncio.to_thread(self.pipe.poll, timeout):
+            self.close()
+            raise TimeoutError('RERANKER_TIMEOUT')
+&gt;       status, result = self.pipe.recv()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: RERANKER_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\reranker.py:66: RuntimeError</error></testcase><testcase classname="tests.integration.test_real_retrieval" name="test_real_model_revision_rejects_existing_index" time="7.979"><error message="failed on setup with &quot;RuntimeError: EMBEDDING_FAILED: KeyError: 'precision'&quot;">self = &lt;knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430&gt;
+timeout = 600.0
+
+&gt;   ???
+
+src\knowledgeops\providers\local_embedding.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430&gt;
+timeout = 600.0
+
+        self.process = self.pipe = None
+        self.lock = asyncio.Lock()
+    
+    async def _receive(self, timeout):
+        if not await asyncio.to_thread(self.pipe.poll, timeout):
+            self.close()
+            raise TimeoutError('RERANKER_TIMEOUT')
+&gt;       status, result = self.pipe.recv()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: RERANKER_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\reranker.py:66: RuntimeError
+
+The above exception was the direct cause of the following exception:
+
+real_config = Settings(mode='offline', data_dir=WindowsPath('C:/Users/USER/AppData/Local/Temp/pytest-of-USER/pytest-46/test_re...seconds=0.3, langfuse_public_key='', langfuse_secret_key=SecretStr(''), langfuse_base_url='https://cloud.langfuse.com')
+
+    @pytest.fixture
+    async def real_stack(real_config):
+        from scripts.real_retrieval import RealStack
+    
+&gt;       stack = await RealStack(real_config).start()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_real_retrieval.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\real_retrieval.py:82: in start
+    self.engine = RetrievalEngine(settings, self.db, self.embedding, self.reranker)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\providers\local_embedding.py:97: in warmup
+    "max_length": settings.embedding_max_length,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\providers\reranker.py:71: in warmup
+    ???
+src\knowledgeops\providers\reranker.py:83: in _start
+    self.process = ctx.Process(target=target, args=args, daemon=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430&gt;
+timeout = 600.0
+
+        self.dimensions = settings.embedding_dimensions
+        self.load_name = str(settings.embedding_model_path) if settings.embedding_model_path else self.name
+    
+    def _process_spec(self, child):
+        return _embedding_process, (child, self.load_name, self.device, self.batch, self.options)
+    
+&gt;   async def _receive(self, timeout):
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: EMBEDDING_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\local_embedding.py:74: RuntimeError</error></testcase></testsuite></testsuites>

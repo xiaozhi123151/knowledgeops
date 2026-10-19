@@ -1,0 +1,7 @@
+{
+  "write": true,
+  "persistence_after_container_recreation": true,
+  "existing_real_indexes_preserved": true,
+  "search": true,
+  "delete": true
+}

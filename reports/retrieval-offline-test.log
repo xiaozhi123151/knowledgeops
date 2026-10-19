@@ -1,0 +1,7 @@
+........................................................................ [ 88%]
+.........                                                                [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Coverage JSON written to file reports/retrieval-cpu-coverage.json
+81 passed, 9 deselected in 36.08s

@@ -1,0 +1,1445 @@
+{
+  "schema_version": 1,
+  "annotation": "Assistant-authored and mechanically anchor-checked; human review pending. Incomplete positive judgments, not exhaustively human-labeled negatives.",
+  "questions": [
+    {
+      "id": "Q001",
+      "category": "keyword",
+      "question": "Python 3.8 的 := 运算符做什么？",
+      "evidence_ids": [
+        "F01"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q002",
+      "category": "semantic",
+      "question": "哪个 3.8 语法能在较大表达式中同时给变量赋值？",
+      "evidence_ids": [
+        "F01"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q003",
+      "category": "keyword",
+      "question": "Python 3.8 函数参数中的 / 表示什么？",
+      "evidence_ids": [
+        "F02"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q004",
+      "category": "semantic",
+      "question": "怎样在 3.8 中禁止调用方用关键字传递部分参数？",
+      "evidence_ids": [
+        "F02"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q005",
+      "category": "keyword",
+      "question": "Python 3.8 新增哪个 C API 调用协议？",
+      "evidence_ids": [
+        "F03"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q006",
+      "category": "semantic",
+      "question": "3.8 用什么协议降低 Python 对象调用开销？",
+      "evidence_ids": [
+        "F03"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q007",
+      "category": "keyword",
+      "question": "Python 3.8 的发布日期是什么？",
+      "evidence_ids": [
+        "F04"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q008",
+      "category": "semantic",
+      "question": "2019 年秋季发布的 3.8 正式版是哪一天？",
+      "evidence_ids": [
+        "F04"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q009",
+      "category": "keyword",
+      "question": "Python 3.9 的 zoneinfo 支持什么数据库？",
+      "evidence_ids": [
+        "F05"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q010",
+      "category": "semantic",
+      "question": "3.9 标准库如何表示具有地区夏令时规则的时区？",
+      "evidence_ids": [
+        "F05"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q011",
+      "category": "keyword",
+      "question": "Python 3.9 引入哪些字典合并操作？",
+      "evidence_ids": [
+        "F06"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q012",
+      "category": "semantic",
+      "question": "怎样在 3.9 中用运算符组合两个映射？",
+      "evidence_ids": [
+        "F06"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q013",
+      "category": "keyword",
+      "question": "Python 3.9 有哪些删除字符串前后缀的方法？",
+      "evidence_ids": [
+        "F07"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q014",
+      "category": "semantic",
+      "question": "不想把前缀当作字符集合删掉，3.9 有什么精确删除办法？",
+      "evidence_ids": [
+        "F07"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q015",
+      "category": "keyword",
+      "question": "Python 3.9 对内置集合泛型注解有什么改进？",
+      "evidence_ids": [
+        "F08"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q016",
+      "category": "semantic",
+      "question": "哪个 3.9 改动允许直接给内置容器写元素类型？",
+      "evidence_ids": [
+        "F08"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q017",
+      "category": "keyword",
+      "question": "Python 3.10 要求的 OpenSSL 最低版本？",
+      "evidence_ids": [
+        "F09"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q018",
+      "category": "semantic",
+      "question": "升级 3.10 后，加密库的最低兼容基线是什么？",
+      "evidence_ids": [
+        "F09"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q019",
+      "category": "keyword",
+      "question": "Python 3.10 的 PEP 634 是什么？",
+      "evidence_ids": [
+        "F10"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q020",
+      "category": "semantic",
+      "question": "哪个 3.10 语言特性能按对象结构分支而不仅是逐个布尔比较？",
+      "evidence_ids": [
+        "F10"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q021",
+      "category": "keyword",
+      "question": "Python 3.10 联合类型的新写法是什么？",
+      "evidence_ids": [
+        "F11"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q022",
+      "category": "semantic",
+      "question": "3.10 如何用竖线声明值可属于两种类型之一？",
+      "evidence_ids": [
+        "F11"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q023",
+      "category": "keyword",
+      "question": "Python 3.10 zip 新增什么长度检查能力？",
+      "evidence_ids": [
+        "F12"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q024",
+      "category": "semantic",
+      "question": "3.10 如何让配对迭代在输入长度不一致时暴露问题？",
+      "evidence_ids": [
+        "F12"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q025",
+      "category": "keyword",
+      "question": "Python 3.11 相比 3.10 官方摘要给出的加速范围？",
+      "evidence_ids": [
+        "F13"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q026",
+      "category": "semantic",
+      "question": "官方 3.11 发布摘要报告了怎样的性能区间，而非保证每个程序都一样快？",
+      "evidence_ids": [
+        "F13"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q027",
+      "category": "keyword",
+      "question": "Python 3.11 新增哪个 TOML 解析模块？",
+      "evidence_ids": [
+        "F14"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q028",
+      "category": "semantic",
+      "question": "3.11 不安装额外依赖时怎样读取 TOML 格式？",
+      "evidence_ids": [
+        "F14"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q029",
+      "category": "keyword",
+      "question": "Python 3.11 新增的异常组类型是什么？",
+      "evidence_ids": [
+        "F15"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q030",
+      "category": "semantic",
+      "question": "3.11 如何将多个不相关异常一起包装并处理？",
+      "evidence_ids": [
+        "F15"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q031",
+      "category": "keyword",
+      "question": "Python 3.11 asyncio 新增哪个任务组 API？",
+      "evidence_ids": [
+        "F16"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q032",
+      "category": "semantic",
+      "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+      "evidence_ids": [
+        "F16"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q033",
+      "category": "keyword",
+      "question": "Python 3.12 发布日期？",
+      "evidence_ids": [
+        "F17"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q034",
+      "category": "semantic",
+      "question": "2023 年推出的 3.12 正式版是哪一天发布的？",
+      "evidence_ids": [
+        "F17"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q035",
+      "category": "keyword",
+      "question": "Python 3.12 对 distutils 做了什么？",
+      "evidence_ids": [
+        "F18"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q036",
+      "category": "semantic",
+      "question": "为什么升级 3.12 后不能再假定标准库自带旧构建工具包？",
+      "evidence_ids": [
+        "F18"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q037",
+      "category": "keyword",
+      "question": "Python 3.12 PEP 695 引入什么语法？",
+      "evidence_ids": [
+        "F19"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q038",
+      "category": "semantic",
+      "question": "3.12 为泛型声明和类型别名提供了什么新的表达方式？",
+      "evidence_ids": [
+        "F19"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q039",
+      "category": "keyword",
+      "question": "Python 3.12 PEP 684 的 GIL 隔离粒度？",
+      "evidence_ids": [
+        "F20"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q040",
+      "category": "semantic",
+      "question": "3.12 如何让不同子解释器各自拥有解释器锁？",
+      "evidence_ids": [
+        "F20"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q041",
+      "category": "keyword",
+      "question": "Python 3.13 发布日期？",
+      "evidence_ids": [
+        "F21"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q042",
+      "category": "semantic",
+      "question": "2024 年秋季的 3.13 正式版在哪一天发布？",
+      "evidence_ids": [
+        "F21"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q043",
+      "category": "keyword",
+      "question": "Python 3.13 无 GIL 支持属于什么成熟度？",
+      "evidence_ids": [
+        "F22"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q044",
+      "category": "semantic",
+      "question": "3.13 是否已把无解释器锁执行作为全面稳定的默认模式？",
+      "evidence_ids": [
+        "F22"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q045",
+      "category": "keyword",
+      "question": "Python 3.13 的基本 JIT 默认是否启用？",
+      "evidence_ids": [
+        "F23"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q046",
+      "category": "semantic",
+      "question": "安装 3.13 就会自动开启即时编译器吗？",
+      "evidence_ids": [
+        "F23"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q047",
+      "category": "keyword",
+      "question": "Python 3.13 导入未声明 free-threading 支持的扩展可能发生什么？",
+      "evidence_ids": [
+        "F24"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q048",
+      "category": "semantic",
+      "question": "为什么无锁构建在导入旧 C 扩展后可能又恢复解释器锁？",
+      "evidence_ids": [
+        "F24"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q049",
+      "category": "keyword",
+      "question": "asyncio.Queue 按什么顺序取出项目？",
+      "evidence_ids": [
+        "F25"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q050",
+      "category": "semantic",
+      "question": "异步队列默认先处理最早还是最近加入的项目？",
+      "evidence_ids": [
+        "F25"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q051",
+      "category": "keyword",
+      "question": "asyncio.Queue 的 maxsize 小于等于零意味着什么？",
+      "evidence_ids": [
+        "F26"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q052",
+      "category": "semantic",
+      "question": "如何配置异步队列使其容量不受正数上限限制？",
+      "evidence_ids": [
+        "F26"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q053",
+      "category": "keyword",
+      "question": "asyncio.Queue.task_done 调用次数过多会怎样？",
+      "evidence_ids": [
+        "F27"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q054",
+      "category": "semantic",
+      "question": "消费者把完成通知多发几次时，队列用什么错误揭示计数问题？",
+      "evidence_ids": [
+        "F27"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q055",
+      "category": "keyword",
+      "question": "asyncio.Queue 操作如何设置超时？",
+      "evidence_ids": [
+        "F28"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q056",
+      "category": "semantic",
+      "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+      "evidence_ids": [
+        "F28"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q057",
+      "category": "keyword",
+      "question": "asyncio.Lock 获取顺序是否公平？",
+      "evidence_ids": [
+        "F29"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q058",
+      "category": "semantic",
+      "question": "多个协程争抢同一把异步锁时，谁应最先获得锁？",
+      "evidence_ids": [
+        "F29"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q059",
+      "category": "keyword",
+      "question": "asyncio.Lock 在未锁定时 release 会怎样？",
+      "evidence_ids": [
+        "F30"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q060",
+      "category": "semantic",
+      "question": "重复释放一把已打开的异步锁会触发什么错误？",
+      "evidence_ids": [
+        "F30"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q061",
+      "category": "keyword",
+      "question": "asyncio.Event 的初始标志是什么？",
+      "evidence_ids": [
+        "F31"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q062",
+      "category": "semantic",
+      "question": "尚未调用 set 时，异步事件是否已经处于通知状态？",
+      "evidence_ids": [
+        "F31"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q063",
+      "category": "keyword",
+      "question": "asyncio 同步原语可用于 OS 线程同步吗？",
+      "evidence_ids": [
+        "F32"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q064",
+      "category": "semantic",
+      "question": "能否让不同操作系统线程安全地共享这些协程锁？",
+      "evidence_ids": [
+        "F32"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q065",
+      "category": "keyword",
+      "question": "TaskGroup 子任务失败后其余任务怎样处理？",
+      "evidence_ids": [
+        "F33"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q066",
+      "category": "semantic",
+      "question": "一个关联子协程出错时，结构化任务组会如何处置兄弟任务？",
+      "evidence_ids": [
+        "F33"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q067",
+      "category": "keyword",
+      "question": "asyncio.gather 默认遇到首个异常会取消其他任务吗？",
+      "evidence_ids": [
+        "F34"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q068",
+      "category": "semantic",
+      "question": "聚合等待中的一个协程失败后，其他协程默认还会继续运行吗？",
+      "evidence_ids": [
+        "F34"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q069",
+      "category": "keyword",
+      "question": "asyncio.wait_for 的实际等待能否超过 timeout？",
+      "evidence_ids": [
+        "F35"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q070",
+      "category": "semantic",
+      "question": "为什么给异步任务设置等待上限后，真正返回仍可能更晚？",
+      "evidence_ids": [
+        "F35"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q071",
+      "category": "keyword",
+      "question": "asyncio.shield 如何影响外部取消？",
+      "evidence_ids": [
+        "F36"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q072",
+      "category": "semantic",
+      "question": "怎样让内部协程不随外层等待者一起被取消？",
+      "evidence_ids": [
+        "F36"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q073",
+      "category": "keyword",
+      "question": "asyncio 流读取器默认缓冲限制是多少？",
+      "evidence_ids": [
+        "F37"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q074",
+      "category": "semantic",
+      "question": "未显式指定流读取缓冲大小时，官方文档给出的容量是多少？",
+      "evidence_ids": [
+        "F37"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q075",
+      "category": "keyword",
+      "question": "asyncio.start_server 默认 backlog 值？",
+      "evidence_ids": [
+        "F38"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q076",
+      "category": "semantic",
+      "question": "异步 TCP 服务的默认待接受连接队列参数是多少？",
+      "evidence_ids": [
+        "F38"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q077",
+      "category": "keyword",
+      "question": "asyncio 子进程在管道输出时直接 wait 有何风险？",
+      "evidence_ids": [
+        "F39"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q078",
+      "category": "semantic",
+      "question": "为什么子进程写满输出管道后，单纯等待进程退出可能永远卡住？",
+      "evidence_ids": [
+        "F39"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q079",
+      "category": "keyword",
+      "question": "ThreadPoolExecutor.map 的 chunksize 有效果吗？",
+      "evidence_ids": [
+        "F40"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q080",
+      "category": "semantic",
+      "question": "把线程池映射的分块参数调大，会像进程池一样改变任务批量吗？",
+      "evidence_ids": [
+        "F40"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q081",
+      "category": "cross_document",
+      "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+      "evidence_ids": [
+        "F25",
+        "F29"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q082",
+      "category": "cross_document",
+      "question": "异步队列和同步原语在超时参数与 OS 线程使用上各有什么限制？",
+      "evidence_ids": [
+        "F28",
+        "F32"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q083",
+      "category": "cross_document",
+      "question": "对比 TaskGroup 与 gather：一个任务失败后其他任务会被取消吗？",
+      "evidence_ids": [
+        "F33",
+        "F34"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q084",
+      "category": "cross_document",
+      "question": "对比 wait_for 和 shield 对任务取消与等待时间的影响。",
+      "evidence_ids": [
+        "F35",
+        "F36"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q085",
+      "category": "cross_document",
+      "question": "对比异步子进程等待风险与线程池 map 分块参数的限制。",
+      "evidence_ids": [
+        "F39",
+        "F40"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q086",
+      "category": "cross_document",
+      "question": "对比队列完成计数溢出与释放未持有异步锁时的异常类型。",
+      "evidence_ids": [
+        "F27",
+        "F30"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q087",
+      "category": "cross_document",
+      "question": "异步 TCP 流的默认缓冲容量和服务器 backlog 分别是什么？",
+      "evidence_ids": [
+        "F37",
+        "F38"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q088",
+      "category": "cross_document",
+      "question": "Python 3.11 的异常组与 TaskGroup 失败处理怎样联系起来？",
+      "evidence_ids": [
+        "F15",
+        "F33"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q089",
+      "category": "cross_document",
+      "question": "结合 3.11 发布说明与任务文档解释新增任务组及其失败语义。",
+      "evidence_ids": [
+        "F16",
+        "F33"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q090",
+      "category": "cross_document",
+      "question": "异步 Event 的初始状态与 Queue 的默认取出顺序分别是什么？",
+      "evidence_ids": [
+        "F31",
+        "F25"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q091",
+      "category": "version_conflict",
+      "question": "比较 Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading，两者是否同一能力？",
+      "evidence_ids": [
+        "F20",
+        "F22"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q092",
+      "category": "version_conflict",
+      "question": "比较 Python 3.10 联合类型竖线写法与 3.12 泛型类型参数语法。",
+      "evidence_ids": [
+        "F11",
+        "F19"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q093",
+      "category": "version_conflict",
+      "question": "从 3.10 到 3.12，OpenSSL 最低要求与 distutils 的移除分别是什么变化？",
+      "evidence_ids": [
+        "F09",
+        "F18"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q094",
+      "category": "version_conflict",
+      "question": "比较 Python 3.12 与 3.13 的正式发布日期。",
+      "evidence_ids": [
+        "F17",
+        "F21"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q095",
+      "category": "version_conflict",
+      "question": "能否把 Python 3.11 性能摘要与 3.13 默认关闭的 JIT 当成同一项保证？",
+      "evidence_ids": [
+        "F13",
+        "F23"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q096",
+      "category": "version_conflict",
+      "question": "比较 Python 3.11 标准库新增的 TOML 解析能力与 3.12 移除的构建包。",
+      "evidence_ids": [
+        "F14",
+        "F18"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q097",
+      "category": "version_conflict",
+      "question": "比较 Python 3.8 赋值表达式与 3.10 结构化模式匹配，分别解决什么问题？",
+      "evidence_ids": [
+        "F01",
+        "F10"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q098",
+      "category": "version_conflict",
+      "question": "比较 Python 3.9 内置集合泛型注解与 3.12 类型参数语法。",
+      "evidence_ids": [
+        "F08",
+        "F19"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q099",
+      "category": "version_conflict",
+      "question": "比较 Python 3.8 vectorcall 与 3.13 JIT 的作用和默认启用情况。",
+      "evidence_ids": [
+        "F03",
+        "F23"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q100",
+      "category": "version_conflict",
+      "question": "比较 3.12 子解释器锁隔离与 3.13 旧扩展导致重新启用 GIL 的条件。",
+      "evidence_ids": [
+        "F20",
+        "F24"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "Q101",
+      "category": "unanswerable",
+      "question": "Python 3.13 在 RTX 5060 上运行我的私有 Web 服务的准确 QPS 是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q102",
+      "category": "unanswerable",
+      "question": "Python 3.12 在我的生产数据库上相对 3.11 提速多少百分比？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q103",
+      "category": "unanswerable",
+      "question": "DeepSeek V2、V3、V4.1 在单张 A100 80GB batch=1 的绝对 tokens/s 排名？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q104",
+      "category": "unanswerable",
+      "question": "DeepSeek V4.1 对我公司内部保密合同问答的准确率是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q105",
+      "category": "unanswerable",
+      "question": "BGE-M3 在这个项目 2030 年的实测 nDCG 是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q106",
+      "category": "unanswerable",
+      "question": "Redis 9.9 在 KnowledgeOps 私有集群上的实测 P99 是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q107",
+      "category": "unanswerable",
+      "question": "Python 3.13 在我的付费客户流量上能节省多少云费用？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q108",
+      "category": "unanswerable",
+      "question": "这批文档是否给出我的服务器下周会发生的内存泄漏时间？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q109",
+      "category": "unanswerable",
+      "question": "asyncio.Lock 在我公司的业务里每秒准确可获取多少次？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q110",
+      "category": "unanswerable",
+      "question": "给定未提供的 CPU 和网络，asyncio.Queue 的最大真实吞吐量是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q111",
+      "category": "unanswerable",
+      "question": "DeepSeek 的未公开训练数据中包含我公司的哪些用户邮件？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q112",
+      "category": "unanswerable",
+      "question": "Python 3.14 在我内部测试集上的性能相对 3.13 具体提升率？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q113",
+      "category": "unanswerable",
+      "question": "KnowledgeOps 未来两年的精确维护成本和盈利是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q114",
+      "category": "unanswerable",
+      "question": "ThreadPoolExecutor 在我未公开代码上的最优 worker 数是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q115",
+      "category": "unanswerable",
+      "question": "我的私有金融模型用 TaskGroup 后精确收益率是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q116",
+      "category": "unanswerable",
+      "question": "能从这些公开文档确认我的 GitHub 私有仓库访问密钥吗？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q117",
+      "category": "unanswerable",
+      "question": "Python 3.12 对尚未提供的业务 bug 的根因是什么？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q118",
+      "category": "unanswerable",
+      "question": "DeepSeek V4.1 本次部署每小时真实耗电多少千瓦时？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q119",
+      "category": "unanswerable",
+      "question": "异步 TCP 流在我的家庭宽带上当前丢包率的精确数值？",
+      "evidence_ids": [],
+      "answerable": false
+    },
+    {
+      "id": "Q120",
+      "category": "unanswerable",
+      "question": "Qdrant 在本项目五千万私有分块上的实际检索 P95 是多少？",
+      "evidence_ids": [],
+      "answerable": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "F01",
+      "source_id": "python-3.8",
+      "quote": "There is new syntax ``:=``",
+      "line": 86,
+      "start": 2644,
+      "end": 2670,
+      "context": "=====\n\n.. This section singles out the most important changes in Python 3.8.\n   Brevity is key.\n\n\n.. PEP-sized items next.\n\n\n\nNew Features\n============\n\nAssignment expressions\n----------------------\n\nThere is new syntax ``:=`` that assigns values to variables as part of a larger\nexpression. It is affectionately known as \"the walrus operator\" due to\nits resemblance to `the eyes and tusks of a walrus\n<https://en.wikipedia.org/wiki/Walrus#/media/File:Pacific_Walrus_-_Bull_(8247646168).jpg>`_.\n\nIn this example, the assignmen"
+    },
+    {
+      "id": "F02",
+      "source_id": "python-3.8",
+      "quote": "There is a new function parameter syntax ``/``",
+      "line": 131,
+      "start": 4162,
+      "end": 4208,
+      "context": "s that reduce\ncomplexity and improve readability.\n\nSee :pep:`572` for a full description.\n\n(Contributed by Emily Morehouse in :issue:`35224`.)\n\n\nPositional-only parameters\n--------------------------\n\nThere is a new function parameter syntax ``/`` to indicate that some\nfunction parameters must be specified positionally and cannot be used as\nkeyword arguments.  This is the same notation shown by ``help()`` for C\nfunctions annotated with Larry Hastings' `Argument Clinic\n<https://docs.python.org/3/howto/clinic.html>`_ tool.\n\nIn the following ex"
+    },
+    {
+      "id": "F03",
+      "source_id": "python-3.8",
+      "quote": "The \"vectorcall\" protocol is added",
+      "line": 351,
+      "start": 12416,
+      "end": 12450,
+      "context": "ntation.\n\nSee :pep:`587` for a full description.\n\n(Contributed by Victor Stinner in :issue:`36763`.)\n\n\nVectorcall: a fast calling protocol for CPython\n-----------------------------------------------\n\nThe \"vectorcall\" protocol is added to the Python/C API.\nIt is meant to formalize existing optimizations which were already done\nfor various classes.\nAny extension type implementing a callable can use this protocol.\n\nThis is currently provisional,\nthe aim is to make it fully public in Python 3.9.\n\nSee :pep:`590` for a full descriptio"
+    },
+    {
+      "id": "F04",
+      "source_id": "python-3.8",
+      "quote": "October 14th, 2019",
+      "line": 50,
+      "start": 1858,
+      "end": 1876,
+      "context": "ching a change.\n\n:Editor: Raymond Hettinger\n\nThis article explains the new features in Python 3.8, compared to 3.7.\nFor full details, see the :ref:`changelog <changelog>`.\n\nPython 3.8 was released on October 14th, 2019.\n\nPrerelease users should be aware that this document is currently in\ndraft form. It will be updated as Python 3.8 moves towards release, so\nit's worth checking back even after reading earlier versions. Some\nnotable items not yet covered are:\n\n* :pep:`578` - Runtime audit hooks for potentially sens"
+    },
+    {
+      "id": "F05",
+      "source_id": "python-3.9",
+      "quote": "IANA time zone database",
+      "line": 277,
+      "start": 10926,
+      "end": 10949,
+      "context": "operator.countOf` of the :mod:`operator` module.\n  (Contributed by Serhiy Storchaka in :issue:`40824`.)\n\n\nNew Modules\n===========\n\nzoneinfo\n--------\n\nThe :mod:`zoneinfo` module brings support for the IANA time zone database to\nthe standard library. It adds :class:`zoneinfo.ZoneInfo`, a concrete\n:class:`datetime.tzinfo` implementation backed by the system's time zone data.\n\nExample::\n\n    >>> from zoneinfo import ZoneInfo\n    >>> from datetime import datetime, timedelta\n\n    >>> # Daylight saving time\n    >>> dt = date"
+    },
+    {
+      "id": "F06",
+      "source_id": "python-3.9",
+      "quote": "Dictionary Merge & Update Operators",
+      "line": 145,
+      "start": 5410,
+      "end": 5445,
+      "context": "h the\nnext Python version.\n\nNote: a number of pre-existing deprecatations were removed in this version\nof Python as well. Consult the :ref:`removed-in-python-39` section.\n\n\nNew Features\n============\n\nDictionary Merge & Update Operators\n-----------------------------------\n\nMerge (``|``) and update (``|=``) operators have been added to the built-in\n:class:`dict` class. Those complement the existing ``dict.update`` and\n``{**d1, **d2}`` methods of merging dictionaries.\n\nExample::\n\n  >>> x = {\"key1\": \"value1 from x\", \"key2\": \"value2 f"
+    },
+    {
+      "id": "F07",
+      "source_id": "python-3.9",
+      "quote": "removeprefix",
+      "line": 167,
+      "start": 6199,
+      "end": 6211,
+      "context": ":pep:`584` for a full description.\n(Contributed by Brandt Bucher in :issue:`36144`.)\n\nNew String Methods to Remove Prefixes and Suffixes\n--------------------------------------------------\n\n:meth:`str.removeprefix(prefix)<str.removeprefix>` and\n:meth:`str.removesuffix(suffix)<str.removesuffix>` have been added\nto easily remove an unneeded prefix or a suffix from a string. Corresponding\n``bytes``, ``bytearray``, and ``collections.UserString`` methods have also been\nadded. See :pep:`616` for a full description"
+    },
+    {
+      "id": "F08",
+      "source_id": "python-3.9",
+      "quote": "Type Hinting Generics",
+      "line": 174,
+      "start": 6565,
+      "end": 6586,
+      "context": "string. Corresponding\n``bytes``, ``bytearray``, and ``collections.UserString`` methods have also been\nadded. See :pep:`616` for a full description. (Contributed by Dennis Sweeney in\n:issue:`39939`.)\n\nType Hinting Generics in Standard Collections\n---------------------------------------------\n\nIn type annotations you can now use built-in collection types such as\n``list`` and ``dict`` as generic types instead of importing the\ncorresponding capitalized types (e.g. ``List`` or ``Dict``) from\n``typing``.  Some other types"
+    },
+    {
+      "id": "F09",
+      "source_id": "python-3.10",
+      "quote": "Require OpenSSL 1.1.1 or newer",
+      "line": 92,
+      "start": 2973,
+      "end": 3003,
+      "context": "\n* :pep:`604`, Allow writing union types as X | Y\n* :pep:`613`, Explicit Type Aliases\n* :pep:`612`, Parameter Specification Variables\n\nImportant deprecations, removals or restrictions:\n\n* :pep:`644`, Require OpenSSL 1.1.1 or newer\n* :pep:`632`, Deprecate distutils module.\n* :pep:`623`, Deprecate and prepare for the removal of the wstr member in PyUnicodeObject.\n* :pep:`624`, Remove Py_UNICODE encoder APIs\n* :pep:`597`, Add optional EncodingWarning\n\n\nNew Features\n============\n\n.. _whatsnew310-pep563:\n\nParenthesized context ma"
+    },
+    {
+      "id": "F10",
+      "source_id": "python-3.10",
+      "quote": "Structural Pattern Matching: Specification",
+      "line": 71,
+      "start": 2326,
+      "end": 2368,
+      "context": "ase highlights\n=============================\n\n.. This section singles out the most important changes in Python 3.10.\n   Brevity is key.\n\n\n.. PEP-sized items next.\n\nNew syntax features:\n\n* :pep:`634`, Structural Pattern Matching: Specification\n* :pep:`635`, Structural Pattern Matching: Motivation and Rationale\n* :pep:`636`, Structural Pattern Matching: Tutorial\n* :issue:`12782`, Parenthesized context managers are now officially allowed.\n\nNew features in the standard library:\n\n* :pep:`618`, Add Optional Length-Checking To zip.\n\nInterprete"
+    },
+    {
+      "id": "F11",
+      "source_id": "python-3.10",
+      "quote": "Allow writing union types as X | Y",
+      "line": 86,
+      "start": 2788,
+      "end": 2822,
+      "context": "tandard library:\n\n* :pep:`618`, Add Optional Length-Checking To zip.\n\nInterpreter improvements:\n\n* :pep:`626`, Precise line numbers for debugging and other tools.\n\nNew typing features:\n\n* :pep:`604`, Allow writing union types as X | Y\n* :pep:`613`, Explicit Type Aliases\n* :pep:`612`, Parameter Specification Variables\n\nImportant deprecations, removals or restrictions:\n\n* :pep:`644`, Require OpenSSL 1.1.1 or newer\n* :pep:`632`, Deprecate distutils module.\n* :pep:`623`, Deprecate and prepare for the removal of the wstr member in Py"
+    },
+    {
+      "id": "F12",
+      "source_id": "python-3.10",
+      "quote": "Add Optional Length-Checking To zip",
+      "line": 78,
+      "start": 2620,
+      "end": 2655,
+      "context": "on and Rationale\n* :pep:`636`, Structural Pattern Matching: Tutorial\n* :issue:`12782`, Parenthesized context managers are now officially allowed.\n\nNew features in the standard library:\n\n* :pep:`618`, Add Optional Length-Checking To zip.\n\nInterpreter improvements:\n\n* :pep:`626`, Precise line numbers for debugging and other tools.\n\nNew typing features:\n\n* :pep:`604`, Allow writing union types as X | Y\n* :pep:`613`, Explicit Type Aliases\n* :pep:`612`, Parameter Specification Variables\n\nImportant deprecations, removals or restriction"
+    },
+    {
+      "id": "F13",
+      "source_id": "python-3.11",
+      "quote": "between 10-60% faster",
+      "line": 61,
+      "start": 2045,
+      "end": 2066,
+      "context": "`.\n\n\n.. _whatsnew311-summary:\n\nSummary -- Release highlights\n=============================\n\n.. This section singles out the most important changes in Python 3.11.\n   Brevity is key.\n\n* Python 3.11 is between 10-60% faster than Python 3.10.\n  On average, we measured a 1.25x speedup on the standard benchmark suite.\n  See :ref:`whatsnew311-faster-cpython` for details.\n\n.. PEP-sized items next.\n\nNew syntax features:\n\n* :ref:`whatsnew311-pep654`\n\nNew built-in features:\n\n* :ref:`whatsnew311-pep678`\n\nNew standard library m"
+    },
+    {
+      "id": "F14",
+      "source_id": "python-3.11",
+      "quote": "Support for parsing `TOML",
+      "line": 78,
+      "start": 2408,
+      "end": 2433,
+      "context": "ils.\n\n.. PEP-sized items next.\n\nNew syntax features:\n\n* :ref:`whatsnew311-pep654`\n\nNew built-in features:\n\n* :ref:`whatsnew311-pep678`\n\nNew standard library modules:\n\n* :pep:`680`: :mod:`tomllib` —\n  Support for parsing `TOML <https://toml.io/>`_ in the Standard Library\n\nInterpreter improvements:\n\n* :ref:`whatsnew311-pep657`\n* New :option:`-P` command line option and :envvar:`PYTHONSAFEPATH` environment\n  variable to :ref:`disable automatically prepending potentially unsafe paths\n  <whatsnew311-pythonsafepath>` to :data"
+    },
+    {
+      "id": "F15",
+      "source_id": "python-3.11",
+      "quote": "The builtin types :exc:`ExceptionGroup`",
+      "line": 188,
+      "start": 6323,
+      "end": 6362,
+      "context": "ption Groups and ``except*``\n-----------------------------------------\n\n:pep:`654` introduces language features that enable a program\nto raise and handle multiple unrelated exceptions simultaneously.\nThe builtin types :exc:`ExceptionGroup` and :exc:`BaseExceptionGroup`\nmake it possible to group exceptions and raise them together,\nand the new :keyword:`except* <except_star>` syntax generalizes\n:keyword:`except` to match subgroups of exception groups.\n\nSee :pep:`654` for more details.\n\n(Contributed by Irit Katriel in :issue:`45292`. PE"
+    },
+    {
+      "id": "F16",
+      "source_id": "python-3.11",
+      "quote": "Added the :class:`~asyncio.TaskGroup` class",
+      "line": 576,
+      "start": 21126,
+      "end": 21169,
+      "context": "s for static type checking.\n  (Contributed by Sebastian Rittau in :issue:`42012`.)\n\n\n.. _whatsnew311-improved-modules:\n\nImproved Modules\n================\n\n.. _whatsnew311-asyncio:\n\nasyncio\n-------\n\n* Added the :class:`~asyncio.TaskGroup` class,\n  an :ref:`asynchronous context manager <async-context-managers>`\n  holding a group of tasks that will wait for all of them upon exit.\n  For new code this is recommended over using\n  :func:`~asyncio.create_task` and :func:`~asyncio.gather` directly.\n  (Contributed by Yury Selivanov and others in :"
+    },
+    {
+      "id": "F17",
+      "source_id": "python-3.12",
+      "quote": "October 2, 2023",
+      "line": 49,
+      "start": 1793,
+      "end": 1808,
+      "context": "  This saves the maintainer the effort of going through the VCS log when\n   researching a change.\n\nThis article explains the new features in Python 3.12, compared to 3.11.\nPython 3.12 was released on October 2, 2023.\nFor full details, see the :ref:`changelog <changelog>`.\n\n.. seealso::\n\n   :pep:`693` -- Python 3.12 Release Schedule\n\nSummary -- Release highlights\n=============================\n\n.. This section singles out the most important changes in Python 3.12.\n   Brevity is key.\n\nPython 3.12 is the latest st"
+    },
+    {
+      "id": "F18",
+      "source_id": "python-3.12",
+      "quote": "package has been removed from the standard library",
+      "line": 65,
+      "start": 2338,
+      "end": 2388,
+      "context": "gramming language,\nwith a mix of changes to the language and the standard library.\nThe library changes focus on cleaning up deprecated APIs, usability, and correctness.\nOf note, the :mod:`!distutils` package has been removed from the standard library.\nFilesystem support in :mod:`os` and :mod:`pathlib` has seen a number of improvements,\nand several modules have better performance.\n\nThe language changes focus on usability,\nas :term:`f-strings <f-string>` have had many limitations removed\nand 'Did you mean ...' suggestions continue to improve.\nThe"
+    },
+    {
+      "id": "F19",
+      "source_id": "python-3.12",
+      "quote": "PEP 695: Type Parameter Syntax",
+      "line": 180,
+      "start": 7026,
+      "end": 7056,
+      "context": " :mod:`!imp` modules have been\n  removed, along with several :class:`unittest.TestCase`\n  `method aliases <unittest-TestCase-removed-aliases_>`_.\n\n\nNew Features\n============\n\n.. _whatsnew312-pep695:\n\nPEP 695: Type Parameter Syntax\n------------------------------\n\nGeneric classes and functions under :pep:`484` were declared using a verbose syntax\nthat left the scope of type parameters unclear and required explicit declarations of\nvariance.\n\n:pep:`695` introduces a new, more compact and explicit way to create\n:ref:`generic clas"
+    },
+    {
+      "id": "F20",
+      "source_id": "python-3.12",
+      "quote": "sub-interpreters may now be created with a unique GIL per interpreter",
+      "line": 340,
+      "start": 13863,
+      "end": 13932,
+      "context": "olaou and Marta Gómez).\n\n.. _whatsnew312-pep684:\n\nPEP 684: A Per-Interpreter GIL\n------------------------------\n\n:pep:`684` introduces a per-interpreter :term:`GIL <global interpreter lock>`,\nso that sub-interpreters may now be created with a unique GIL per interpreter.\nThis allows Python programs to take full advantage of multiple CPU\ncores. This is currently only available through the C-API,\nthough a Python API is :pep:`anticipated for 3.13 <554>`.\n\nUse the new :c:func:`Py_NewInterpreterFromConfig` function to\ncreate an interpreter with its own GIL::\n\n   PyInte"
+    },
+    {
+      "id": "F21",
+      "source_id": "python-3.13",
+      "quote": "October 7, 2024",
+      "line": 49,
+      "start": 1813,
+      "end": 1828,
+      "context": "  This saves the maintainer the effort of going through the VCS log\n   when researching a change.\n\nThis article explains the new features in Python 3.13, compared to 3.12.\nPython 3.13 was released on October 7, 2024.\nFor full details, see the :ref:`changelog <changelog>`.\n\n.. seealso::\n\n   :pep:`719` -- Python 3.13 Release Schedule\n\n\nSummary -- Release Highlights\n=============================\n\n.. This section singles out the most important changes in Python 3.13.\n   Brevity is key.\n\nPython 3.13 is the latest s"
+    },
+    {
+      "id": "F22",
+      "source_id": "python-3.13",
+      "quote": "CPython 3.13 has experimental support",
+      "line": 108,
+      "start": 4232,
+      "end": 4269,
+      "context": "cs>` when mutating the\n  returned mapping. Python debuggers and similar tools may now more reliably\n  update local variables in optimized scopes even during concurrent code\n  execution.\n* :pep:`703`: CPython 3.13 has experimental support for running with the\n  :term:`global interpreter lock` disabled. See :ref:`Free-threaded CPython\n  <whatsnew313-free-threaded-cpython>` for more details.\n* :pep:`744`: A basic :ref:`JIT compiler <whatsnew313-jit-compiler>` was added.\n  It is currently disabled by default (though we may turn it on l"
+    },
+    {
+      "id": "F23",
+      "source_id": "python-3.13",
+      "quote": "It is currently disabled by default",
+      "line": 112,
+      "start": 4506,
+      "end": 4541,
+      "context": " interpreter lock` disabled. See :ref:`Free-threaded CPython\n  <whatsnew313-free-threaded-cpython>` for more details.\n* :pep:`744`: A basic :ref:`JIT compiler <whatsnew313-jit-compiler>` was added.\n  It is currently disabled by default (though we may turn it on later).\n  Performance improvements are modest -- we expect to improve this\n  over the next few releases.\n* Color support in the new :ref:`interactive interpreter\n  <whatsnew313-better-interactive-interpreter>`,\n  as well as in :ref:`tracebacks <whatsnew313-improved-error-m"
+    },
+    {
+      "id": "F24",
+      "source_id": "python-3.13",
+      "quote": "will cause the GIL to be enabled",
+      "line": 346,
+      "start": 14943,
+      "end": 14975,
+      "context": "Extensions using single-phase init should\nuse :c:func:`PyUnstable_Module_SetGIL` to indicate whether they support\nrunning with the GIL disabled. Importing C extensions that don't use these\nmechanisms will cause the GIL to be enabled, unless the GIL was explicitly\ndisabled with the :envvar:`PYTHON_GIL` environment variable or the\n:option:`-X gil=0` option.\npip 24.1 or newer is required to install packages with C extensions in the\nfree-threaded build.\n\nThis work was made possible thanks to many individuals and\norganizations, inc"
+    },
+    {
+      "id": "F25",
+      "source_id": "asyncio-queue",
+      "quote": "A first in, first out (FIFO) queue.",
+      "line": 28,
+      "start": 596,
+      "end": 631,
+      "context": "s don't have a *timeout* parameter;\nuse :func:`asyncio.wait_for` function to do queue operations with a\ntimeout.\n\nSee also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\n   A first in, first out (FIFO) queue.\n\n   If *maxsize* is less than or equal to zero, the queue size is\n   infinite.  If it is an integer greater than ``0``, then\n   ``await put()`` blocks when the queue reaches *maxsize*\n   until an item is removed by :meth:`get`.\n\n   Unlike the standard library threading :mod:`queue`, the size of\n   "
+    },
+    {
+      "id": "F26",
+      "source_id": "asyncio-queue",
+      "quote": "queue size is\n   infinite",
+      "line": 30,
+      "start": 684,
+      "end": 709,
+      "context": "erations with a\ntimeout.\n\nSee also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\n   A first in, first out (FIFO) queue.\n\n   If *maxsize* is less than or equal to zero, the queue size is\n   infinite.  If it is an integer greater than ``0``, then\n   ``await put()`` blocks when the queue reaches *maxsize*\n   until an item is removed by :meth:`get`.\n\n   Unlike the standard library threading :mod:`queue`, the size of\n   the queue is always known and can be returned by calling the\n   :meth:`qsize` "
+    },
+    {
+      "id": "F27",
+      "source_id": "asyncio-queue",
+      "quote": "Raises :exc:`ValueError` if called more times",
+      "line": 108,
+      "start": 3132,
+      "end": 3177,
+      "context": "ocking, it will resume when all\n      items have been processed (meaning that a :meth:`task_done`\n      call was received for every item that had been :meth:`~Queue.put`\n      into the queue).\n\n      Raises :exc:`ValueError` if called more times than there were\n      items placed in the queue.\n\n\nPriority Queue\n==============\n\n.. class:: PriorityQueue\n\n   A variant of :class:`Queue`; retrieves entries in priority order\n   (lowest first).\n\n   Entries are typically tuples of the form\n   ``(priority_number, data)``.\n\n\nLIFO Queue\n==========\n\n.."
+    },
+    {
+      "id": "F28",
+      "source_id": "asyncio-queue",
+      "quote": "methods of asyncio queues don't have a *timeout* parameter",
+      "line": 17,
+      "start": 372,
+      "end": 430,
+      "context": "syncio queues are designed to be similar to classes of the\n:mod:`queue` module.  Although asyncio queues are not thread-safe,\nthey are designed to be used specifically in async/await code.\n\nNote that methods of asyncio queues don't have a *timeout* parameter;\nuse :func:`asyncio.wait_for` function to do queue operations with a\ntimeout.\n\nSee also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\n   A first in, first out (FIFO) queue.\n\n   If *maxsize* is less than or equal to zero, the queue size is\n   infinite.  If it is an intege"
+    },
+    {
+      "id": "F29",
+      "source_id": "asyncio-sync",
+      "quote": "Acquiring a lock is *fair*",
+      "line": 81,
+      "start": 1818,
+      "end": 1844,
+      "context": "\n      *locked* and returns ``True``.\n\n      When more than one coroutine is blocked in :meth:`acquire`\n      waiting for the lock to be unlocked, only one coroutine\n      eventually proceeds.\n\n      Acquiring a lock is *fair*: the coroutine that proceeds will be\n      the first coroutine that started waiting on the lock.\n\n   .. method:: release()\n\n      Release the lock.\n\n      When the lock is *locked*, reset it to *unlocked* and return.\n\n      If the lock is *unlocked*, a :exc:`RuntimeError` is raised.\n\n   .. method::"
+    },
+    {
+      "id": "F30",
+      "source_id": "asyncio-sync",
+      "quote": "If the lock is *unlocked*, a :exc:`RuntimeError` is raised",
+      "line": 90,
+      "start": 2069,
+      "end": 2127,
+      "context": "eeds will be\n      the first coroutine that started waiting on the lock.\n\n   .. method:: release()\n\n      Release the lock.\n\n      When the lock is *locked*, reset it to *unlocked* and return.\n\n      If the lock is *unlocked*, a :exc:`RuntimeError` is raised.\n\n   .. method:: locked()\n\n      Return ``True`` if the lock is *locked*.\n\n\nEvent\n=====\n\n.. class:: Event()\n\n   An event object.  Not thread-safe.\n\n   An asyncio event can be used to notify multiple asyncio tasks\n   that some event has happened.\n\n   An Event object manages an internal flag that can"
+    },
+    {
+      "id": "F31",
+      "source_id": "asyncio-sync",
+      "quote": "The flag is set to *false* initially",
+      "line": 110,
+      "start": 2614,
+      "end": 2650,
+      "context": "flag that can be set to *true*\n   with the :meth:`~Event.set` method and reset to *false* with the\n   :meth:`clear` method.  The :meth:`~Event.wait` method blocks until the\n   flag is set to *true*.  The flag is set to *false* initially.\n\n   .. versionchanged:: 3.10\n      Removed the *loop* parameter.\n\n   .. _asyncio_example_sync_event:\n\n   Example::\n\n      async def waiter(event):\n          print('waiting for it ...')\n          await event.wait()\n          print('... got it!')\n\n      async def main():\n          # Create an Event "
+    },
+    {
+      "id": "F32",
+      "source_id": "asyncio-sync",
+      "quote": "asyncio primitives are not thread-safe",
+      "line": 16,
+      "start": 360,
+      "end": 398,
+      "context": "syncio/locks.py`\n\n-----------------------------------------------\n\nasyncio synchronization primitives are designed to be similar to\nthose of the :mod:`threading` module with two important caveats:\n\n* asyncio primitives are not thread-safe, therefore they should not\n  be used for OS thread synchronization (use :mod:`threading` for\n  that);\n\n* methods of these synchronization primitives do not accept the *timeout*\n  argument; use the :func:`asyncio.wait_for` function to perform\n  operations with timeouts.\n\nasyncio has the following ba"
+    },
+    {
+      "id": "F33",
+      "source_id": "asyncio-task",
+      "quote": "the remaining tasks in the group are cancelled",
+      "line": 355,
+      "start": 10149,
+      "end": 10195,
+      "context": "d the ``async with`` block is exited,\nno new tasks may be added to the group.\n\nThe first time any of the tasks belonging to the group fails\nwith an exception other than :exc:`asyncio.CancelledError`,\nthe remaining tasks in the group are cancelled.\nNo further tasks can then be added to the group.\nAt this point, if the body of the ``async with`` statement is still active\n(i.e., :meth:`~object.__aexit__` hasn't been called yet),\nthe task directly containing the ``async with`` statement is also cancelled.\nThe resulting :exc:`asyncio.CancelledEr"
+    },
+    {
+      "id": "F34",
+      "source_id": "asyncio-task",
+      "quote": "**won't be cancelled** and will continue to run",
+      "line": 448,
+      "start": 13464,
+      "end": 13511,
+      "context": "aws*.\n\n   If *return_exceptions* is ``False`` (default), the first\n   raised exception is immediately propagated to the task that\n   awaits on ``gather()``.  Other awaitables in the *aws* sequence\n   **won't be cancelled** and will continue to run.\n\n   If *return_exceptions* is ``True``, exceptions are treated the\n   same as successful results, and aggregated in the result list.\n\n   If ``gather()`` is *cancelled*, all submitted awaitables\n   (that have not completed yet) are also *cancelled*.\n\n   If any Task or Future from the *aws* sequence"
+    },
+    {
+      "id": "F35",
+      "source_id": "asyncio-task",
+      "quote": "The function will wait until the future is actually cancelled",
+      "line": 761,
+      "start": 24200,
+      "end": 24261,
+      "context": "il the future\n   completes.\n\n   If a timeout occurs, it cancels the task and raises\n   :exc:`TimeoutError`.\n\n   To avoid the task :meth:`cancellation <Task.cancel>`,\n   wrap it in :func:`shield`.\n\n   The function will wait until the future is actually cancelled,\n   so the total wait time may exceed the *timeout*. If an exception\n   happens during cancellation, it is propagated.\n\n   If the wait is cancelled, the future *aw* is also cancelled.\n\n   .. versionchanged:: 3.10\n      Removed the *loop* parameter.\n\n   .. _asyncio_example_waitfor:\n\n   Example::\n\n  "
+    },
+    {
+      "id": "F36",
+      "source_id": "asyncio-task",
+      "quote": "Task running in ``something()`` is not cancelled",
+      "line": 595,
+      "start": 18802,
+      "end": 18850,
+      "context": "   task = asyncio.create_task(something())\n       res = await shield(task)\n\n   is equivalent to::\n\n       res = await something()\n\n   *except* that if the coroutine containing it is cancelled, the\n   Task running in ``something()`` is not cancelled.  From the point\n   of view of ``something()``, the cancellation did not happen.\n   Although its caller is still cancelled, so the \"await\" expression\n   still raises a :exc:`CancelledError`.\n\n   If ``something()`` is cancelled by other means (i.e. from within\n   itself) that would also cancel ``shi"
+    },
+    {
+      "id": "F37",
+      "source_id": "asyncio-stream",
+      "quote": "64 KiB",
+      "line": 66,
+      "start": 1872,
+      "end": 1878,
+      "context": "f\n   :class:`StreamReader` and :class:`StreamWriter` classes.\n\n   *limit* determines the buffer size limit used by the\n   returned :class:`StreamReader` instance.  By default the *limit*\n   is set to 64 KiB.\n\n   The rest of the arguments are passed directly to\n   :meth:`loop.create_connection`.\n\n   .. note::\n\n      The *sock* argument transfers ownership of the socket to the\n      :class:`StreamWriter` created. To close the socket, call its\n      :meth:`~asyncio.StreamWriter.close` method.\n\n   .. vers"
+    },
+    {
+      "id": "F38",
+      "source_id": "asyncio-stream",
+      "quote": "backlog=100",
+      "line": 94,
+      "start": 2749,
+      "end": 2760,
+      "context": " \\\n                          port=None, *, limit=None, \\\n                          family=socket.AF_UNSPEC, \\\n                          flags=socket.AI_PASSIVE, sock=None, \\\n                          backlog=100, ssl=None, reuse_address=None, \\\n                          reuse_port=None, ssl_handshake_timeout=None, \\\n                          ssl_shutdown_timeout=None, start_serving=True)\n\n   Start a socket server.\n\n   The *client_connected_cb* callback is called whenever a new client\n   connection is estab"
+    },
+    {
+      "id": "F39",
+      "source_id": "asyncio-subprocess",
+      "quote": "This method can deadlock",
+      "line": 199,
+      "start": 6272,
+      "end": 6296,
+      "context": "cio-subprocess-threads>`\n   section.\n\n   .. coroutinemethod:: wait()\n\n      Wait for the child process to terminate.\n\n      Set and return the :attr:`returncode` attribute.\n\n      .. note::\n\n         This method can deadlock when using ``stdout=PIPE`` or\n         ``stderr=PIPE`` and the child process generates so much output\n         that it blocks waiting for the OS pipe buffer to accept\n         more data. Use the :meth:`communicate` method when using pipes\n         to avoid this condition.\n\n   .. coroutinemethod:: c"
+    },
+    {
+      "id": "F40",
+      "source_id": "concurrent.futures",
+      "quote": "*chunksize* has no effect",
+      "line": 66,
+      "start": 2609,
+      "end": 2634,
+      "context": "integer.  For very long iterables,\n       using a large value for *chunksize* can significantly improve\n       performance compared to the default size of 1.  With\n       :class:`ThreadPoolExecutor`, *chunksize* has no effect.\n\n       .. versionchanged:: 3.5\n          Added the *chunksize* argument.\n\n    .. method:: shutdown(wait=True, *, cancel_futures=False)\n\n       Signal the executor that it should free any resources that it is using\n       when the currently pending futures are done executing.  Calls to\n       :met"
+    }
+  ],
+  "source_hashes": {
+    "python-3.8": "aa8ce56fe96cc30445a4a96fbe62ba8d9d1cc89aba412cc1812fae762246071b",
+    "python-3.9": "45d0317686354b09029dbdd9907950924cb9c99d0a6e7ec8a059bfbe2237d235",
+    "python-3.10": "95e013392ecaedcbe9a8e89e09c704e778866829e81aee297416ee860bd0549a",
+    "python-3.11": "85b4e5e58276416e853db92d7bda0c5aa1259d1cb4f1a063a84a01ab1182b62e",
+    "python-3.12": "4a0da7af729f2ba5d6f34d257f440d1700245531aad9cb2bf18bb78af24cfab9",
+    "python-3.13": "313d882ef4a593f3cca9bf73da1a6b16e5c55aecb3e044ee7864a1a07b5aac6c",
+    "asyncio-task": "0c1c68c396513e56f06b6709c02efe5095048e591f0e9e241041cbf8b8303b1e",
+    "asyncio-sync": "760b1f60c6ef0e1c2b2a68b8a250c714e15b936f482290bf702d877ff48cca54",
+    "asyncio-queue": "17520f19e9c42992534f35407bc94e613510f4791ab6dea50156d422cb3b5914",
+    "asyncio-stream": "bae7f2e41427af07c917ae768f3b1cfc4757cc22c18ede7a941167cb3ea947bc",
+    "asyncio-subprocess": "a3f819851b2a50e31e32824550e3eb0aad5eeff90a02a3c72d2bd721b4037c12",
+    "concurrent.futures": "669909adb902fdec7db713917c82b0f6ca74c9548ac43b25f2db5e06e45c5716",
+    "DeepSeek-V2": "03d59c7d02d2d19af8a83f588c2eebaed20b7014179cc0e9370d078f2d702ad4",
+    "DeepSeek-V3": "1f766f151bb4d501b18c9d1e229ac25682c68c75893d6d3bc9734e2a60125c0e",
+    "DeepSeek-V4.1-Flash": "347c9db4e5506acb531cbc3b724407ab88e9af8781679152f0823d7bac16d251"
+  }
+}

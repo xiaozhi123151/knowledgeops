@@ -1,0 +1,3 @@
+Retrieval evaluation uses relevance judgments. Recall@K is the fraction of relevant documents in the first K results. MRR@10 uses the reciprocal rank of the first relevant document up to rank ten. P50 and P95 summarize query latency.
+
+召回评测需要相关性标注。Recall 衡量相关文档覆盖，MRR 衡量首个相关结果排名，P50 和 P95 衡量延迟分位数。

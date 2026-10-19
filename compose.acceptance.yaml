@@ -1,0 +1,44 @@
+# Strict, CPU four-container acceptance profile. Does not alter offline development defaults.
+# Set KO_ACCEPTANCE_ENV to a PRIVATE env file and KO_MODEL_DIR to downloaded verified BGE weights.
+services:
+  api:
+    image: knowledgeops-acceptance:cpu
+    env_file: !override ["${KO_ACCEPTANCE_ENV:?Set a private acceptance env file}"]
+    ports: !override ["127.0.0.1:${KO_ACCEPTANCE_PORT:-18000}:8000"]
+    environment: &real-models
+      KO_MODE: live
+      KO_LLM_PROVIDER: deepseek
+      KO_DEEPSEEK_MODEL: deepseek-flash
+      KO_EMBEDDING_PROVIDER: local
+      KO_EMBEDDING_MODEL: BAAI/bge-m3
+      KO_EMBEDDING_REVISION: 5617a9f61b028005a4858fdac845db406aefb181
+      KO_EMBEDDING_MODEL_PATH: /models/bge-m3
+      KO_EMBEDDING_DIMENSIONS: 1024
+      KO_EMBEDDING_DEVICE: cpu
+      KO_EMBEDDING_PRECISION: float32
+      KO_EMBEDDING_NORMALIZE: "true"
+      KO_RERANKER_PROVIDER: cross_encoder
+      KO_RERANKER_MODEL: BAAI/bge-reranker-v2-m3
+      KO_RERANKER_REVISION: 953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+      KO_RERANKER_MODEL_PATH: /models/bge-reranker-v2-m3
+      KO_RERANKER_DEVICE: cpu
+      KO_RERANKER_PRECISION: float32
+      KO_MODELS_LOCAL_ONLY: "true"
+      KO_MODEL_THREADS: "4"
+      KO_QDRANT_BACKEND: server
+      KO_TOOL_TIMEOUT: "120"
+      KO_TASK_TIMEOUT: "600"
+      KO_LLM_TIMEOUT: "90"
+      KO_TOKEN_BUDGET: "100000"
+      KO_OUTPUT_TOKENS: "6000"
+      HF_HUB_OFFLINE: "1"
+    volumes:
+      - "${KO_MODEL_DIR:?Set verified BGE weights directory}:/models:ro"
+    healthcheck:
+      start_period: 600s
+  worker:
+    image: knowledgeops-acceptance:cpu
+    env_file: !override ["${KO_ACCEPTANCE_ENV:?Set a private acceptance env file}"]
+    environment: *real-models
+    volumes:
+      - "${KO_MODEL_DIR:?Set verified BGE weights directory}:/models:ro"

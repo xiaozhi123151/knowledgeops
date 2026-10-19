@@ -1,0 +1,94 @@
+Downloading BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181
+Downloading BAAI/bge-reranker-v2-m3@953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+[
+  {
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "path": "data/models/bge-m3",
+    "weight_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+    "weight_bytes": 2271145830,
+    "files": [
+      {
+        "name": "config.json",
+        "bytes": 687
+      },
+      {
+        "name": "config_sentence_transformers.json",
+        "bytes": 123
+      },
+      {
+        "name": "modules.json",
+        "bytes": 349
+      },
+      {
+        "name": "pytorch_model.bin",
+        "bytes": 2271145830
+      },
+      {
+        "name": "README.md",
+        "bytes": 15822
+      },
+      {
+        "name": "sentencepiece.bpe.model",
+        "bytes": 5069051
+      },
+      {
+        "name": "sentence_bert_config.json",
+        "bytes": 54
+      },
+      {
+        "name": "special_tokens_map.json",
+        "bytes": 964
+      },
+      {
+        "name": "tokenizer.json",
+        "bytes": 17098108
+      },
+      {
+        "name": "tokenizer_config.json",
+        "bytes": 444
+      },
+      {
+        "name": "1_Pooling\\config.json",
+        "bytes": 191
+      }
+    ]
+  },
+  {
+    "model": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "path": "data/models/bge-reranker-v2-m3",
+    "weight_sha256": "d9e3e081faff1eefb84019509b2f5558fd74c1a05a2c7db22f74174fcedb5286",
+    "weight_bytes": 2271071852,
+    "files": [
+      {
+        "name": "config.json",
+        "bytes": 795
+      },
+      {
+        "name": "model.safetensors",
+        "bytes": 2271071852
+      },
+      {
+        "name": "README.md",
+        "bytes": 17229
+      },
+      {
+        "name": "sentencepiece.bpe.model",
+        "bytes": 5069051
+      },
+      {
+        "name": "special_tokens_map.json",
+        "bytes": 964
+      },
+      {
+        "name": "tokenizer.json",
+        "bytes": 17098273
+      },
+      {
+        "name": "tokenizer_config.json",
+        "bytes": 1173
+      }
+    ]
+  }
+]

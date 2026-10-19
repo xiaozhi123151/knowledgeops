@@ -1,0 +1,193 @@
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   1%|▏         | 5/391 [00:01<01:41,  3.79it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 293.49it/s]
+
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]
+Loading weights:   2%|▏         | 9/393 [00:00<00:08, 45.30it/s]
+Loading weights:  12%|█▏        | 49/393 [00:00<00:01, 187.18it/s]
+Loading weights:  19%|█▉        | 76/393 [00:00<00:01, 216.15it/s]
+Loading weights:  32%|███▏      | 125/393 [00:00<00:00, 302.14it/s]
+Loading weights:  45%|████▌     | 178/393 [00:00<00:00, 374.41it/s]
+Loading weights:  56%|█████▌    | 219/393 [00:00<00:00, 362.29it/s]
+Loading weights:  66%|██████▌   | 259/393 [00:00<00:00, 359.07it/s]
+Loading weights:  76%|███████▌  | 297/393 [00:00<00:00, 360.02it/s]
+Loading weights:  85%|████████▍ | 334/393 [00:01<00:00, 359.00it/s]
+Loading weights:  94%|█████████▍| 371/393 [00:01<00:00, 330.55it/s]
+Loading weights: 100%|██████████| 393/393 [00:01<00:00, 316.57it/s]
+import python-3.8 133 chunks 0.03 s
+import python-3.9 104 chunks 0.02 s
+import python-3.10 150 chunks 0.02 s
+import python-3.11 170 chunks 0.02 s
+import python-3.12 172 chunks 0.02 s
+import python-3.13 182 chunks 0.02 s
+import asyncio-task 67 chunks 0.01 s
+import asyncio-sync 19 chunks 0.01 s
+import asyncio-queue 8 chunks 0.0 s
+import asyncio-stream 23 chunks 0.02 s
+import asyncio-subprocess 18 chunks 0.01 s
+import concurrent.futures 36 chunks 0.02 s
+import DeepSeek-V2 48 chunks 0.01 s
+import DeepSeek-V3 44 chunks 0.02 s
+import DeepSeek-V4.1-Flash 27 chunks 0.01 s
+Building prefix dict from the default dictionary ...
+Dumping model to file cache C:\Users\USER\AppData\Local\Temp\jieba.cache
+Loading model cost 0.451 seconds.
+Prefix dict has been built successfully.
+evaluated 20/1800
+evaluated 40/1800
+evaluated 60/1800
+evaluated 80/1800
+evaluated 100/1800
+evaluated 120/1800
+evaluated 140/1800
+evaluated 160/1800
+evaluated 180/1800
+evaluated 200/1800
+evaluated 220/1800
+evaluated 240/1800
+evaluated 260/1800
+evaluated 280/1800
+evaluated 300/1800
+evaluated 320/1800
+evaluated 340/1800
+evaluated 360/1800
+evaluated 380/1800
+evaluated 400/1800
+evaluated 420/1800
+evaluated 440/1800
+evaluated 460/1800
+evaluated 480/1800
+evaluated 500/1800
+evaluated 520/1800
+evaluated 540/1800
+evaluated 560/1800
+evaluated 580/1800
+evaluated 600/1800
+evaluated 620/1800
+evaluated 640/1800
+evaluated 660/1800
+evaluated 680/1800
+evaluated 700/1800
+evaluated 720/1800
+evaluated 740/1800
+evaluated 760/1800
+evaluated 780/1800
+evaluated 800/1800
+evaluated 820/1800
+evaluated 840/1800
+evaluated 860/1800
+evaluated 880/1800
+evaluated 900/1800
+evaluated 920/1800
+evaluated 940/1800
+evaluated 960/1800
+evaluated 980/1800
+evaluated 1000/1800
+evaluated 1020/1800
+evaluated 1040/1800
+evaluated 1060/1800
+evaluated 1080/1800
+evaluated 1100/1800
+evaluated 1120/1800
+evaluated 1140/1800
+evaluated 1160/1800
+evaluated 1180/1800
+evaluated 1200/1800
+evaluated 1220/1800
+evaluated 1240/1800
+evaluated 1260/1800
+evaluated 1280/1800
+evaluated 1300/1800
+evaluated 1320/1800
+evaluated 1340/1800
+evaluated 1360/1800
+evaluated 1380/1800
+evaluated 1400/1800
+evaluated 1420/1800
+evaluated 1440/1800
+evaluated 1460/1800
+evaluated 1480/1800
+evaluated 1500/1800
+evaluated 1520/1800
+evaluated 1540/1800
+evaluated 1560/1800
+evaluated 1580/1800
+evaluated 1600/1800
+evaluated 1620/1800
+evaluated 1640/1800
+evaluated 1660/1800
+evaluated 1680/1800
+evaluated 1700/1800
+evaluated 1720/1800
+evaluated 1740/1800
+evaluated 1760/1800
+evaluated 1780/1800
+evaluated 1800/1800
+{
+  "Dense": {
+    "recall_at_5": 0.5325,
+    "mrr_at_10": 0.4717103174603174,
+    "ndcg_at_10": 0.48738791000756615,
+    "queries": 120,
+    "attempts": 360,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "p50_ms": 42.21405000134837,
+    "p95_ms": 51.297329993394676,
+    "failed_latency_ms": [],
+    "unanswerable_nonempty_rate": 1.0
+  },
+  "Dense+Rerank": {
+    "recall_at_5": 0.7083333333333334,
+    "mrr_at_10": 0.5916468253968254,
+    "ndcg_at_10": 0.6166958071531521,
+    "queries": 120,
+    "attempts": 360,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "p50_ms": 420.20409999531694,
+    "p95_ms": 488.3885249859304,
+    "failed_latency_ms": [],
+    "unanswerable_nonempty_rate": 1.0
+  },
+  "BM25": {
+    "recall_at_5": 0.295,
+    "mrr_at_10": 0.26646825396825397,
+    "ndcg_at_10": 0.27910648308022834,
+    "queries": 120,
+    "attempts": 360,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "p50_ms": 5.401299989898689,
+    "p95_ms": 7.13127501658164,
+    "failed_latency_ms": [],
+    "unanswerable_nonempty_rate": 0.85
+  },
+  "Hybrid": {
+    "recall_at_5": 0.4633333333333333,
+    "mrr_at_10": 0.40079761904761907,
+    "ndcg_at_10": 0.4316055544527701,
+    "queries": 120,
+    "attempts": 360,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "p50_ms": 45.22569999971893,
+    "p95_ms": 53.649969983962364,
+    "failed_latency_ms": [],
+    "unanswerable_nonempty_rate": 1.0
+  },
+  "Hybrid+Rerank": {
+    "recall_at_5": 0.7308333333333333,
+    "mrr_at_10": 0.5876666666666667,
+    "ndcg_at_10": 0.6146116728810103,
+    "queries": 120,
+    "attempts": 360,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "p50_ms": 436.63074998767115,
+    "p95_ms": 525.3084850119194,
+    "failed_latency_ms": [],
+    "unanswerable_nonempty_rate": 1.0
+  }
+}

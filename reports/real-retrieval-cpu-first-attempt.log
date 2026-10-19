@@ -1,0 +1,111 @@
+s.EE                                                                     [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_real_server_ingest_search_reopen_deduplicate_delete __
+
+real_config = Settings(mode='offline', data_dir=WindowsPath('C:/Users/USER/AppData/Local/Temp/pytest-of-USER/pytest-46/test_re...seconds=0.3, langfuse_public_key='', langfuse_secret_key=SecretStr(''), langfuse_base_url='https://cloud.langfuse.com')
+
+    @pytest.fixture
+    async def real_stack(real_config):
+        from scripts.real_retrieval import RealStack
+    
+>       stack = await RealStack(real_config).start()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_real_retrieval.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\real_retrieval.py:85: in start
+    ???
+src\knowledgeops\providers\reranker.py:71: in warmup
+    ???
+src\knowledgeops\providers\reranker.py:83: in _start
+    self.process = ctx.Process(target=target, args=args, daemon=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <knowledgeops.providers.reranker.IsolatedCrossEncoder object at 0x0000018AC8CB1E20>
+timeout = 600.0
+
+        self.process = self.pipe = None
+        self.lock = asyncio.Lock()
+    
+    async def _receive(self, timeout):
+        if not await asyncio.to_thread(self.pipe.poll, timeout):
+            self.close()
+            raise TimeoutError('RERANKER_TIMEOUT')
+>       status, result = self.pipe.recv()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: RERANKER_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\reranker.py:66: RuntimeError
+---------------------------- Captured stderr setup ----------------------------
+\rLoading weights:   0%|          | 0/391 [00:00<?, ?it/s]\rLoading weights: 100%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd| 391/391 [00:00<00:00, 26090.95it/s]\r
+______ ERROR at setup of test_real_model_revision_rejects_existing_index ______
+
+self = <knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430>
+timeout = 600.0
+
+>   ???
+
+src\knowledgeops\providers\local_embedding.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430>
+timeout = 600.0
+
+        self.process = self.pipe = None
+        self.lock = asyncio.Lock()
+    
+    async def _receive(self, timeout):
+        if not await asyncio.to_thread(self.pipe.poll, timeout):
+            self.close()
+            raise TimeoutError('RERANKER_TIMEOUT')
+>       status, result = self.pipe.recv()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: RERANKER_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\reranker.py:66: RuntimeError
+
+The above exception was the direct cause of the following exception:
+
+real_config = Settings(mode='offline', data_dir=WindowsPath('C:/Users/USER/AppData/Local/Temp/pytest-of-USER/pytest-46/test_re...seconds=0.3, langfuse_public_key='', langfuse_secret_key=SecretStr(''), langfuse_base_url='https://cloud.langfuse.com')
+
+    @pytest.fixture
+    async def real_stack(real_config):
+        from scripts.real_retrieval import RealStack
+    
+>       stack = await RealStack(real_config).start()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_real_retrieval.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\real_retrieval.py:82: in start
+    self.engine = RetrievalEngine(settings, self.db, self.embedding, self.reranker)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\providers\local_embedding.py:97: in warmup
+    "max_length": settings.embedding_max_length,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\knowledgeops\providers\reranker.py:71: in warmup
+    ???
+src\knowledgeops\providers\reranker.py:83: in _start
+    self.process = ctx.Process(target=target, args=args, daemon=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <knowledgeops.providers.local_embedding._EmbeddingWorker object at 0x0000018AC8F7D430>
+timeout = 600.0
+
+        self.dimensions = settings.embedding_dimensions
+        self.load_name = str(settings.embedding_model_path) if settings.embedding_model_path else self.name
+    
+    def _process_spec(self, child):
+        return _embedding_process, (child, self.load_name, self.device, self.batch, self.options)
+    
+>   async def _receive(self, timeout):
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: EMBEDDING_FAILED: KeyError: 'precision'
+
+src\knowledgeops\providers\local_embedding.py:74: RuntimeError
+=========================== short test summary info ===========================
+ERROR tests/integration/test_real_retrieval.py::test_real_server_ingest_search_reopen_deduplicate_delete
+ERROR tests/integration/test_real_retrieval.py::test_real_model_revision_rejects_existing_index
+1 passed, 1 skipped, 85 deselected, 2 errors in 49.20s

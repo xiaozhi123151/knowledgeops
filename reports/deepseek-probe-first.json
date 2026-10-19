@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T08:18:19.139969+00:00",
+    "mode": "real_deepseek_local_retrieval",
+    "source_sha256": "9774b451844cfe098b482459898e34f39cdc3ec6a74d8e722122584d7265e1c1",
+    "git_commit": "84010c9e8451454d83d7e661e2101dc2e550ef02",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.19.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Small owned fixture corpus; not representative production accuracy."
+  },
+  "passed": true,
+  "endpoint": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "tool_calls": [
+    {
+      "name": "knowledge_search",
+      "arguments": {
+        "query": "DeepSeek-V2 总参数量"
+      }
+    }
+  ],
+  "response": {
+    "elapsed_ms": 1449.152499997581,
+    "response_id": "4ddfe2e0-6e44-4e30-a82c-8d1ba49a9f2e",
+    "response_model": "deepseek-flash",
+    "finish_reason": "tool_calls",
+    "prompt_tokens": 1010,
+    "completion_tokens": 40,
+    "total_tokens": 1050,
+    "cached_tokens": 0,
+    "tool_call_count": 1
+  },
+  "elapsed_ms": 1564.7382000024663,
+  "budget": {
+    "estimated": false,
+    "llm_calls": 1,
+    "pending_estimates": 0,
+    "steps": 0,
+    "tokens": 1050,
+    "tool_calls": 0
+  },
+  "events": [
+    {
+      "seq": 1,
+      "task_id": "e7b8f524dc654a42af7dcb065340010e",
+      "at": 1792052298.3920896,
+      "type": "queued",
+      "data": {
+        "kind": "research"
+      }
+    },
+    {
+      "seq": 2,
+      "task_id": "e7b8f524dc654a42af7dcb065340010e",
+      "at": 1792052298.3998008,
+      "type": "claimed",
+      "data": {
+        "resumed": false
+      }
+    },
+    {
+      "seq": 3,
+      "task_id": "e7b8f524dc654a42af7dcb065340010e",
+      "at": 1792052299.346038,
+      "type": "llm_started",
+      "data": {
+        "attempt": 1,
+        "reserved_tokens": 1415
+      }
+    },
+    {
+      "seq": 4,
+      "task_id": "e7b8f524dc654a42af7dcb065340010e",
+      "at": 1792052300.8095052,
+      "type": "llm_completed",
+      "data": {
+        "cached_tokens": 0,
+        "completion_tokens": 40,
+        "elapsed_ms": 1449.152499997581,
+        "estimated": false,
+        "finish_reason": "tool_calls",
+        "prompt_tokens": 1010,
+        "response_id": "4ddfe2e0-6e44-4e30-a82c-8d1ba49a9f2e",
+        "response_model": "deepseek-flash",
+        "tool_call_count": 1,
+        "total_tokens": 1050,
+        "usage": 1050
+      }
+    },
+    {
+      "seq": 5,
+      "task_id": "e7b8f524dc654a42af7dcb065340010e",
+      "at": 1792052300.8177035,
+      "type": "succeeded",
+      "data": {}
+    }
+  ]
+}

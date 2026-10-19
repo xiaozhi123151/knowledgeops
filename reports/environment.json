@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T09:51:36.722243+00:00",
+    "mode": "environment",
+    "source_sha256": "64550a157c47212c35458b56da8cc3df1b8708562e982f9ffb0674f377f4a7d3",
+    "git_commit": "db8c2636ed5bf9c127ecce45e3b37ecc8802c770",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "See the per-provider and corpus boundary in this artifact; small samples are not production accuracy."
+  },
+  "cpu": "AMD Ryzen 9 8945HX, 16 cores / 32 threads",
+  "ram_total_bytes": 34142187520,
+  "gpu": "RTX 5060 Laptop, 8151 MiB",
+  "driver": "573.24",
+  "default_torch": "2.14.1+cpu",
+  "cuda_torch": "2.7.1+cu128",
+  "cuda_wheel_sha256": "2bb8c05d48ba815b316879a18195d53a6472a03e297d971e916753f8e1053d30",
+  "weight_downloads": "BGE-M3 official HF through proxy; reranker BAAI ModelScope mirror matched official HF SHA; CUDA wheel mirror matched official PyTorch SHA",
+  "source": "actual CIM, nvidia-smi and torch kernel probes this session"
+}

@@ -1,0 +1,1 @@
+{"purpose": "Timing probe, not benchmark quality scores", "device": "cpu", "precision": "float32", "query_ms": [22034.17629999967, 21757.131299997127], "model_load_ms": {"embedding_load_ms": 9883.161400000972, "reranker_load_ms": 10648.797900001227}}

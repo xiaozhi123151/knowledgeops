@@ -1,0 +1,13 @@
+{
+  "scope": "sanitized GitHub snapshot offline regression; live tests deselected",
+  "tests": 97,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "deselected": 10,
+  "seconds": 41.379,
+  "ruff": "PASS",
+  "historical_full_validation": "reports/verification.md; original 107-test run preserved",
+  "privacy_scan": "configured secrets and common credential patterns absent",
+  "source_commit": "f8ddb6d9d815890c6c0b111d8f64622afb28eacb"
+}

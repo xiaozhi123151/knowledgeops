@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T11:44:42.106517+00:00",
+    "mode": "offline",
+    "source_sha256": "a1a6cf428adcd380f33344c7d66321c112eb1ade55cb54df15301f951df8acd5",
+    "git_commit": "bb7239b40bb10dc7c4911c3979b1b1f7d1ccd15b",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "OFFLINE TEST DOUBLES; NOT real model quality or production latency"
+  },
+  "query_count": 30,
+  "repetitions": 3,
+  "latency_definition": "HTTP round trip includes query embedding, retrieval, rerank and serialization; excludes import, startup and warmup; errors reported separately",
+  "ranking_definition": "Fetch 50 chunks, collapse duplicate document IDs, evaluate first 1/5/10 documents.",
+  "providers": {
+    "llm": "offline-scripted-v1",
+    "embedding": "offline-hash-v1",
+    "reranker": "offline-overlap-v1"
+  },
+  "index_fingerprint": "9bc54f97b5c549d315cbd15fe7e46f6eb8ed1b444f825a9b9af7bb0d6277e0b1",
+  "corpus_documents": 12,
+  "corpus_sha256": "daa24940557773361f60ee631cb2f53aa521b5dab76c84efd4969155752bc835",
+  "qrels_sha256": "476c208a56aa7e30bd6bc2512292ba8346ca00f044f2b3be1f5220776768e2eb",
+  "variants": {
+    "dense": {
+      "recall@1": 0.9666666666666667,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.9833333333333333,
+      "p50_ms": 23.995199997443706,
+      "p95_ms": 43.54722499811032,
+      "error_rate": 0.0,
+      "measurements": 90
+    },
+    "hybrid": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "p50_ms": 23.893199999292847,
+      "p95_ms": 41.943979995267,
+      "error_rate": 0.0,
+      "measurements": 90
+    },
+    "hybrid_rerank": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "p50_ms": 23.20759999929578,
+      "p95_ms": 44.56222499975411,
+      "error_rate": 0.0,
+      "measurements": 90
+    }
+  }
+}

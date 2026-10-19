@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KnowledgeOps · 证据研究工作台</title><link rel="stylesheet" href="/assets/style.css"></head>
+<body><header><div><span class="eyebrow">KNOWLEDGE OPERATIONS</span><h1>让每一个结论，都有来源。</h1>
+<p>多源知识导入 · 混合检索 · 可追踪研究</p></div><span id="mode" class="badge">检查运行模式…</span></header>
+<main><section class="connection"><label>访问密钥 <input id="key" type="password" autocomplete="off" placeholder="KO_API_KEY"></label>
+<button id="connect">连接知识库</button><span id="health"></span></section><div id="notice" role="status"></div>
+<div class="columns"><aside><section><h2>01 / 导入知识</h2><p class="muted">文本 PDF、Markdown、TXT；扫描件需先 OCR。</p>
+<form id="upload"><input id="file" type="file" accept=".pdf,.md,.txt" required><button>上传并索引</button></form>
+<form id="url-form"><label>公开网页 URL<input id="url" type="url" placeholder="https://…" required></label><button>导入单页</button></form>
+<h3>文档 <button id="refresh" class="small">刷新</button></h3><div id="documents" class="doc-list"></div></section>
+<section><h2>执行过程</h2><div id="task-status" class="muted">尚未运行任务</div><ol id="events"></ol><button id="resume" hidden>恢复任务</button></section></aside>
+<article><section><h2>02 / 检索与研究</h2><label>研究问题<textarea id="question" rows="3" placeholder="例如：Redis 的 AOF 与 RDB 持久化有什么区别？"></textarea></label>
+<div class="controls"><select id="retrieval"><option value="hybrid">Hybrid / RRF</option><option value="dense">Dense</option><option value="bm25">BM25</option></select>
+<label class="inline"><input type="checkbox" id="rerank" checked> Rerank</label><button id="search" class="secondary">查看检索</button><button id="research">开始研究</button></div>
+<div class="session">当前会话：<code id="session">新会话</code> <button id="new-session" class="small">新建会话</button></div></section>
+<section id="results"><div class="empty">导入资料后，提出问题。<br>在这里查看检索得分、研究报告与原文证据。</div></section></article></div></main>
+<footer>KnowledgeOps MVP · 引用校验检查来源与摘录一致性；结论仍需结合原文判断。</footer><script src="/assets/app.js" defer></script></body></html>

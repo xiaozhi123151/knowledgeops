@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "attempts": 1800,
+  "per_variant": {
+    "BM25": 360,
+    "Dense+Rerank": 360,
+    "Hybrid+Rerank": 360,
+    "Hybrid": 360,
+    "Dense": 360
+  },
+  "raw_sha256": "97c5c371a94d855a3149008746caaa5d767b46a13885fc133b934d98ad83a906",
+  "metrics_recomputed_from_raw": true,
+  "frozen_qrels_equal_original": true,
+  "dense_rerank_has_no_bm25_or_rrf_scores": true,
+  "no_query_errors": true
+}

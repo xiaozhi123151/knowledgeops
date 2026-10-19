@@ -1,0 +1,233 @@
+{
+  "experiment_metadata": {
+    "at_utc": "2026-10-18T15:02:53.113193+00:00",
+    "mode": "real_retrieval",
+    "source_sha256": "7d7654ba69d73dc6a72fb6b55cf7933ac526d4941955726a68dcba3eeecaa222",
+    "git_commit": "f6dc63a0526e2148a100058d404aa192829f5e56",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Real models; small public corpus, incomplete assistant-authored qrels; no production-quality claim."
+  },
+  "summary": {
+    "Dense": {
+      "recall_at_5": 0.5325,
+      "mrr_at_10": 0.4717103174603174,
+      "ndcg_at_10": 0.48738791000756615,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 42.21405000134837,
+      "p95_ms": 51.297329993394676,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    },
+    "Dense+Rerank": {
+      "recall_at_5": 0.7083333333333334,
+      "mrr_at_10": 0.5916468253968254,
+      "ndcg_at_10": 0.6166958071531521,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 420.20409999531694,
+      "p95_ms": 488.3885249859304,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    },
+    "BM25": {
+      "recall_at_5": 0.295,
+      "mrr_at_10": 0.26646825396825397,
+      "ndcg_at_10": 0.27910648308022834,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 5.401299989898689,
+      "p95_ms": 7.13127501658164,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 0.85
+    },
+    "Hybrid": {
+      "recall_at_5": 0.4633333333333333,
+      "mrr_at_10": 0.40079761904761907,
+      "ndcg_at_10": 0.4316055544527701,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 45.22569999971893,
+      "p95_ms": 53.649969983962364,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    },
+    "Hybrid+Rerank": {
+      "recall_at_5": 0.7308333333333333,
+      "mrr_at_10": 0.5876666666666667,
+      "ndcg_at_10": 0.6146116728810103,
+      "queries": 120,
+      "attempts": 360,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "p50_ms": 436.63074998767115,
+      "p95_ms": 525.3084850119194,
+      "failed_latency_ms": [],
+      "unanswerable_nonempty_rate": 1.0
+    }
+  },
+  "paired_question_counts": [
+    {
+      "left": "Dense+Rerank",
+      "right": "Dense",
+      "metric": "recall_at_5",
+      "win": 29,
+      "tie": 61,
+      "loss": 10
+    },
+    {
+      "left": "Dense+Rerank",
+      "right": "Dense",
+      "metric": "mrr_at_10",
+      "win": 40,
+      "tie": 44,
+      "loss": 16
+    },
+    {
+      "left": "Dense+Rerank",
+      "right": "Dense",
+      "metric": "ndcg_at_10",
+      "win": 45,
+      "tie": 39,
+      "loss": 16
+    },
+    {
+      "left": "Hybrid+Rerank",
+      "right": "Hybrid",
+      "metric": "recall_at_5",
+      "win": 34,
+      "tie": 62,
+      "loss": 4
+    },
+    {
+      "left": "Hybrid+Rerank",
+      "right": "Hybrid",
+      "metric": "mrr_at_10",
+      "win": 43,
+      "tie": 48,
+      "loss": 9
+    },
+    {
+      "left": "Hybrid+Rerank",
+      "right": "Hybrid",
+      "metric": "ndcg_at_10",
+      "win": 50,
+      "tie": 40,
+      "loss": 10
+    },
+    {
+      "left": "Dense+Rerank",
+      "right": "Hybrid+Rerank",
+      "metric": "recall_at_5",
+      "win": 3,
+      "tie": 90,
+      "loss": 7
+    },
+    {
+      "left": "Dense+Rerank",
+      "right": "Hybrid+Rerank",
+      "metric": "mrr_at_10",
+      "win": 5,
+      "tie": 88,
+      "loss": 7
+    },
+    {
+      "left": "Dense+Rerank",
+      "right": "Hybrid+Rerank",
+      "metric": "ndcg_at_10",
+      "win": 7,
+      "tie": 84,
+      "loss": 9
+    }
+  ],
+  "human_review": {
+    "pool_sha256": "a1ab00082754e8bcb368cd906f7cf1eaafa284c7adb83be01d777547e8ff97ea",
+    "pooled_items": 2738,
+    "human_reviewed_items": 2,
+    "reviewers": [
+      "human user, current Codex conversation"
+    ],
+    "fully_reviewed_questions": [],
+    "status": "partial",
+    "metric_scope": "Only fully human-judged pools; pool Recall is not exhaustive-corpus Recall.",
+    "summary": {}
+  },
+  "judgments": [
+    {
+      "item_id": "956b0416d293f26e529b",
+      "query_id": "Q032",
+      "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+      "category": "semantic",
+      "chunk_id": "5d0175aa-2882-5429-b050-8a5e2cd004a3",
+      "doc_id": "8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035",
+      "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+      "title": "asyncio-task",
+      "locator": {
+        "chunk_id": "5d0175aa-2882-5429-b050-8a5e2cd004a3",
+        "doc_id": "8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035",
+        "page": null,
+        "section": "",
+        "start": 7927,
+        "end": 8677,
+        "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+        "title": "asyncio-task"
+      },
+      "text": "sk groups combine a task creation API with a convenient\nand reliable way to wait for all tasks in the group to finish.\n\n.. class:: TaskGroup()\n\nAn :ref:`asynchronous context manager <async-context-managers>`\nholding a group of tasks.\nTasks can be added to the group using :meth:`create_task`.\nAll tasks are awaited when the context manager exits.\n\n.. versionadded:: 3.11\n\n.. method:: create_task(coro, *, name=None, context=None)\n\nCreate a task in this task group.\nThe signature matches that of :func:`asyncio.create_task`.\n\nExample::\n\nasync def main():\nasync with asyncio.TaskGroup() as tg:\ntask1 = tg.create_task(some_coro(...))\ntask2 = tg.create_task(another_coro(...))\nprint(f\"Both tasks have completed now: {task1.result()}, {task2.result()}\")\n\n",
+      "text_sha256": "d2f4b4a9f11a03241e47ceb923a4a2c35f6d4ddd49526643ac65b7a06e2195a9",
+      "grade": 2,
+      "quote": "All tasks are awaited when the context manager exits.",
+      "reason": "Human user explicitly supplied A=2 in response to the source-backed question. No additional rationale supplied.",
+      "reason_provenance": "Recorder description of the human response, not an invented reviewer rationale.",
+      "reviewer": "human user, current Codex conversation",
+      "provenance": "Direct human reply in this conversation on 2026-10-18 (Asia/Shanghai)",
+      "frozen_grade": "unjudged"
+    },
+    {
+      "item_id": "aaf9dad286e0a78809fe",
+      "query_id": "Q052",
+      "question": "如何配置异步队列使其容量不受正数上限限制？",
+      "category": "semantic",
+      "chunk_id": "475a3b19-68e7-5ff9-94f6-3a4ec9b11e40",
+      "doc_id": "70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9",
+      "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+      "title": "asyncio-subprocess",
+      "locator": {
+        "chunk_id": "475a3b19-68e7-5ff9-94f6-3a4ec9b11e40",
+        "doc_id": "70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9",
+        "page": null,
+        "section": "",
+        "start": 1256,
+        "end": 2033,
+        "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+        "title": "asyncio-subprocess"
+      },
+      "text": "cho \"hello\"'))\n\nasyncio.run(main())\n\nSee also the `Examples`_ subsection.\n\nCreating Subprocesses\n=====================\n\n.. coroutinefunction:: create_subprocess_exec(program, *args, stdin=None, \\\nstdout=None, stderr=None, limit=None, **kwds)\n\nCreate a subprocess.\n\nThe *limit* argument sets the buffer limit for :class:`StreamReader`\nwrappers for :attr:`Process.stdout` and :attr:`Process.stderr`\n(if :const:`subprocess.PIPE` is passed to *stdout* and *stderr* arguments).\n\nReturn a :class:`~asyncio.subprocess.Process` instance.\n\nSee the documentation of :meth:`loop.subprocess_exec` for other\nparameters.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinefunction:: create_subprocess_shell(cmd, stdin=None, \\\nstdout=None, stderr=None, limit=None, **kwds)\n\n",
+      "text_sha256": "40b9028dce56977f9d0a50192235fd10be99823f5d4b7be6144df61c7fd3509c",
+      "grade": 0,
+      "quote": "",
+      "reason": "Human user explicitly supplied B=0 in response to the source-backed question. No additional rationale supplied.",
+      "reason_provenance": "Recorder description of the human response, not an invented reviewer rationale.",
+      "reviewer": "human user, current Codex conversation",
+      "provenance": "Direct human reply in this conversation on 2026-10-18 (Asia/Shanghai)",
+      "frozen_grade": "unjudged"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+...                                                                      [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Coverage XML written to file reports/coverage.xml
+Coverage JSON written to file reports/coverage.json
+3 passed in 97.32s (0:01:37)

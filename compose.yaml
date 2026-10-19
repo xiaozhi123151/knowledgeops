@@ -1,0 +1,54 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      KO_MODE: live
+      KO_DATA_DIR: /app/data
+      KO_QDRANT_URL: http://qdrant:6333
+      KO_REDIS_URL: redis://redis:6379/0
+    ports: ["127.0.0.1:8000:8000"]
+    volumes: ["app-data:/app/data", "model-cache:/home/knowledgeops/.cache/huggingface"]
+    depends_on:
+      qdrant: {condition: service_started}
+      redis: {condition: service_healthy}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready',timeout=5)"]
+      interval: 15s
+      timeout: 8s
+      retries: 5
+      start_period: 240s
+  worker:
+    build: .
+    command: ["python", "-m", "knowledgeops.worker"]
+    env_file: .env
+    environment:
+      KO_MODE: live
+      KO_DATA_DIR: /app/data
+      KO_QDRANT_URL: http://qdrant:6333
+      KO_REDIS_URL: redis://redis:6379/0
+    volumes: ["app-data:/app/data", "model-cache:/home/knowledgeops/.cache/huggingface"]
+    depends_on:
+      qdrant: {condition: service_started}
+      redis: {condition: service_healthy}
+    restart: unless-stopped
+  qdrant:
+    image: qdrant/qdrant:v1.17.0
+    volumes: ["qdrant-data:/qdrant/storage"]
+    restart: unless-stopped
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: ["redis-data:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  app-data:
+  model-cache:
+  qdrant-data:
+  redis-data:

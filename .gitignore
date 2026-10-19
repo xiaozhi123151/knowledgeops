@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.env
+data/
+reports/tmp*/
+*.egg-info/
+dist/
+reports/model-download*.log
+
+# Private deployment configuration and credentials
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+.coverage*
+credentials*.json
+secrets*.json
+secrets*.toml

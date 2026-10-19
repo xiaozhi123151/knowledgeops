@@ -1,0 +1,34 @@
+............F........................................................... [ 67%]
+..................................                                       [100%]
+================================== FAILURES ===================================
+______________ test_real_rag_tools_budgets_multiturn_and_sources ______________
+tests\integration\test_real_rag_live.py:30: in test_real_rag_tools_budgets_multiturn_and_sources
+    assert report["passed"], [
+E   AssertionError: [{'name': 'three_versions', 'status': 'succeeded', 'error': None, 'cited_sources': ['DeepSeek-V2', 'DeepSeek-V3', 'Dee...-3.13'], ...}, {'name': 'private_metric_unanswerable', 'status': 'succeeded', 'error': None, 'cited_sources': [], ...}]
+E   assert False
+---------------------------- Captured stdout call -----------------------------
+three_versions succeeded success= False tokens= 33924 seconds= 13.16
+multi_turn_missing_metric succeeded success= True tokens= 47671 seconds= 10.72
+python_lock_versions succeeded success= True tokens= 24347 seconds= 7.75
+private_metric_unanswerable succeeded success= True tokens= 47791 seconds= 10.29
+---------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:   1%|▏         | 5/391 [00:00<00:19, 19.44it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 1458.50it/s]
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]Loading weights:  16%|█▋        | 64/393 [00:00<00:00, 615.98it/s]Loading weights:  32%|███▏      | 126/393 [00:00<00:00, 569.73it/s]Loading weights:  47%|████▋     | 184/393 [00:00<00:00, 536.77it/s]Loading weights:  61%|██████    | 238/393 [00:00<00:00, 522.06it/s]Loading weights:  74%|███████▍  | 291/393 [00:00<00:00, 501.75it/s]Loading weights:  88%|████████▊ | 345/393 [00:00<00:00, 511.05it/s]Loading weights: 100%|██████████| 393/393 [00:00<00:00, 531.34it/s]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Coverage XML written to file reports/coverage.xml
+Coverage JSON written to file reports/coverage.json
+=========================== short test summary info ===========================
+FAILED tests/integration/test_real_rag_live.py::test_real_rag_tools_budgets_multiturn_and_sources
+1 failed, 105 passed in 281.32s (0:04:41)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\download\ʵϰ\knowledgeops\scripts\run_acceptance_tests.py", line 43, in <module>
+    main()
+  File "D:\download\ʵϰ\knowledgeops\scripts\run_acceptance_tests.py", line 39, in main
+    subprocess.run(command, cwd=ROOT, env=env, check=True)
+  File "D:\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['D:\\download\\ʵϰ\\knowledgeops\\data\\venv-cuda\\Scripts\\python.exe', '-m', 'pytest', '-q', '--tb=short', '--junitxml=reports/pytest.xml', '--cov=knowledgeops', '--cov-report=json:reports/coverage.json', '--cov-report=xml:reports/coverage.xml']' returned non-zero exit status 1.

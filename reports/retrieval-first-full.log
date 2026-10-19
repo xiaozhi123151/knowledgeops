@@ -1,0 +1,44 @@
+........ss.F............................................................ [ 80%]
+..................                                                       [100%]
+================================== FAILURES ===================================
+______________ test_real_rag_tools_budgets_multiturn_and_sources ______________
+
+    async def test_real_rag_tools_budgets_multiturn_and_sources():
+        if os.getenv("KO_RUN_RAG_TESTS") != "1":
+            pytest.skip("UNVERIFIED: set KO_RUN_RAG_TESTS=1 after real indexing; uses paid DeepSeek API")
+        env = {**dotenv_values(ROOT / ".env"), **os.environ}
+        if not (env.get("DEEPSEEK_API_KEY") or env.get("KO_DEEPSEEK_API_KEY")):
+            pytest.skip("UNVERIFIED: no DeepSeek API key")
+        manifest = ROOT / "data" / "models" / "manifest.json"
+        if not manifest.exists() or len(json.loads(manifest.read_text(encoding="utf-8"))) != 2:
+            pytest.skip("UNVERIFIED: complete real model weights not configured")
+        from scripts.real_retrieval import real_settings
+    
+        if not (real_settings().data_dir / "metadata.sqlite").exists():
+            pytest.skip("UNVERIFIED: import the public evidence corpus with scripts.index_real_corpus first")
+        from scripts.validate_real_rag import validate
+    
+        report = await validate()
+>       assert report["passed"], [
+            {k: r.get(k) for k in ["name", "status", "error", "cited_sources", "budget_consistent"]}
+            for r in report["cases"]
+        ]
+E       AssertionError: [{'name': 'three_versions', 'status': 'succeeded', 'error': None, 'cited_sources': ['DeepSeek-V2', 'DeepSeek-V3', 'Dee...ame': 'private_metric_unanswerable', 'status': 'failed', 'error': 'BUDGET_EXCEEDED: tokens', 'cited_sources': [], ...}]
+E       assert False
+
+tests\integration\test_real_rag_live.py:30: AssertionError
+---------------------------- Captured stdout call -----------------------------
+three_versions succeeded success= True tokens= 22963 seconds= 10.69
+multi_turn_missing_metric succeeded success= True tokens= 36016 seconds= 12.84
+python_lock_versions succeeded success= True tokens= 36376 seconds= 12.91
+private_metric_unanswerable failed success= False tokens= 68037 seconds= 8.39
+---------------------------- Captured stderr call -----------------------------
+\rLoading weights:   0%|          | 0/391 [00:00<?, ?it/s]\rLoading weights:   1%|\ufffd\ufffd         | 5/391 [00:00<00:13, 27.59it/s]\rLoading weights: 100%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd| 391/391 [00:00<00:00, 2008.18it/s]\r\n\rLoading weights:   0%|          | 0/393 [00:00<?, ?it/s]\rLoading weights:   2%|\ufffd\ufffd         | 9/393 [00:00<00:04, 83.70it/s]\rLoading weights:  20%|\ufffd\ufffd\ufffd\ufffd        | 79/393 [00:00<00:00, 421.06it/s]\rLoading weights:  35%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd      | 137/393 [00:00<00:00, 487.64it/s]\rLoading weights:  48%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd     | 189/393 [00:00<00:00, 491.16it/s]\rLoading weights:  63%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd   | 248/393 [00:00<00:00, 521.47it/s]\rLoading weights:  78%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd  | 307/393 [00:00<00:00, 544.15it/s]\rLoading weights:  93%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd| 364/393 [00:00<00:00, 543.48it/s]\rLoading weights: 100%|\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd| 393/393 [00:00<00:00, 506.86it/s]\r
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Coverage XML written to file reports/coverage.xml
+Coverage JSON written to file reports/coverage.json
+=========================== short test summary info ===========================
+FAILED tests/integration/test_real_rag_live.py::test_real_rag_tools_budgets_multiturn_and_sources
+1 failed, 87 passed, 2 skipped in 215.66s (0:03:35)

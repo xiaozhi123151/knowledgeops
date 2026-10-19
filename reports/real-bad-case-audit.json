@@ -1,0 +1,453 @@
+[
+  {
+    "id": "Q032",
+    "question": "哪个 3.11 并发结构帮助等待一组关联协程完成？",
+    "judged_sources": [
+      "python-3.11"
+    ],
+    "variants": {
+      "Dense": {
+        "metrics": {
+          "recall_at_5": 1.0,
+          "mrr_at_10": 0.5,
+          "ndcg_at_10": 0.6309297535714574
+        },
+        "top3": [
+          {
+            "source": "asyncio-task",
+            "id": "58f9332a-397f-5576-b148-df2e9fedc987",
+            "text": "s.\n\nprint(f\"finished at {time.strftime('%X')}\")\n\nThe timing and output should be the same as for the previous version.\n\n.. versionadded:: 3.11\n:class:`asyncio.TaskGroup`.\n\n.. _asyncio-awaitables:\n\nAwaitables\n==========\n\nWe say that an object is an **awaitable** object if it can be used\nin an :keyword:`await` expression. Many asyncio APIs are designed to\naccept awaitables.\n\nThere are three main types of *awaitable* objects:\n**coroutines**, **Tasks**, and **Futures**.\n\n.. rubric:: Coroutines\n\nPython coroutines are *awaitables* and therefore can be awaited from\nother coroutines::\n\nimport asyncio\n\nasync def nested():\nreturn 42\n\nasync def main():\n# Nothing happens if we just call \"nested()\".\n# A coroutine object is created but not awaited,\n# so it *won't run at all*.\nnested()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.11",
+            "id": "14349cd9-5fef-558c-843d-413ceabc9f9c",
+            "text": "12`.)\n\n.. _whatsnew311-improved-modules:\n\nImproved Modules\n================\n\n.. _whatsnew311-asyncio:\n\nasyncio\n-------\n\n* Added the :class:`~asyncio.TaskGroup` class,\nan :ref:`asynchronous context manager <async-context-managers>`\nholding a group of tasks that will wait for all of them upon exit.\nFor new code this is recommended over using\n:func:`~asyncio.create_task` and :func:`~asyncio.gather` directly.\n(Contributed by Yury Selivanov and others in :gh:`90908`.)\n\n* Added :func:`~asyncio.timeout`, an asynchronous context manager for\nsetting a timeout on asynchronous operations. For new code this is\nrecommended over using :func:`~asyncio.wait_for` directly.\n(Contributed by Andrew Svetlov in :gh:`90927`.)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": true
+          },
+          {
+            "source": "python-3.9",
+            "id": "9223e4f8-bcc0-5178-a108-3a986d81fadb",
+            "text": "ad of waiting for them to complete before\nshutting down the executor.\n(Contributed by Kyle Stanley in :issue:`39349`.)\n\nRemoved daemon threads from :class:`~concurrent.futures.ThreadPoolExecutor`\nand :class:`~concurrent.futures.ProcessPoolExecutor`. This improves\ncompatibility with subinterpreters and predictability in their shutdown\nprocesses. (Contributed by Kyle Stanley in :issue:`39812`.)\n\nWorkers in :class:`~concurrent.futures.ProcessPoolExecutor` are now spawned on\ndemand, only when there are no available idle workers to reuse. This optimizes\nstartup overhead and reduces the amount of lost CPU time to idle workers.\n(Contributed by Kyle Stanley in :issue:`39207`.)\n\ncurses\n------\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.9.0/Doc/whatsnew/3.9.rst",
+            "judged": false
+          }
+        ]
+      },
+      "BM25": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": [
+          {
+            "source": "python-3.11",
+            "id": "3e36d1df-a036-5feb-9b43-61ae4d61bb7a",
+            "text": "\n\n.. _whatsnew311-windows-launcher:\n\nWindows ``py.exe`` launcher improvements\n----------------------------------------\n\nThe copy of the :ref:`launcher` included with Python 3.11 has been significantly\nupdated. It now supports company/tag syntax as defined in :pep:`514` using the\n``-V:<company>/<tag>`` argument instead of the limited ``-<major>.<minor>``.\nThis allows launching distributions other than ``PythonCore``,\nthe one hosted on `python.org <https://python.org>`_.\n\nWhen using ``-V:`` selectors, either company or tag can be omitted, but all\ninstalls will be searched. For example, ``-V:OtherPython/`` will select the\n\"best\" tag registered for ``OtherPython``, while ``-V:3.11`` or ``-V:/3.11``\nwill select the \"best\" distribution with tag ``3.11``.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.13",
+            "id": "82704fbb-f9aa-51ae-aa1d-9235553674b1",
+            "text": "Is` provides more intuitive\ntype narrowing behavior, as an alternative to :data:`typing.TypeGuard`.\n\nPlatform support:\n\n* :pep:`730`: Apple's iOS is now an :ref:`officially supported platform\n<whatsnew313-platform-support>`, at :pep:`tier 3 <11#tier-3>`.\n* :pep:`738`: Android is now an :ref:`officially supported platform\n<whatsnew313-platform-support>`, at :pep:`tier 3 <11#tier-3>`.\n* ``wasm32-wasi`` is now supported as a :pep:`tier 2 <11#tier-2>` platform.\n* ``wasm32-emscripten`` is no longer an officially supported platform.\n\nImportant removals:\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.13",
+            "id": "3e3b3613-5f50-557a-b2f8-3a79d8d16c08",
+            "text": ":`~typing.TypedDict` types, deprecated in Python 3.11.\n(Contributed by Tomas Roun in :gh:`104786`.)\n\nunittest\n--------\n\n* Remove the following :mod:`unittest` functions, deprecated in Python 3.11:\n\n* :func:`!unittest.findTestCases`\n* :func:`!unittest.makeSuite`\n* :func:`!unittest.getTestCaseNames`\n\nUse :class:`~unittest.TestLoader` methods instead:\n\n* :meth:`~unittest.TestLoader.loadTestsFromModule`\n* :meth:`~unittest.TestLoader.loadTestsFromTestCase`\n* :meth:`~unittest.TestLoader.getTestCaseNames`\n\n(Contributed by Hugo van Kemenade in :gh:`104835`.)\n\n* Remove the untested and undocumented :meth:`!TestProgram.usageExit`\nmethod, deprecated in Python 3.11.\n(Contributed by Hugo van Kemenade in :gh:`104992`.)\n\nurllib\n------\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst",
+            "judged": false
+          }
+        ]
+      },
+      "Hybrid": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0.1111111111111111,
+          "ndcg_at_10": 0.3010299956639812
+        },
+        "top3": [
+          {
+            "source": "python-3.11",
+            "id": "e45b7c34-c840-5d70-8531-a8f5d244959b",
+            "text": "1] A similar optimization already existed since Python 3.8. 3.11\nspecializes for more forms and reduces some overhead.\n\n.. [2] A similar optimization already existed since Python 3.10.\n3.11 specializes for more forms. Furthermore, all attribute loads should\nbe sped up by :issue:`45947`.\n\n.. _whatsnew311-faster-cpython-misc:\n\nMisc\n----\n\n* Objects now require less memory due to lazily created object namespaces. Their\nnamespace dictionaries now also share keys more freely.\n(Contributed Mark Shannon in :issue:`45340` and :issue:`40116`.)\n\n* A more concise representation of exceptions in the interpreter reduced the\ntime required for catching an exception by about 10%.\n(Contributed by Irit Katriel in :issue:`45711`.)\n\n.. _whatsnew311-faster-cpython-faq:\n\nFAQ\n---\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-stream",
+            "id": "8bd6d6cf-9622-57d4-bc85-e34fdfbd1be6",
+            "text": ".. versionadded:: 3.11\n\n.. versionchanged:: 3.12\nAdded the *ssl_shutdown_timeout* parameter.\n\n.. method:: is_closing()\n\nReturn ``True`` if the stream is closed or in the process of\nbeing closed.\n\n.. versionadded:: 3.7\n\n.. coroutinemethod:: wait_closed()\n\nWait until the stream is closed.\n\nShould be called after :meth:`close` to wait until the underlying\nconnection is closed, ensuring that all data has been flushed\nbefore e.g. exiting the program.\n\n.. versionadded:: 3.7\n\nExamples\n========\n\n.. _asyncio-tcp-echo-client-streams:\n\nTCP echo client using streams\n-----------------------------\n\nTCP echo client using the :func:`asyncio.open_connection` function::\n\nimport asyncio\n\nasync def tcp_echo_client(message):\nreader, writer = await asyncio.open_connection(\n'127.0.0.1', 8888)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-stream.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.11",
+            "id": "c2a74f1d-c0f9-5bae-8ac6-1f1c24d74998",
+            "text": "n these cases.\n(Contributed by Ma Lin in :issue:`35859`.)\n\n.. _whatsnew311-build-changes:\n\nBuild Changes\n=============\n\n* CPython now has :pep:`11` :pep:`Tier 3 support <11#tier-3>` for\ncross compiling to the `WebAssembly <https://webassembly.org/>`_ platforms\n`Emscripten <https://emscripten.org/>`_\n(``wasm32-unknown-emscripten``, i.e. Python in the browser)\nand `WebAssembly System Interface (WASI) <https://wasi.dev/>`_\n(``wasm32-unknown-wasi``).\nThe effort is inspired by previous work like `Pyodide <https://pyodide.org/>`_.\nThese platforms provide a limited subset of POSIX APIs; Python standard\nlibraries features and modules related to networking, processes, threading,\nsignals, mmap, and users/groups are not available or don't work.\n(Emscripten contributed by Christian Heimes and Ethan Sm",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": false
+          }
+        ]
+      },
+      "Hybrid+Rerank": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": [
+          {
+            "source": "asyncio-task",
+            "id": "5d0175aa-2882-5429-b050-8a5e2cd004a3",
+            "text": "sk groups combine a task creation API with a convenient\nand reliable way to wait for all tasks in the group to finish.\n\n.. class:: TaskGroup()\n\nAn :ref:`asynchronous context manager <async-context-managers>`\nholding a group of tasks.\nTasks can be added to the group using :meth:`create_task`.\nAll tasks are awaited when the context manager exits.\n\n.. versionadded:: 3.11\n\n.. method:: create_task(coro, *, name=None, context=None)\n\nCreate a task in this task group.\nThe signature matches that of :func:`asyncio.create_task`.\n\nExample::\n\nasync def main():\nasync with asyncio.TaskGroup() as tg:\ntask1 = tg.create_task(some_coro(...))\ntask2 = tg.create_task(another_coro(...))\nprint(f\"Both tasks have completed now: {task1.result()}, {task2.result()}\")\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-task",
+            "id": "58f9332a-397f-5576-b148-df2e9fedc987",
+            "text": "s.\n\nprint(f\"finished at {time.strftime('%X')}\")\n\nThe timing and output should be the same as for the previous version.\n\n.. versionadded:: 3.11\n:class:`asyncio.TaskGroup`.\n\n.. _asyncio-awaitables:\n\nAwaitables\n==========\n\nWe say that an object is an **awaitable** object if it can be used\nin an :keyword:`await` expression. Many asyncio APIs are designed to\naccept awaitables.\n\nThere are three main types of *awaitable* objects:\n**coroutines**, **Tasks**, and **Futures**.\n\n.. rubric:: Coroutines\n\nPython coroutines are *awaitables* and therefore can be awaited from\nother coroutines::\n\nimport asyncio\n\nasync def nested():\nreturn 42\n\nasync def main():\n# Nothing happens if we just call \"nested()\".\n# A coroutine object is created but not awaited,\n# so it *won't run at all*.\nnested()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-sync",
+            "id": "ec81bcc9-b852-55ed-8763-b35493b3e0f5",
+            "text": "\n.. _asyncio_example_barrier:\n\nExample::\n\nasync def example_barrier():\n# barrier with 3 parties\nb = asyncio.Barrier(3)\n\n# create 2 new waiting tasks\nasyncio.create_task(b.wait())\nasyncio.create_task(b.wait())\n\nawait asyncio.sleep(0)\nprint(b)\n\n# The third .wait() call passes the barrier\nawait b.wait()\nprint(b)\nprint(\"barrier passed\")\n\nawait asyncio.sleep(0)\nprint(b)\n\nasyncio.run(example_barrier())\n\nResult of this example is::\n\n<asyncio.locks.Barrier object at 0x... [filling, waiters:2/3]>\n<asyncio.locks.Barrier object at 0x... [draining, waiters:0/3]>\nbarrier passed\n<asyncio.locks.Barrier object at 0x... [filling, waiters:0/3]>\n\n.. versionadded:: 3.11\n\n.. coroutinemethod:: wait()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "Q052",
+    "question": "如何配置异步队列使其容量不受正数上限限制？",
+    "judged_sources": [
+      "asyncio-queue"
+    ],
+    "variants": {
+      "Dense": {
+        "metrics": {
+          "recall_at_5": 1.0,
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 1.0
+        },
+        "top3": [
+          {
+            "source": "asyncio-queue",
+            "id": "b6011c2c-b173-5288-8916-7420e7460893",
+            "text": "See also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\nA first in, first out (FIFO) queue.\n\nIf *maxsize* is less than or equal to zero, the queue size is\ninfinite. If it is an integer greater than ``0``, then\n``await put()`` blocks when the queue reaches *maxsize*\nuntil an item is removed by :meth:`get`.\n\nUnlike the standard library threading :mod:`queue`, the size of\nthe queue is always known and can be returned by calling the\n:meth:`qsize` method.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\nThis class is :ref:`not thread safe <asyncio-multithreading>`.\n\n.. attribute:: maxsize\n\nNumber of items allowed in the queue.\n\n.. method:: empty()\n\nReturn ``True`` if the queue is empty, ``False`` otherwise.\n\n.. method:: full()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+            "judged": true
+          },
+          {
+            "source": "python-3.11",
+            "id": "933838b3-3bcd-5634-99a6-6f690e33444c",
+            "text": ".\n\nSee :pep:`657` for more details. (Contributed by Pablo Galindo, Batuhan Taskaya\nand Ammar Askar in :issue:`43950`.)\n\n.. note::\nThis feature requires storing column positions in :ref:`codeobjects`,\nwhich may result in a small increase in interpreter memory usage\nand disk usage for compiled Python files.\nTo avoid storing the extra information\nand deactivate printing the extra traceback information,\nuse the :option:`-X no_debug_ranges <-X>` command line option\nor the :envvar:`PYTHONNODEBUGRANGES` environment variable.\n\n.. _whatsnew311-pep654:\n\nPEP 654: Exception Groups and ``except*``\n-----------------------------------------\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.12",
+            "id": "879620c9-9c3c-591c-994a-796cdb34d090",
+            "text": "Code_NewWithPosOnlyArgs()`` (renamed from ``PyCode_NewWithPosOnlyArgs``)\n\nExtra storage for code objects (:pep:`523`):\n\n- ``PyUnstable_Eval_RequestCodeExtraIndex()`` (renamed from ``_PyEval_RequestCodeExtraIndex``)\n- ``PyUnstable_Code_GetExtra()`` (renamed from ``_PyCode_GetExtra``)\n- ``PyUnstable_Code_SetExtra()`` (renamed from ``_PyCode_SetExtra``)\n\nThe original names will continue to be available until the respective\nAPI changes.\n\n(Contributed by Petr Viktorin in :gh:`101101`.)\n\n* :pep:`697`: Add an API for extending types whose instance memory layout is\nopaque:\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/whatsnew/3.12.rst",
+            "judged": false
+          }
+        ]
+      },
+      "BM25": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": []
+      },
+      "Hybrid": {
+        "metrics": {
+          "recall_at_5": 1.0,
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 1.0
+        },
+        "top3": [
+          {
+            "source": "asyncio-queue",
+            "id": "b6011c2c-b173-5288-8916-7420e7460893",
+            "text": "See also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\nA first in, first out (FIFO) queue.\n\nIf *maxsize* is less than or equal to zero, the queue size is\ninfinite. If it is an integer greater than ``0``, then\n``await put()`` blocks when the queue reaches *maxsize*\nuntil an item is removed by :meth:`get`.\n\nUnlike the standard library threading :mod:`queue`, the size of\nthe queue is always known and can be returned by calling the\n:meth:`qsize` method.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\nThis class is :ref:`not thread safe <asyncio-multithreading>`.\n\n.. attribute:: maxsize\n\nNumber of items allowed in the queue.\n\n.. method:: empty()\n\nReturn ``True`` if the queue is empty, ``False`` otherwise.\n\n.. method:: full()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+            "judged": true
+          },
+          {
+            "source": "python-3.11",
+            "id": "933838b3-3bcd-5634-99a6-6f690e33444c",
+            "text": ".\n\nSee :pep:`657` for more details. (Contributed by Pablo Galindo, Batuhan Taskaya\nand Ammar Askar in :issue:`43950`.)\n\n.. note::\nThis feature requires storing column positions in :ref:`codeobjects`,\nwhich may result in a small increase in interpreter memory usage\nand disk usage for compiled Python files.\nTo avoid storing the extra information\nand deactivate printing the extra traceback information,\nuse the :option:`-X no_debug_ranges <-X>` command line option\nor the :envvar:`PYTHONNODEBUGRANGES` environment variable.\n\n.. _whatsnew311-pep654:\n\nPEP 654: Exception Groups and ``except*``\n-----------------------------------------\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.11.0/Doc/whatsnew/3.11.rst",
+            "judged": false
+          },
+          {
+            "source": "python-3.12",
+            "id": "879620c9-9c3c-591c-994a-796cdb34d090",
+            "text": "Code_NewWithPosOnlyArgs()`` (renamed from ``PyCode_NewWithPosOnlyArgs``)\n\nExtra storage for code objects (:pep:`523`):\n\n- ``PyUnstable_Eval_RequestCodeExtraIndex()`` (renamed from ``_PyEval_RequestCodeExtraIndex``)\n- ``PyUnstable_Code_GetExtra()`` (renamed from ``_PyCode_GetExtra``)\n- ``PyUnstable_Code_SetExtra()`` (renamed from ``_PyCode_SetExtra``)\n\nThe original names will continue to be available until the respective\nAPI changes.\n\n(Contributed by Petr Viktorin in :gh:`101101`.)\n\n* :pep:`697`: Add an API for extending types whose instance memory layout is\nopaque:\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/whatsnew/3.12.rst",
+            "judged": false
+          }
+        ]
+      },
+      "Hybrid+Rerank": {
+        "metrics": {
+          "recall_at_5": 1.0,
+          "mrr_at_10": 0.3333333333333333,
+          "ndcg_at_10": 0.5
+        },
+        "top3": [
+          {
+            "source": "asyncio-subprocess",
+            "id": "475a3b19-68e7-5ff9-94f6-3a4ec9b11e40",
+            "text": "cho \"hello\"'))\n\nasyncio.run(main())\n\nSee also the `Examples`_ subsection.\n\nCreating Subprocesses\n=====================\n\n.. coroutinefunction:: create_subprocess_exec(program, *args, stdin=None, \\\nstdout=None, stderr=None, limit=None, **kwds)\n\nCreate a subprocess.\n\nThe *limit* argument sets the buffer limit for :class:`StreamReader`\nwrappers for :attr:`Process.stdout` and :attr:`Process.stderr`\n(if :const:`subprocess.PIPE` is passed to *stdout* and *stderr* arguments).\n\nReturn a :class:`~asyncio.subprocess.Process` instance.\n\nSee the documentation of :meth:`loop.subprocess_exec` for other\nparameters.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinefunction:: create_subprocess_shell(cmd, stdin=None, \\\nstdout=None, stderr=None, limit=None, **kwds)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-subprocess",
+            "id": "c0abba11-5f21-52ea-9e91-9f3ab2e64310",
+            "text": "eter.\n\n.. coroutinefunction:: create_subprocess_shell(cmd, stdin=None, \\\nstdout=None, stderr=None, limit=None, **kwds)\n\nRun the *cmd* shell command.\n\nThe *limit* argument sets the buffer limit for :class:`StreamReader`\nwrappers for :attr:`Process.stdout` and :attr:`Process.stderr`\n(if :const:`subprocess.PIPE` is passed to *stdout* and *stderr* arguments).\n\nReturn a :class:`~asyncio.subprocess.Process` instance.\n\nSee the documentation of :meth:`loop.subprocess_shell` for other\nparameters.\n\n.. important::\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-queue",
+            "id": "b6011c2c-b173-5288-8916-7420e7460893",
+            "text": "See also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\nA first in, first out (FIFO) queue.\n\nIf *maxsize* is less than or equal to zero, the queue size is\ninfinite. If it is an integer greater than ``0``, then\n``await put()`` blocks when the queue reaches *maxsize*\nuntil an item is removed by :meth:`get`.\n\nUnlike the standard library threading :mod:`queue`, the size of\nthe queue is always known and can be returned by calling the\n:meth:`qsize` method.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\nThis class is :ref:`not thread safe <asyncio-multithreading>`.\n\n.. attribute:: maxsize\n\nNumber of items allowed in the queue.\n\n.. method:: empty()\n\nReturn ``True`` if the queue is empty, ``False`` otherwise.\n\n.. method:: full()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+            "judged": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "Q056",
+    "question": "异步队列不接收等待时长参数时，怎样限制阻塞时间？",
+    "judged_sources": [
+      "asyncio-queue"
+    ],
+    "variants": {
+      "Dense": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0.14285714285714285,
+          "ndcg_at_10": 0.3333333333333333
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "01961d59-0cf0-5541-a648-1772ae68dfb9",
+            "text": ": 3.10\nRemoved the *loop* parameter.\n\nBarrier\n=======\n\n.. class:: Barrier(parties)\n\nA barrier object. Not thread-safe.\n\nA barrier is a simple synchronization primitive that allows to block until\n*parties* number of tasks are waiting on it.\nTasks can wait on the :meth:`~Barrier.wait` method and would be blocked until\nthe specified number of tasks end up waiting on :meth:`~Barrier.wait`.\nAt that point all of the waiting tasks would unblock simultaneously.\n\n:keyword:`async with` can be used as an alternative to awaiting on\n:meth:`~Barrier.wait`.\n\nThe barrier can be reused any number of times.\n\n.. _asyncio_example_barrier:\n\nExample::\n\nasync def example_barrier():\n# barrier with 3 parties\nb = asyncio.Barrier(3)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-stream",
+            "id": "0d783bff-ea7d-5e1a-994c-12d4aa8ae5fa",
+            "text": "eballs_delay=None, interleave=None)\n\nEstablish a network connection and return a pair of\n``(reader, writer)`` objects.\n\nThe returned *reader* and *writer* objects are instances of\n:class:`StreamReader` and :class:`StreamWriter` classes.\n\n*limit* determines the buffer size limit used by the\nreturned :class:`StreamReader` instance. By default the *limit*\nis set to 64 KiB.\n\nThe rest of the arguments are passed directly to\n:meth:`loop.create_connection`.\n\n.. note::\n\nThe *sock* argument transfers ownership of the socket to the\n:class:`StreamWriter` created. To close the socket, call its\n:meth:`~asyncio.StreamWriter.close` method.\n\n.. versionchanged:: 3.7\nAdded the *ssl_handshake_timeout* parameter.\n\n.. versionadded:: 3.8\nAdded *happy_eyeballs_delay* and *interleave* parameters.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-stream.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-subprocess",
+            "id": "5eb90607-b84d-54b4-a9f4-ee06fc070fcd",
+            "text": "asyncio.subprocess.Process.wait` methods don't have a\n*timeout* parameter: use the :func:`~asyncio.wait_for` function;\n\n* the :meth:`Process.wait() <asyncio.subprocess.Process.wait>` method\nis asynchronous, whereas :meth:`subprocess.Popen.wait` method\nis implemented as a blocking busy loop;\n\n* the *universal_newlines* parameter is not supported.\n\nThis class is :ref:`not thread safe <asyncio-multithreading>`.\n\nSee also the :ref:`Subprocess and Threads <asyncio-subprocess-threads>`\nsection.\n\n.. coroutinemethod:: wait()\n\nWait for the child process to terminate.\n\nSet and return the :attr:`returncode` attribute.\n\n.. note::\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+            "judged": false
+          }
+        ]
+      },
+      "BM25": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": []
+      },
+      "Hybrid": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0.14285714285714285,
+          "ndcg_at_10": 0.3333333333333333
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "01961d59-0cf0-5541-a648-1772ae68dfb9",
+            "text": ": 3.10\nRemoved the *loop* parameter.\n\nBarrier\n=======\n\n.. class:: Barrier(parties)\n\nA barrier object. Not thread-safe.\n\nA barrier is a simple synchronization primitive that allows to block until\n*parties* number of tasks are waiting on it.\nTasks can wait on the :meth:`~Barrier.wait` method and would be blocked until\nthe specified number of tasks end up waiting on :meth:`~Barrier.wait`.\nAt that point all of the waiting tasks would unblock simultaneously.\n\n:keyword:`async with` can be used as an alternative to awaiting on\n:meth:`~Barrier.wait`.\n\nThe barrier can be reused any number of times.\n\n.. _asyncio_example_barrier:\n\nExample::\n\nasync def example_barrier():\n# barrier with 3 parties\nb = asyncio.Barrier(3)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-stream",
+            "id": "0d783bff-ea7d-5e1a-994c-12d4aa8ae5fa",
+            "text": "eballs_delay=None, interleave=None)\n\nEstablish a network connection and return a pair of\n``(reader, writer)`` objects.\n\nThe returned *reader* and *writer* objects are instances of\n:class:`StreamReader` and :class:`StreamWriter` classes.\n\n*limit* determines the buffer size limit used by the\nreturned :class:`StreamReader` instance. By default the *limit*\nis set to 64 KiB.\n\nThe rest of the arguments are passed directly to\n:meth:`loop.create_connection`.\n\n.. note::\n\nThe *sock* argument transfers ownership of the socket to the\n:class:`StreamWriter` created. To close the socket, call its\n:meth:`~asyncio.StreamWriter.close` method.\n\n.. versionchanged:: 3.7\nAdded the *ssl_handshake_timeout* parameter.\n\n.. versionadded:: 3.8\nAdded *happy_eyeballs_delay* and *interleave* parameters.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-stream.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-subprocess",
+            "id": "5eb90607-b84d-54b4-a9f4-ee06fc070fcd",
+            "text": "asyncio.subprocess.Process.wait` methods don't have a\n*timeout* parameter: use the :func:`~asyncio.wait_for` function;\n\n* the :meth:`Process.wait() <asyncio.subprocess.Process.wait>` method\nis asynchronous, whereas :meth:`subprocess.Popen.wait` method\nis implemented as a blocking busy loop;\n\n* the *universal_newlines* parameter is not supported.\n\nThis class is :ref:`not thread safe <asyncio-multithreading>`.\n\nSee also the :ref:`Subprocess and Threads <asyncio-subprocess-threads>`\nsection.\n\n.. coroutinemethod:: wait()\n\nWait for the child process to terminate.\n\nSet and return the :attr:`returncode` attribute.\n\n.. note::\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-subprocess.rst",
+            "judged": false
+          }
+        ]
+      },
+      "Hybrid+Rerank": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "01961d59-0cf0-5541-a648-1772ae68dfb9",
+            "text": ": 3.10\nRemoved the *loop* parameter.\n\nBarrier\n=======\n\n.. class:: Barrier(parties)\n\nA barrier object. Not thread-safe.\n\nA barrier is a simple synchronization primitive that allows to block until\n*parties* number of tasks are waiting on it.\nTasks can wait on the :meth:`~Barrier.wait` method and would be blocked until\nthe specified number of tasks end up waiting on :meth:`~Barrier.wait`.\nAt that point all of the waiting tasks would unblock simultaneously.\n\n:keyword:`async with` can be used as an alternative to awaiting on\n:meth:`~Barrier.wait`.\n\nThe barrier can be reused any number of times.\n\n.. _asyncio_example_barrier:\n\nExample::\n\nasync def example_barrier():\n# barrier with 3 parties\nb = asyncio.Barrier(3)\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-task",
+            "id": "6a764b2f-38ac-5ece-ab05-c954bd4c9606",
+            "text": " ``None`` or a float or int number of seconds\nto wait for. If *timeout* is ``None``, block until the future\ncompletes.\n\nIf a timeout occurs, it cancels the task and raises\n:exc:`TimeoutError`.\n\nTo avoid the task :meth:`cancellation <Task.cancel>`,\nwrap it in :func:`shield`.\n\nThe function will wait until the future is actually cancelled,\nso the total wait time may exceed the *timeout*. If an exception\nhappens during cancellation, it is propagated.\n\nIf the wait is cancelled, the future *aw* is also cancelled.\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. _asyncio_example_waitfor:\n\nExample::\n\nasync def eternity():\n# Sleep for one hour\nawait asyncio.sleep(3600)\nprint('yay!')\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-task",
+            "id": "7bff7b8f-aa9f-540c-919b-39a7741370c7",
+            "text": "if *aw* is not Future-like object\nand there is no running event loop.\n\nTimeouts\n========\n\n.. function:: timeout(delay)\n\nReturn an :ref:`asynchronous context manager <async-context-managers>`\nthat can be used to limit the amount of time spent waiting on\nsomething.\n\n*delay* can either be ``None``, or a float/int number of\nseconds to wait. If *delay* is ``None``, no time limit will\nbe applied; this can be useful if the delay is unknown when\nthe context manager is created.\n\nIn either case, the context manager can be rescheduled after\ncreation using :meth:`Timeout.reschedule`.\n\nExample::\n\nasync def main():\nasync with asyncio.timeout(10):\nawait long_running_task()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-task.rst",
+            "judged": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "Q081",
+    "question": "异步队列与异步锁分别提供怎样的取出顺序与等待公平性？",
+    "judged_sources": [
+      "asyncio-queue",
+      "asyncio-sync"
+    ],
+    "variants": {
+      "Dense": {
+        "metrics": {
+          "recall_at_5": 0.6666666666666666,
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.871078544000337
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "d34bf279-7e0f-5a44-8bba-2e7156a66f01",
+            "text": " state\nfinally:\nlock.release()\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinemethod:: acquire()\n\nAcquire the lock.\n\nThis method waits until the lock is *unlocked*, sets it to\n*locked* and returns ``True``.\n\nWhen more than one coroutine is blocked in :meth:`acquire`\nwaiting for the lock to be unlocked, only one coroutine\neventually proceeds.\n\nAcquiring a lock is *fair*: the coroutine that proceeds will be\nthe first coroutine that started waiting on the lock.\n\n.. method:: release()\n\nRelease the lock.\n\nWhen the lock is *locked*, reset it to *unlocked* and return.\n\nIf the lock is *unlocked*, a :exc:`RuntimeError` is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the lock is *locked*.\n\nEvent\n=====\n\n.. class:: Event()\n\nAn event object. Not thread-safe.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": true
+          },
+          {
+            "source": "asyncio-sync",
+            "id": "40ea89c3-94e2-51bd-b833-36c468137843",
+            "text": "on is an :keyword:`async with`\nstatement::\n\ncond = asyncio.Condition()\n\n# ... later\nasync with cond:\nawait cond.wait()\n\nwhich is equivalent to::\n\ncond = asyncio.Condition()\n\n# ... later\nawait cond.acquire()\ntry:\nawait cond.wait()\nfinally:\ncond.release()\n\n.. coroutinemethod:: acquire()\n\nAcquire the underlying lock.\n\nThis method waits until the underlying lock is *unlocked*,\nsets it to *locked* and returns ``True``.\n\n.. method:: notify(n=1)\n\nWake up at most *n* tasks (1 by default) waiting on this\ncondition. The method is no-op if no tasks are waiting.\n\nThe lock must be acquired before this method is called and\nreleased shortly after. If called with an *unlocked* lock\na :exc:`RuntimeError` error is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the underlying lock is acquired.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-queue",
+            "id": "91ff061c-b113-58e2-aae5-8518fd77b2a4",
+            "text": ".. currentmodule:: asyncio\n\n.. _asyncio-queues:\n\n======\nQueues\n======\n\n**Source code:** :source:`Lib/asyncio/queues.py`\n\n------------------------------------------------\n\nasyncio queues are designed to be similar to classes of the\n:mod:`queue` module. Although asyncio queues are not thread-safe,\nthey are designed to be used specifically in async/await code.\n\nNote that methods of asyncio queues don't have a *timeout* parameter;\nuse :func:`asyncio.wait_for` function to do queue operations with a\ntimeout.\n\nSee also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\nA first in, first out (FIFO) queue.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+            "judged": true
+          }
+        ]
+      },
+      "BM25": {
+        "metrics": {
+          "recall_at_5": 0.0,
+          "mrr_at_10": 0,
+          "ndcg_at_10": 0.0
+        },
+        "top3": []
+      },
+      "Hybrid": {
+        "metrics": {
+          "recall_at_5": 0.6666666666666666,
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.871078544000337
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "d34bf279-7e0f-5a44-8bba-2e7156a66f01",
+            "text": " state\nfinally:\nlock.release()\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinemethod:: acquire()\n\nAcquire the lock.\n\nThis method waits until the lock is *unlocked*, sets it to\n*locked* and returns ``True``.\n\nWhen more than one coroutine is blocked in :meth:`acquire`\nwaiting for the lock to be unlocked, only one coroutine\neventually proceeds.\n\nAcquiring a lock is *fair*: the coroutine that proceeds will be\nthe first coroutine that started waiting on the lock.\n\n.. method:: release()\n\nRelease the lock.\n\nWhen the lock is *locked*, reset it to *unlocked* and return.\n\nIf the lock is *unlocked*, a :exc:`RuntimeError` is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the lock is *locked*.\n\nEvent\n=====\n\n.. class:: Event()\n\nAn event object. Not thread-safe.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": true
+          },
+          {
+            "source": "asyncio-sync",
+            "id": "40ea89c3-94e2-51bd-b833-36c468137843",
+            "text": "on is an :keyword:`async with`\nstatement::\n\ncond = asyncio.Condition()\n\n# ... later\nasync with cond:\nawait cond.wait()\n\nwhich is equivalent to::\n\ncond = asyncio.Condition()\n\n# ... later\nawait cond.acquire()\ntry:\nawait cond.wait()\nfinally:\ncond.release()\n\n.. coroutinemethod:: acquire()\n\nAcquire the underlying lock.\n\nThis method waits until the underlying lock is *unlocked*,\nsets it to *locked* and returns ``True``.\n\n.. method:: notify(n=1)\n\nWake up at most *n* tasks (1 by default) waiting on this\ncondition. The method is no-op if no tasks are waiting.\n\nThe lock must be acquired before this method is called and\nreleased shortly after. If called with an *unlocked* lock\na :exc:`RuntimeError` error is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the underlying lock is acquired.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-queue",
+            "id": "91ff061c-b113-58e2-aae5-8518fd77b2a4",
+            "text": ".. currentmodule:: asyncio\n\n.. _asyncio-queues:\n\n======\nQueues\n======\n\n**Source code:** :source:`Lib/asyncio/queues.py`\n\n------------------------------------------------\n\nasyncio queues are designed to be similar to classes of the\n:mod:`queue` module. Although asyncio queues are not thread-safe,\nthey are designed to be used specifically in async/await code.\n\nNote that methods of asyncio queues don't have a *timeout* parameter;\nuse :func:`asyncio.wait_for` function to do queue operations with a\ntimeout.\n\nSee also the `Examples`_ section below.\n\nQueue\n=====\n\n.. class:: Queue(maxsize=0)\n\nA first in, first out (FIFO) queue.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-queue.rst",
+            "judged": true
+          }
+        ]
+      },
+      "Hybrid+Rerank": {
+        "metrics": {
+          "recall_at_5": 0.3333333333333333,
+          "mrr_at_10": 0.5,
+          "ndcg_at_10": 0.45250815297345076
+        },
+        "top3": [
+          {
+            "source": "asyncio-sync",
+            "id": "5e7299ec-1942-5dc9-9036-66fcbed1f763",
+            "text": "o.wait_for` function to perform\noperations with timeouts.\n\nasyncio has the following basic synchronization primitives:\n\n* :class:`Lock`\n* :class:`Event`\n* :class:`Condition`\n* :class:`Semaphore`\n* :class:`BoundedSemaphore`\n* :class:`Barrier`\n\n---------\n\nLock\n====\n\n.. class:: Lock()\n\nImplements a mutex lock for asyncio tasks. Not thread-safe.\n\nAn asyncio lock can be used to guarantee exclusive access to a\nshared resource.\n\nThe preferred way to use a Lock is an :keyword:`async with`\nstatement::\n\nlock = asyncio.Lock()\n\n# ... later\nasync with lock:\n# access shared state\n\nwhich is equivalent to::\n\nlock = asyncio.Lock()\n\n# ... later\nawait lock.acquire()\ntry:\n# access shared state\nfinally:\nlock.release()\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinemethod:: acquire()\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          },
+          {
+            "source": "asyncio-sync",
+            "id": "d34bf279-7e0f-5a44-8bba-2e7156a66f01",
+            "text": " state\nfinally:\nlock.release()\n\n.. versionchanged:: 3.10\nRemoved the *loop* parameter.\n\n.. coroutinemethod:: acquire()\n\nAcquire the lock.\n\nThis method waits until the lock is *unlocked*, sets it to\n*locked* and returns ``True``.\n\nWhen more than one coroutine is blocked in :meth:`acquire`\nwaiting for the lock to be unlocked, only one coroutine\neventually proceeds.\n\nAcquiring a lock is *fair*: the coroutine that proceeds will be\nthe first coroutine that started waiting on the lock.\n\n.. method:: release()\n\nRelease the lock.\n\nWhen the lock is *locked*, reset it to *unlocked* and return.\n\nIf the lock is *unlocked*, a :exc:`RuntimeError` is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the lock is *locked*.\n\nEvent\n=====\n\n.. class:: Event()\n\nAn event object. Not thread-safe.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": true
+          },
+          {
+            "source": "asyncio-sync",
+            "id": "40ea89c3-94e2-51bd-b833-36c468137843",
+            "text": "on is an :keyword:`async with`\nstatement::\n\ncond = asyncio.Condition()\n\n# ... later\nasync with cond:\nawait cond.wait()\n\nwhich is equivalent to::\n\ncond = asyncio.Condition()\n\n# ... later\nawait cond.acquire()\ntry:\nawait cond.wait()\nfinally:\ncond.release()\n\n.. coroutinemethod:: acquire()\n\nAcquire the underlying lock.\n\nThis method waits until the underlying lock is *unlocked*,\nsets it to *locked* and returns ``True``.\n\n.. method:: notify(n=1)\n\nWake up at most *n* tasks (1 by default) waiting on this\ncondition. The method is no-op if no tasks are waiting.\n\nThe lock must be acquired before this method is called and\nreleased shortly after. If called with an *unlocked* lock\na :exc:`RuntimeError` error is raised.\n\n.. method:: locked()\n\nReturn ``True`` if the underlying lock is acquired.\n\n",
+            "source_url": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/library/asyncio-sync.rst",
+            "judged": false
+          }
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,1 @@
+"""Extraction and idempotent indexing."""

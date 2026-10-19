@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-15T09:28:19.187912+00:00",
+    "mode": "real_indexing",
+    "source_sha256": "37bfcba306efcdc5e05a4dbface9f94d9607e60c6741fd2623ecea8f2555568e",
+    "git_commit": "69a2190a8a35ac4c3c7ebb3d6443f064f054abb6",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.19.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "Small owned fixture corpus; not representative production accuracy."
+  },
+  "question_sha256": "1f92b0dd071168e63fd39a01991f356cfe6234d889f4ea51ceb08a4c7e8c9c32",
+  "documents": [
+    {
+      "source_id": "python-3.8",
+      "doc_id": "3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96",
+      "chunk_count": 133,
+      "duplicate": false,
+      "elapsed_ms": 52371.06399999902
+    },
+    {
+      "source_id": "python-3.9",
+      "doc_id": "6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a",
+      "chunk_count": 104,
+      "duplicate": false,
+      "elapsed_ms": 39640.46650000091
+    },
+    {
+      "source_id": "python-3.10",
+      "doc_id": "a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578",
+      "chunk_count": 150,
+      "duplicate": false,
+      "elapsed_ms": 56440.700899998774
+    },
+    {
+      "source_id": "python-3.11",
+      "doc_id": "8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07",
+      "chunk_count": 170,
+      "duplicate": false,
+      "elapsed_ms": 68904.33910000138
+    },
+    {
+      "source_id": "python-3.12",
+      "doc_id": "8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009",
+      "chunk_count": 172,
+      "duplicate": false,
+      "elapsed_ms": 70903.88670000175
+    },
+    {
+      "source_id": "python-3.13",
+      "doc_id": "ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29",
+      "chunk_count": 182,
+      "duplicate": false,
+      "elapsed_ms": 73618.45040000117
+    },
+    {
+      "source_id": "asyncio-task",
+      "doc_id": "8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035",
+      "chunk_count": 67,
+      "duplicate": false,
+      "elapsed_ms": 23303.072199996677
+    },
+    {
+      "source_id": "asyncio-sync",
+      "doc_id": "8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c",
+      "chunk_count": 19,
+      "duplicate": false,
+      "elapsed_ms": 6644.827500000247
+    },
+    {
+      "source_id": "asyncio-queue",
+      "doc_id": "3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b",
+      "chunk_count": 8,
+      "duplicate": false,
+      "elapsed_ms": 3117.384999997739
+    },
+    {
+      "source_id": "asyncio-stream",
+      "doc_id": "00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4",
+      "chunk_count": 23,
+      "duplicate": false,
+      "elapsed_ms": 8645.883199998934
+    },
+    {
+      "source_id": "asyncio-subprocess",
+      "doc_id": "70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9",
+      "chunk_count": 18,
+      "duplicate": false,
+      "elapsed_ms": 6706.426299999293
+    },
+    {
+      "source_id": "concurrent.futures",
+      "doc_id": "be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2",
+      "chunk_count": 36,
+      "duplicate": false,
+      "elapsed_ms": 13160.048800000368
+    },
+    {
+      "source_id": "DeepSeek-V2",
+      "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+      "chunk_count": 48,
+      "duplicate": false,
+      "elapsed_ms": 21413.716099999874
+    },
+    {
+      "source_id": "DeepSeek-V3",
+      "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+      "chunk_count": 44,
+      "duplicate": false,
+      "elapsed_ms": 21205.925300000672
+    },
+    {
+      "source_id": "DeepSeek-V4.1-Flash",
+      "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+      "chunk_count": 27,
+      "duplicate": false,
+      "elapsed_ms": 14495.72850000186
+    }
+  ],
+  "embedding_load_ms": 9860.901000000013,
+  "import_ms": 480588.8148000013,
+  "qdrant_points": 1201
+}

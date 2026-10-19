@@ -1,0 +1,30 @@
+{"id": "q01", "query": "What does Redis AOF record?", "relevant_sources": ["redis_aof.md"]}
+{"id": "q02", "query": "Redis AOF 每秒刷盘可能丢失多少写入？", "relevant_sources": ["redis_aof.md"]}
+{"id": "q03", "query": "How does AOF rewrite compact the log?", "relevant_sources": ["redis_aof.md"]}
+{"id": "q04", "query": "What are Redis RDB snapshots?", "relevant_sources": ["redis_rdb.md"]}
+{"id": "q05", "query": "RDB 快照之后的数据有什么丢失风险？", "relevant_sources": ["redis_rdb.md"]}
+{"id": "q06", "query": "Why use RDB for compact backups?", "relevant_sources": ["redis_rdb.md"]}
+{"id": "q07", "query": "How does Qdrant store dense vectors?", "relevant_sources": ["qdrant.md"]}
+{"id": "q08", "query": "Qdrant 集合向量维度为什么必须匹配？", "relevant_sources": ["qdrant.md"]}
+{"id": "q09", "query": "What does cosine similarity measure in Qdrant?", "relevant_sources": ["qdrant.md"]}
+{"id": "q10", "query": "Which frequency signals does BM25 use?", "relevant_sources": ["bm25.md"]}
+{"id": "q11", "query": "BM25 中文关键词检索为什么需要分词？", "relevant_sources": ["bm25.md"]}
+{"id": "q12", "query": "Can BM25 inverse document frequency be negative?", "relevant_sources": ["bm25.md"]}
+{"id": "q13", "query": "What formula does RRF use?", "relevant_sources": ["rrf.md"]}
+{"id": "q14", "query": "RRF 倒数排名融合的 k 默认是多少？", "relevant_sources": ["rrf.md"]}
+{"id": "q15", "query": "Does RRF add raw dense and BM25 scores?", "relevant_sources": ["rrf.md"]}
+{"id": "q16", "query": "How does a CrossEncoder rerank candidates?", "relevant_sources": ["reranker.md"]}
+{"id": "q17", "query": "交叉编码器能召回候选集合之外的文档吗？", "relevant_sources": ["reranker.md"]}
+{"id": "q18", "query": "What inputs does CrossEncoder process jointly?", "relevant_sources": ["reranker.md"]}
+{"id": "q19", "query": "What state does LangGraph checkpoint?", "relevant_sources": ["langgraph.md"]}
+{"id": "q20", "query": "LangGraph 中断恢复为什么还需要幂等？", "relevant_sources": ["langgraph.md"]}
+{"id": "q21", "query": "Why does LangGraph recovery need a stable thread_id?", "relevant_sources": ["langgraph.md"]}
+{"id": "q22", "query": "Which budgets does Agent Harness enforce?", "relevant_sources": ["harness.md"]}
+{"id": "q23", "query": "执行护栏如何通过超时与有限重试避免无限循环？", "relevant_sources": ["harness.md"]}
+{"id": "q24", "query": "Why disable SDK implicit retries for Harness accounting?", "relevant_sources": ["harness.md"]}
+{"id": "q25", "query": "How do PDF page numbers and offsets support citations?", "relevant_sources": ["ingestion.md"]}
+{"id": "q26", "query": "扫描 PDF 为什么需要 OCR？", "relevant_sources": ["ingestion.md"]}
+{"id": "q27", "query": "How does pinned web import prevent DNS rebinding?", "relevant_sources": ["security.md"]}
+{"id": "q28", "query": "网页导入为什么阻断私网和云元数据地址？", "relevant_sources": ["security.md"]}
+{"id": "q29", "query": "Should a Langfuse tracing outage stop research?", "relevant_sources": ["observability.md"]}
+{"id": "q30", "query": "How are Recall@K MRR@10 P50 and P95 defined?", "relevant_sources": ["metrics.txt"]}

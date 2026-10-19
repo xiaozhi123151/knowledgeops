@@ -1,0 +1,2741 @@
+{
+  "metadata": {
+    "at_utc": "2026-10-18T15:46:40.487740+00:00",
+    "mode": "real_rag",
+    "source_sha256": "49692e7c2fdb24a6b60262032d1b21cb8fc46f2d2b5e0120dd75e6331aa3c742",
+    "git_commit": "95dc8e976db89bc06dfb35bfa84c7a8082e2cc4f",
+    "working_tree_dirty": true,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "dependencies": {
+      "fastapi": "0.143.1",
+      "pydantic": "2.14.1",
+      "langgraph": "1.2.15",
+      "qdrant-client": "1.17.1",
+      "redis": "6.4.0",
+      "rank-bm25": "0.2.2"
+    },
+    "quality_warning": "See the per-provider and corpus boundary in this artifact; small samples are not production accuracy."
+  },
+  "boundary": {
+    "llm": "deepseek-flash",
+    "embedding": "BAAI/bge-m3",
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "qdrant": "real HTTP server",
+    "redis": "real Streams service; direct runner invoked for measured tasks",
+    "agent": "actual LangGraph + durable Harness",
+    "fault_injection": "none",
+    "device": "cuda",
+    "precision": "float16",
+    "collection": "knowledgeops_v1_eb409db7cb27b4b86af05760",
+    "index_fingerprint": "eb409db7cb27b4b86af057603692c4d83e408de2f22e0df5c03c21212be6bf50",
+    "max_search_calls": 4
+  },
+  "question_sha256": "1f92b0dd071168e63fd39a01991f356cfe6234d889f4ea51ceb08a4c7e8c9c32",
+  "provider_load_ms": 40727.18829999212,
+  "cases": [
+    {
+      "name": "three_versions",
+      "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+      "session_id": "real-rag-5c6304725d1943b78d919c12fcd49233",
+      "question": "请分别检索 DeepSeek-V2、DeepSeek-V3、DeepSeek-V4.1-Flash 的官方文档，比较三个版本的总参数量、每 token 激活参数量、上下文长度。必须调用 knowledge_search（可按版本分别检索并把 top_k 设为 4 或更大），再调用 compare_evidence 对比实际检索证据，最后调用 build_report。findings 应覆盖三个版本，每个版本写一条，指标必须直接见于对应版本证据，不能用其他版本的值替代。quotes 使用最短指标原文，不要改写，尽量小于100字符。结论用中文。三个版本在同一台 A100 80GB、batch=1 下的准确吞吐量是多少？如果这些文档缺乏同条件实测依据，在 limitations 明确写“无法确认”，不要用论文相对提升率代替绝对吞吐量。\n输出约束：最多3条 findings，conclusion不超过200个汉字，limitations最多3条。每个版本优先只选1条同时包含参数量和上下文的证据；quotes键必须是相同的E-...引用ID，每个quote尽量短于80字符且是对应那一条证据text的连续子串。不要添加训练量、KV缓存等题外指标。不要为了缺失的吞吐量制造引用；明确无法确认即可。若有已知指标但吞吐量未知，insufficient_evidence必须为false，未知部分写入limitations。只有完全没有支持性发现时才设为true并清空findings/quotes。\n可检索来源目录（只含标识，不含答案）：[{\"source_id\": \"python-3.8\", \"doc_id\": \"3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96\"}, {\"source_id\": \"python-3.9\", \"doc_id\": \"6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a\"}, {\"source_id\": \"python-3.10\", \"doc_id\": \"a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578\"}, {\"source_id\": \"python-3.11\", \"doc_id\": \"8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07\"}, {\"source_id\": \"python-3.12\", \"doc_id\": \"8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009\"}, {\"source_id\": \"python-3.13\", \"doc_id\": \"ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29\"}, {\"source_id\": \"asyncio-task\", \"doc_id\": \"8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035\"}, {\"source_id\": \"asyncio-sync\", \"doc_id\": \"8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c\"}, {\"source_id\": \"asyncio-queue\", \"doc_id\": \"3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b\"}, {\"source_id\": \"asyncio-stream\", \"doc_id\": \"00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4\"}, {\"source_id\": \"asyncio-subprocess\", \"doc_id\": \"70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9\"}, {\"source_id\": \"concurrent.futures\", \"doc_id\": \"be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2\"}, {\"source_id\": \"DeepSeek-V2\", \"doc_id\": \"282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2\"}, {\"source_id\": \"DeepSeek-V3\", \"doc_id\": \"72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2\"}, {\"source_id\": \"DeepSeek-V4.1-Flash\", \"doc_id\": \"210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde\"}]",
+      "success": true,
+      "status": "succeeded",
+      "error": null,
+      "elapsed_ms": 10397.716300009051,
+      "budget": {
+        "estimated": false,
+        "llm_calls": 4,
+        "pending_estimates": 0,
+        "steps": 6,
+        "tokens": 23333,
+        "tool_calls": 5
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 600.0,
+        "token_budget": 100000
+      },
+      "budget_consistent": true,
+      "reported_tokens": 23333,
+      "llm_responses": [
+        {
+          "cached_tokens": 1536,
+          "completion_tokens": 346,
+          "elapsed_ms": 1631.8994000030216,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 2620,
+          "reasoning_content_present": false,
+          "response_id": "dcf6fb95-5b07-4d40-b2e3-7c1a7b386c3a",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 3,
+          "total_tokens": 2966,
+          "usage": 2966
+        },
+        {
+          "cached_tokens": 2944,
+          "completion_tokens": 136,
+          "elapsed_ms": 1122.0119000063278,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 8384,
+          "reasoning_content_present": false,
+          "response_id": "78b1feb9-bc82-49c7-9814-adec84cbe938",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 8520,
+          "usage": 8520
+        },
+        {
+          "cached_tokens": 1792,
+          "completion_tokens": 284,
+          "elapsed_ms": 1782.8306999872439,
+          "estimated": false,
+          "finish_reason": "stop",
+          "prompt_tokens": 1926,
+          "reasoning_content_present": false,
+          "response_id": "53efbb5b-75aa-4d3a-a8f9-22443ecdf397",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 0,
+          "total_tokens": 2210,
+          "usage": 2210
+        },
+        {
+          "cached_tokens": 8448,
+          "completion_tokens": 816,
+          "elapsed_ms": 3342.979800014291,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 8821,
+          "reasoning_content_present": false,
+          "response_id": "60866b89-fced-4a24-91a1-00380c51b75a",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 9637,
+          "usage": 9637
+        }
+      ],
+      "context_metrics": [
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 4076,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "48b7e1c2832d38e073e02f42df8427a1e0f313b6d8e2136ecba1b0e6a2cb1c93",
+          "reserved_tokens": 8708,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 18357,
+          "input_messages": 6,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "628a352d65dee363e98540ab0712bd77d61bfb89063e5e89774069759879314b",
+          "reserved_tokens": 14634,
+          "search_evidence_occurrences": 12,
+          "tool_messages": 3,
+          "unique_search_evidence_chunks": 12
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 5158,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "8e65558fe95872cf38d80b6414afd2c476d5d10beb548734461ed6da5452517c",
+          "reserved_tokens": 8232,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 19257,
+          "input_messages": 8,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "43c1ea3ee88ddec5564312319d4a077514738d0daf377002e43b4de776f01e65",
+          "reserved_tokens": 15186,
+          "search_evidence_occurrences": 12,
+          "tool_messages": 4,
+          "unique_search_evidence_chunks": 12
+        }
+      ],
+      "tool_metrics": [
+        {
+          "elapsed_ms": 1517.1733000024687,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 387.6458000158891,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 309.1264999820851,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 1808.891799999401,
+          "name": "compare_evidence"
+        },
+        {
+          "elapsed_ms": 16.504800005350262,
+          "name": "build_report"
+        }
+      ],
+      "calls": [
+        {
+          "id": "call_00_JiLQtzyKdctHIkRSUuzo3480",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V2 total parameters activated parameters context length",
+            "doc_ids": [
+              "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_ziFhR0UF1t1OPakR10mW8867",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V3 total parameters activated parameters context length",
+            "doc_ids": [
+              "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_02_Oe6PmvsIIM4BKCFkkch31407",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash total parameters activated parameters context length",
+            "doc_ids": [
+              "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_qFMgnpYXNB6CUOy3GjfW2533",
+          "name": "compare_evidence",
+          "arguments": {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+              "E-7f06f4c9-c846-5169-a725-054c600921c8"
+            ]
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_EoexSsiRQkUalxDsymyj3367",
+          "name": "build_report",
+          "arguments": {
+            "title": "DeepSeek-V2 / V3 / V4.1-Flash 参数量与上下文长度对比（A100 80GB 吞吐量无法确认）",
+            "conclusion": "官方文档显示：DeepSeek-V2 为 236B 总参数、每 token 激活 21B、上下文 128k；DeepSeek-V3 为 671B 总参数、每 token 激活 37B、上下文 128K；DeepSeek-V4.1-Flash 为 552B 骨干参数，预填充每 token 激活 8B、解码 16B，支持最长 100 万 token 上下文。三份文档均未给出 A100 80GB、batch=1 下的绝对吞吐量，故该指标无法确认。",
+            "findings": [
+              {
+                "text": "DeepSeek-V2：官方下载表列出 DeepSeek-V2 为 236B 总参数、21B 激活参数、128k 上下文长度（同一行同时给出三项指标）。",
+                "citation_ids": [
+                  "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+                ]
+              },
+              {
+                "text": "DeepSeek-V3：官方下载表列出 DeepSeek-V3 为 671B 总参数、37B 激活参数、128K 上下文长度（同一行同时给出三项指标）。",
+                "citation_ids": [
+                  "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+                ]
+              },
+              {
+                "text": "DeepSeek-V4.1-Flash：介绍段落称其为 552B 骨干参数的多模态 MoE 模型，支持最长一百万 token 上下文，预填充阶段每 token 激活 8B、解码阶段激活 16B（无单一表格行，指标取自同一段落）。",
+                "citation_ids": [
+                  "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7"
+                ]
+              }
+            ],
+            "disagreements": [],
+            "limitations": [
+              "三份文档均未提供 A100 80GB、batch=1 条件下的绝对吞吐量实测数据，该指标无法确认；也未用论文相对提升率替代。",
+              "DeepSeek-V4.1-Flash 的激活参数量按阶段区分（预填充 8B / 解码 16B），与 V2、V3 的单一“每 token 激活”口径不同，不宜直接等同比较。",
+              "V4.1-Flash 文档使用“骨干参数（backbone params）”表述，与 V2/V3 的“总参数”口径可能不完全一致。"
+            ],
+            "quotes": {
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9": "| DeepSeek-V2 | 236B | 21B | 128k |",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4": "| DeepSeek-V3 | 671B | 37B | 128K |",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7": "552B backbone parameters and support for contexts of up to one million tokens"
+            },
+            "insufficient_evidence": false
+          },
+          "valid": true
+        }
+      ],
+      "invalid_calls": [],
+      "citations": 3,
+      "valid_citations": 3,
+      "report": {
+        "citations": [
+          {
+            "chunk_id": "7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "citation_id": "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+            "page": null,
+            "quote": "| DeepSeek-V3 | 671B | 37B | 128K |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md"
+          },
+          {
+            "chunk_id": "871d7088-b673-56b3-b55a-11fa06391bf9",
+            "citation_id": "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+            "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+            "page": null,
+            "quote": "| DeepSeek-V2 | 236B | 21B | 128k |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md"
+          },
+          {
+            "chunk_id": "a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "citation_id": "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+            "page": null,
+            "quote": "552B backbone parameters and support for contexts of up to one million tokens",
+            "section": "Introduction",
+            "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md"
+          }
+        ],
+        "conclusion": "官方文档显示：DeepSeek-V2 为 236B 总参数、每 token 激活 21B、上下文 128k；DeepSeek-V3 为 671B 总参数、每 token 激活 37B、上下文 128K；DeepSeek-V4.1-Flash 为 552B 骨干参数，预填充每 token 激活 8B、解码 16B，支持最长 100 万 token 上下文。三份文档均未给出 A100 80GB、batch=1 下的绝对吞吐量，故该指标无法确认。",
+        "disagreements": [],
+        "findings": [
+          {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+            ],
+            "text": "DeepSeek-V2：官方下载表列出 DeepSeek-V2 为 236B 总参数、21B 激活参数、128k 上下文长度（同一行同时给出三项指标）。"
+          },
+          {
+            "citation_ids": [
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+            ],
+            "text": "DeepSeek-V3：官方下载表列出 DeepSeek-V3 为 671B 总参数、37B 激活参数、128K 上下文长度（同一行同时给出三项指标）。"
+          },
+          {
+            "citation_ids": [
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7"
+            ],
+            "text": "DeepSeek-V4.1-Flash：介绍段落称其为 552B 骨干参数的多模态 MoE 模型，支持最长一百万 token 上下文，预填充阶段每 token 激活 8B、解码阶段激活 16B（无单一表格行，指标取自同一段落）。"
+          }
+        ],
+        "insufficient_evidence": false,
+        "limitations": [
+          "三份文档均未提供 A100 80GB、batch=1 条件下的绝对吞吐量实测数据，该指标无法确认；也未用论文相对提升率替代。",
+          "DeepSeek-V4.1-Flash 的激活参数量按阶段区分（预填充 8B / 解码 16B），与 V2、V3 的单一“每 token 激活”口径不同，不宜直接等同比较。",
+          "V4.1-Flash 文档使用“骨干参数（backbone params）”表述，与 V2/V3 的“总参数”口径可能不完全一致。"
+        ],
+        "title": "DeepSeek-V2 / V3 / V4.1-Flash 参数量与上下文长度对比（A100 80GB 吞吐量无法确认）"
+      },
+      "retrieved_sources": [
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "cited_sources": [
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "history_messages_before_current_question": 0,
+      "duplicate_tool_arguments": 0,
+      "tool_cache_hits": 0,
+      "search_calls": 3,
+      "overretrieval_diagnostic": false,
+      "abstained": false,
+      "unknown_acknowledged": true,
+      "events": [
+        {
+          "seq": 606,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338400.5043628,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 607,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338400.5131876,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 608,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338400.536858,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 609,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338400.549222,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 4076,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "48b7e1c2832d38e073e02f42df8427a1e0f313b6d8e2136ecba1b0e6a2cb1c93",
+            "reserved_tokens": 8708,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 610,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338402.1978607,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1536,
+            "completion_tokens": 346,
+            "elapsed_ms": 1631.8994000030216,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 2620,
+            "reasoning_content_present": false,
+            "response_id": "dcf6fb95-5b07-4d40-b2e3-7c1a7b386c3a",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 3,
+            "total_tokens": 2966,
+            "usage": 2966
+          }
+        },
+        {
+          "seq": 611,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338402.209373,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 612,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338402.2192438,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 613,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338403.7407134,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 1517.1733000024687,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 614,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338403.7495627,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 615,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338404.140677,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 387.6458000158891,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 616,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338404.1493568,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 617,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338404.4624336,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 309.1264999820851,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 618,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338404.4743495,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 619,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338404.4878073,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 18357,
+            "input_messages": 6,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "628a352d65dee363e98540ab0712bd77d61bfb89063e5e89774069759879314b",
+            "reserved_tokens": 14634,
+            "search_evidence_occurrences": 12,
+            "tool_messages": 3,
+            "unique_search_evidence_chunks": 12
+          }
+        },
+        {
+          "seq": 620,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338405.6238794,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 2944,
+            "completion_tokens": 136,
+            "elapsed_ms": 1122.0119000063278,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 8384,
+            "reasoning_content_present": false,
+            "response_id": "78b1feb9-bc82-49c7-9814-adec84cbe938",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 8520,
+            "usage": 8520
+          }
+        },
+        {
+          "seq": 621,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338405.6366608,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 622,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338405.6456892,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 623,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338405.6557524,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 5158,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "8e65558fe95872cf38d80b6414afd2c476d5d10beb548734461ed6da5452517c",
+            "reserved_tokens": 8232,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 624,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338407.451225,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1792,
+            "completion_tokens": 284,
+            "elapsed_ms": 1782.8306999872439,
+            "estimated": false,
+            "finish_reason": "stop",
+            "prompt_tokens": 1926,
+            "reasoning_content_present": false,
+            "response_id": "53efbb5b-75aa-4d3a-a8f9-22443ecdf397",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 0,
+            "total_tokens": 2210,
+            "usage": 2210
+          }
+        },
+        {
+          "seq": 625,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338407.458427,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 1808.891799999401,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 626,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338407.468971,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 627,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338407.483894,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 19257,
+            "input_messages": 8,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "43c1ea3ee88ddec5564312319d4a077514738d0daf377002e43b4de776f01e65",
+            "reserved_tokens": 15186,
+            "search_evidence_occurrences": 12,
+            "tool_messages": 4,
+            "unique_search_evidence_chunks": 12
+          }
+        },
+        {
+          "seq": 628,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338410.8415556,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 8448,
+            "completion_tokens": 816,
+            "elapsed_ms": 3342.979800014291,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 8821,
+            "reasoning_content_present": false,
+            "response_id": "60866b89-fced-4a24-91a1-00380c51b75a",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 9637,
+            "usage": 9637
+          }
+        },
+        {
+          "seq": 629,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338410.8523383,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 630,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338410.8612232,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 631,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338410.882678,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 16.504800005350262,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 632,
+          "task_id": "0b7f4caa03434a5d9ee3aa3bebe852a3",
+          "at": 1792338410.8956296,
+          "type": "succeeded",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "name": "multi_turn_missing_metric",
+      "task_id": "dd088d84181249fc89b4ab21b32310b1",
+      "session_id": "real-rag-5c6304725d1943b78d919c12fcd49233",
+      "question": "继续核查：仅依据知识库中的官方版本文档，能否确认 DeepSeek-V2、V3、V4.1-Flash 在同一台 A100 80GB batch=1 下的绝对 tokens/s 排名？请实际检索并比较证据，无法确认时明确说无法确认，不能从参数量推算性能。如果有可确认的上下文长度或参数指标，可以列出并引用，以区分已知和未知。引用用最短原文。\n输出约束：最多3条 findings，conclusion不超过200个汉字，limitations最多3条。每个版本优先只选1条同时包含参数量和上下文的证据；quotes键必须是相同的E-...引用ID，每个quote尽量短于80字符且是对应那一条证据text的连续子串。不要添加训练量、KV缓存等题外指标。不要为了缺失的吞吐量制造引用；明确无法确认即可。若有已知指标但吞吐量未知，insufficient_evidence必须为false，未知部分写入limitations。只有完全没有支持性发现时才设为true并清空findings/quotes。\n可检索来源目录（只含标识，不含答案）：[{\"source_id\": \"python-3.8\", \"doc_id\": \"3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96\"}, {\"source_id\": \"python-3.9\", \"doc_id\": \"6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a\"}, {\"source_id\": \"python-3.10\", \"doc_id\": \"a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578\"}, {\"source_id\": \"python-3.11\", \"doc_id\": \"8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07\"}, {\"source_id\": \"python-3.12\", \"doc_id\": \"8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009\"}, {\"source_id\": \"python-3.13\", \"doc_id\": \"ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29\"}, {\"source_id\": \"asyncio-task\", \"doc_id\": \"8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035\"}, {\"source_id\": \"asyncio-sync\", \"doc_id\": \"8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c\"}, {\"source_id\": \"asyncio-queue\", \"doc_id\": \"3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b\"}, {\"source_id\": \"asyncio-stream\", \"doc_id\": \"00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4\"}, {\"source_id\": \"asyncio-subprocess\", \"doc_id\": \"70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9\"}, {\"source_id\": \"concurrent.futures\", \"doc_id\": \"be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2\"}, {\"source_id\": \"DeepSeek-V2\", \"doc_id\": \"282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2\"}, {\"source_id\": \"DeepSeek-V3\", \"doc_id\": \"72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2\"}, {\"source_id\": \"DeepSeek-V4.1-Flash\", \"doc_id\": \"210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde\"}]",
+      "success": true,
+      "status": "succeeded",
+      "error": null,
+      "elapsed_ms": 10095.963500003563,
+      "budget": {
+        "estimated": false,
+        "llm_calls": 4,
+        "pending_estimates": 0,
+        "steps": 6,
+        "tokens": 36048,
+        "tool_calls": 6
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 600.0,
+        "token_budget": 100000
+      },
+      "budget_consistent": true,
+      "reported_tokens": 36048,
+      "llm_responses": [
+        {
+          "cached_tokens": 2560,
+          "completion_tokens": 400,
+          "elapsed_ms": 1465.3166999923997,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 4726,
+          "reasoning_content_present": false,
+          "response_id": "018bd765-8c3f-42bc-9d23-a9aa70e57d73",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 4,
+          "total_tokens": 5126,
+          "usage": 5126
+        },
+        {
+          "cached_tokens": 768,
+          "completion_tokens": 193,
+          "elapsed_ms": 1442.5591999897733,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 12999,
+          "reasoning_content_present": false,
+          "response_id": "f5c675af-8c24-47c4-91f2-72ae364d53cb",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 13192,
+          "usage": 13192
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 437,
+          "elapsed_ms": 2179.7000000078697,
+          "estimated": false,
+          "finish_reason": "stop",
+          "prompt_tokens": 2388,
+          "reasoning_content_present": false,
+          "response_id": "ed0cd120-9778-4069-8ae9-8cdc4a0adee5",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 0,
+          "total_tokens": 2825,
+          "usage": 2825
+        },
+        {
+          "cached_tokens": 1152,
+          "completion_tokens": 841,
+          "elapsed_ms": 3107.4428999854717,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 14064,
+          "reasoning_content_present": false,
+          "response_id": "f1d4de86-d937-405a-a4f9-b85939514e5e",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 14905,
+          "usage": 14905
+        }
+      ],
+      "context_metrics": [
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 8396,
+          "input_messages": 4,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "b2c23121aa3f569a74f0b798014da3c1e061032a445d43a2058d3098434e7ca2",
+          "reserved_tokens": 11159,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 31025,
+          "input_messages": 10,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "8e3ba40dd472766fdd0886641be5f6f6479ef4bc0ddd4524158a897f988f3c68",
+          "reserved_tokens": 19906,
+          "search_evidence_occurrences": 18,
+          "tool_messages": 4,
+          "unique_search_evidence_chunks": 18
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 7022,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "4002eda52d2bb8a181af37a94b4fb201e8b1480434b36c1fdf1d59a9b4c3d0ef",
+          "reserved_tokens": 8686,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 32351,
+          "input_messages": 12,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "d159b872f77d762202b307ca8635ee0e758c06dff51f0d4fc548b85e5cc5b9d7",
+          "reserved_tokens": 20989,
+          "search_evidence_occurrences": 18,
+          "tool_messages": 5,
+          "unique_search_evidence_chunks": 18
+        }
+      ],
+      "tool_metrics": [
+        {
+          "elapsed_ms": 331.5718999947421,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 398.53159998892806,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 320.09749999269843,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 514.4748000020627,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 2206.2849999929313,
+          "name": "compare_evidence"
+        },
+        {
+          "elapsed_ms": 24.008800013689324,
+          "name": "build_report"
+        }
+      ],
+      "calls": [
+        {
+          "id": "call_00_l6SeVeqNqM2LKA7A0wfG0028",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V2 total parameters activated parameters context length",
+            "doc_ids": [
+              "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_JRaDJ1aiTfzLdLSmzzq53739",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V3 total parameters activated parameters context length",
+            "doc_ids": [
+              "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_02_S2WXPskPcgZeFIPi4W8w1057",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "DeepSeek-V4.1-Flash parameters context length",
+            "doc_ids": [
+              "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde"
+            ],
+            "top_k": 4
+          },
+          "valid": true
+        },
+        {
+          "id": "call_03_JHzRPXCcliNHE5o8BSEk3727",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "A100 80GB batch=1 throughput tokens per second benchmark",
+            "top_k": 6
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_uEsOoFNQvfF5NyVMQN6O2224",
+          "name": "compare_evidence",
+          "arguments": {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+              "E-e3df752b-bc2c-5c51-bbce-93e9ab0fd7fc",
+              "E-b64fd0a6-f0b7-5313-842d-734527a3832d",
+              "E-2d3517fd-b234-553d-82e3-eb70e9fcaa7d"
+            ]
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_dwCloUJ0w7x7iBhoo6dZ4348",
+          "name": "build_report",
+          "arguments": {
+            "title": "A100 80GB batch=1 绝对吞吐量排名无法确认；仅参数与上下文可确认",
+            "conclusion": "无法确认。三份官方文档均未给出同一台 A100 80GB、batch=1 下的绝对 tokens/s，故不能对 V2、V3、V4.1-Flash 的吞吐量排名作出判断，也不能由参数量推算性能。可确认的仅为参数与上下文：V2 为 236B 总参数、21B 激活、128k；V3 为 671B 总参数、37B 激活、128K；V4.1-Flash 为 552B 骨干参数、预填充 8B/解码 16B 激活、最长 100 万 token。",
+            "findings": [
+              {
+                "text": "DeepSeek-V2：官方下载表同一行给出 236B 总参数、21B 激活参数、128k 上下文长度；文档未提供 A100 80GB batch=1 的绝对吞吐量。",
+                "citation_ids": [
+                  "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+                ]
+              },
+              {
+                "text": "DeepSeek-V3：官方下载表同一行给出 671B 总参数、37B 激活参数、128K 上下文长度；文档未提供 A100 80GB batch=1 的绝对吞吐量。",
+                "citation_ids": [
+                  "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+                ]
+              },
+              {
+                "text": "DeepSeek-V4.1-Flash：介绍段落称其为 552B 骨干参数的多模态 MoE 模型，支持最长一百万 token 上下文，预填充每 token 激活 8B、解码 16B；文档未提供 A100 80GB batch=1 的绝对吞吐量。",
+                "citation_ids": [
+                  "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7"
+                ]
+              }
+            ],
+            "disagreements": [],
+            "limitations": [
+              "三份文档均无 A100 80GB、batch=1 条件下的绝对 tokens/s 实测数据，吞吐量排名无法确认；未用论文相对提升率或参数量推算替代。",
+              "V4.1-Flash 的激活参数按阶段区分（预填充 8B / 解码 16B），且使用“骨干参数”表述，与 V2/V3 的单一“每 token 激活/总参数”口径不完全一致，不宜直接等同比较。",
+              "检索到的 V2 文档仅提及相对提升倍数（如最大生成吞吐量提升 5.76 倍），属相对指标，不能作为绝对吞吐量依据。"
+            ],
+            "quotes": {
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9": "| DeepSeek-V2 | 236B | 21B | 128k |",
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4": "| DeepSeek-V3 | 671B | 37B | 128K |",
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7": "552B backbone parameters and support for contexts of up to one million tokens"
+            },
+            "insufficient_evidence": false
+          },
+          "valid": true
+        }
+      ],
+      "invalid_calls": [],
+      "citations": 3,
+      "valid_citations": 3,
+      "report": {
+        "citations": [
+          {
+            "chunk_id": "7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "citation_id": "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4",
+            "doc_id": "72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2",
+            "page": null,
+            "quote": "| DeepSeek-V3 | 671B | 37B | 128K |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/README.md"
+          },
+          {
+            "chunk_id": "871d7088-b673-56b3-b55a-11fa06391bf9",
+            "citation_id": "E-871d7088-b673-56b3-b55a-11fa06391bf9",
+            "doc_id": "282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2",
+            "page": null,
+            "quote": "| DeepSeek-V2 | 236B | 21B | 128k |",
+            "section": "3. Model Downloads",
+            "source": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/README.md"
+          },
+          {
+            "chunk_id": "a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "citation_id": "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7",
+            "doc_id": "210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde",
+            "page": null,
+            "quote": "552B backbone parameters and support for contexts of up to one million tokens",
+            "section": "Introduction",
+            "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/README.md"
+          }
+        ],
+        "conclusion": "无法确认。三份官方文档均未给出同一台 A100 80GB、batch=1 下的绝对 tokens/s，故不能对 V2、V3、V4.1-Flash 的吞吐量排名作出判断，也不能由参数量推算性能。可确认的仅为参数与上下文：V2 为 236B 总参数、21B 激活、128k；V3 为 671B 总参数、37B 激活、128K；V4.1-Flash 为 552B 骨干参数、预填充 8B/解码 16B 激活、最长 100 万 token。",
+        "disagreements": [],
+        "findings": [
+          {
+            "citation_ids": [
+              "E-871d7088-b673-56b3-b55a-11fa06391bf9"
+            ],
+            "text": "DeepSeek-V2：官方下载表同一行给出 236B 总参数、21B 激活参数、128k 上下文长度；文档未提供 A100 80GB batch=1 的绝对吞吐量。"
+          },
+          {
+            "citation_ids": [
+              "E-7f8f8bc4-c83b-538c-96da-ac9868313eb4"
+            ],
+            "text": "DeepSeek-V3：官方下载表同一行给出 671B 总参数、37B 激活参数、128K 上下文长度；文档未提供 A100 80GB batch=1 的绝对吞吐量。"
+          },
+          {
+            "citation_ids": [
+              "E-a2c871b9-bdcf-5e59-afa1-8660da4c44a7"
+            ],
+            "text": "DeepSeek-V4.1-Flash：介绍段落称其为 552B 骨干参数的多模态 MoE 模型，支持最长一百万 token 上下文，预填充每 token 激活 8B、解码 16B；文档未提供 A100 80GB batch=1 的绝对吞吐量。"
+          }
+        ],
+        "insufficient_evidence": false,
+        "limitations": [
+          "三份文档均无 A100 80GB、batch=1 条件下的绝对 tokens/s 实测数据，吞吐量排名无法确认；未用论文相对提升率或参数量推算替代。",
+          "V4.1-Flash 的激活参数按阶段区分（预填充 8B / 解码 16B），且使用“骨干参数”表述，与 V2/V3 的单一“每 token 激活/总参数”口径不完全一致，不宜直接等同比较。",
+          "检索到的 V2 文档仅提及相对提升倍数（如最大生成吞吐量提升 5.76 倍），属相对指标，不能作为绝对吞吐量依据。"
+        ],
+        "title": "A100 80GB batch=1 绝对吞吐量排名无法确认；仅参数与上下文可确认"
+      },
+      "retrieved_sources": [
+        "python-3.9",
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "cited_sources": [
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "history_messages_before_current_question": 2,
+      "duplicate_tool_arguments": 0,
+      "tool_cache_hits": 0,
+      "search_calls": 4,
+      "overretrieval_diagnostic": false,
+      "abstained": false,
+      "unknown_acknowledged": true,
+      "events": [
+        {
+          "seq": 633,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338410.9174318,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 634,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338410.9260209,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 635,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338410.948136,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 636,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338410.9613168,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 8396,
+            "input_messages": 4,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "b2c23121aa3f569a74f0b798014da3c1e061032a445d43a2058d3098434e7ca2",
+            "reserved_tokens": 11159,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 637,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338412.4413059,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 2560,
+            "completion_tokens": 400,
+            "elapsed_ms": 1465.3166999923997,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 4726,
+            "reasoning_content_present": false,
+            "response_id": "018bd765-8c3f-42bc-9d23-a9aa70e57d73",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 4,
+            "total_tokens": 5126,
+            "usage": 5126
+          }
+        },
+        {
+          "seq": 638,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338412.4538245,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 639,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338412.4634695,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 640,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338412.8000073,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 331.5718999947421,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 641,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338412.8088746,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 642,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338413.2110868,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 398.53159998892806,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 643,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338413.221081,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 644,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338413.5450826,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 320.09749999269843,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 645,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338413.5547972,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 646,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338414.075081,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 514.4748000020627,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 647,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338414.0872002,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 648,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338414.1022253,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 31025,
+            "input_messages": 10,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "8e3ba40dd472766fdd0886641be5f6f6479ef4bc0ddd4524158a897f988f3c68",
+            "reserved_tokens": 19906,
+            "search_evidence_occurrences": 18,
+            "tool_messages": 4,
+            "unique_search_evidence_chunks": 18
+          }
+        },
+        {
+          "seq": 649,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338415.5600243,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 768,
+            "completion_tokens": 193,
+            "elapsed_ms": 1442.5591999897733,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 12999,
+            "reasoning_content_present": false,
+            "response_id": "f5c675af-8c24-47c4-91f2-72ae364d53cb",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 13192,
+            "usage": 13192
+          }
+        },
+        {
+          "seq": 650,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338415.5732813,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 651,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338415.581074,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 652,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338415.590262,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 7022,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "4002eda52d2bb8a181af37a94b4fb201e8b1480434b36c1fdf1d59a9b4c3d0ef",
+            "reserved_tokens": 8686,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 653,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338417.7826948,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 0,
+            "completion_tokens": 437,
+            "elapsed_ms": 2179.7000000078697,
+            "estimated": false,
+            "finish_reason": "stop",
+            "prompt_tokens": 2388,
+            "reasoning_content_present": false,
+            "response_id": "ed0cd120-9778-4069-8ae9-8cdc4a0adee5",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 0,
+            "total_tokens": 2825,
+            "usage": 2825
+          }
+        },
+        {
+          "seq": 654,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338417.7907047,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 2206.2849999929313,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 655,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338417.8041995,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 656,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338417.8223803,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 32351,
+            "input_messages": 12,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "d159b872f77d762202b307ca8635ee0e758c06dff51f0d4fc548b85e5cc5b9d7",
+            "reserved_tokens": 20989,
+            "search_evidence_occurrences": 18,
+            "tool_messages": 5,
+            "unique_search_evidence_chunks": 18
+          }
+        },
+        {
+          "seq": 657,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338420.9428532,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1152,
+            "completion_tokens": 841,
+            "elapsed_ms": 3107.4428999854717,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 14064,
+            "reasoning_content_present": false,
+            "response_id": "f1d4de86-d937-405a-a4f9-b85939514e5e",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 14905,
+            "usage": 14905
+          }
+        },
+        {
+          "seq": 658,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338420.9555676,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 659,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338420.964576,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 660,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338420.9911876,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 24.008800013689324,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 661,
+          "task_id": "dd088d84181249fc89b4ab21b32310b1",
+          "at": 1792338421.004842,
+          "type": "succeeded",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "name": "python_lock_versions",
+      "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+      "session_id": "real-rag-5c6304725d1943b78d919c12fcd49233-2",
+      "question": "请实际检索 Python 3.12 与 Python 3.13 官方发布说明，比较每子解释器 GIL 和实验性 free-threading。这是否意味着所有 C 扩展导入后都能保持无 GIL？按版本分别检索，调用 compare_evidence，最后 build_report。每个版本给一条发现并引用它的原文，不能把两个版本当成同一特性。\n输出约束：最多3条 findings，conclusion不超过200个汉字，limitations最多3条。每个版本优先只选1条同时包含参数量和上下文的证据；quotes键必须是相同的E-...引用ID，每个quote尽量短于80字符且是对应那一条证据text的连续子串。不要添加训练量、KV缓存等题外指标。不要为了缺失的吞吐量制造引用；明确无法确认即可。若有已知指标但吞吐量未知，insufficient_evidence必须为false，未知部分写入limitations。只有完全没有支持性发现时才设为true并清空findings/quotes。\n可检索来源目录（只含标识，不含答案）：[{\"source_id\": \"python-3.8\", \"doc_id\": \"3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96\"}, {\"source_id\": \"python-3.9\", \"doc_id\": \"6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a\"}, {\"source_id\": \"python-3.10\", \"doc_id\": \"a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578\"}, {\"source_id\": \"python-3.11\", \"doc_id\": \"8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07\"}, {\"source_id\": \"python-3.12\", \"doc_id\": \"8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009\"}, {\"source_id\": \"python-3.13\", \"doc_id\": \"ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29\"}, {\"source_id\": \"asyncio-task\", \"doc_id\": \"8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035\"}, {\"source_id\": \"asyncio-sync\", \"doc_id\": \"8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c\"}, {\"source_id\": \"asyncio-queue\", \"doc_id\": \"3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b\"}, {\"source_id\": \"asyncio-stream\", \"doc_id\": \"00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4\"}, {\"source_id\": \"asyncio-subprocess\", \"doc_id\": \"70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9\"}, {\"source_id\": \"concurrent.futures\", \"doc_id\": \"be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2\"}, {\"source_id\": \"DeepSeek-V2\", \"doc_id\": \"282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2\"}, {\"source_id\": \"DeepSeek-V3\", \"doc_id\": \"72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2\"}, {\"source_id\": \"DeepSeek-V4.1-Flash\", \"doc_id\": \"210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde\"}]",
+      "success": true,
+      "status": "succeeded",
+      "error": null,
+      "elapsed_ms": 8826.500499999383,
+      "budget": {
+        "estimated": false,
+        "llm_calls": 4,
+        "pending_estimates": 0,
+        "steps": 6,
+        "tokens": 24768,
+        "tool_calls": 4
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 600.0,
+        "token_budget": 100000
+      },
+      "budget_consistent": true,
+      "reported_tokens": 24768,
+      "llm_responses": [
+        {
+          "cached_tokens": 1408,
+          "completion_tokens": 227,
+          "elapsed_ms": 1373.4441999986302,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 2524,
+          "reasoning_content_present": false,
+          "response_id": "bb12fdb7-a246-44c4-91f5-face15f32776",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 2,
+          "total_tokens": 2751,
+          "usage": 2751
+        },
+        {
+          "cached_tokens": 2688,
+          "completion_tokens": 135,
+          "elapsed_ms": 870.8926000108477,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 9321,
+          "reasoning_content_present": false,
+          "response_id": "1c2bb6ab-42a1-487d-9487-e4434d5f0359",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 9456,
+          "usage": 9456
+        },
+        {
+          "cached_tokens": 1536,
+          "completion_tokens": 202,
+          "elapsed_ms": 1358.6540000105742,
+          "estimated": false,
+          "finish_reason": "stop",
+          "prompt_tokens": 1713,
+          "reasoning_content_present": false,
+          "response_id": "44c3beae-2cf4-47af-bffd-2a67af4c1109",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 0,
+          "total_tokens": 1915,
+          "usage": 1915
+        },
+        {
+          "cached_tokens": 9344,
+          "completion_tokens": 971,
+          "elapsed_ms": 4082.1077000000514,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 9675,
+          "reasoning_content_present": false,
+          "response_id": "94812e4b-0c0f-46fa-aa93-3b8226bbcf17",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 10646,
+          "usage": 10646
+        }
+      ],
+      "context_metrics": [
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 3878,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "78f515d8d0d22c3b6d7db63a012e0e44b41a2c8ef50cf20674ab9c24046d20cd",
+          "reserved_tokens": 8558,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 23219,
+          "input_messages": 5,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "67d3ea03bc165e739d8807ddb6325372f70c512fe0365c76b98d43d4066ec40d",
+          "reserved_tokens": 15580,
+          "search_evidence_occurrences": 16,
+          "tool_messages": 2,
+          "unique_search_evidence_chunks": 16
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 5197,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "9c170e20eeee1a8a3d4b98e052598e68834634a162ce7b190b86b30c3d53f9d4",
+          "reserved_tokens": 8064,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 23937,
+          "input_messages": 7,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "7834c04b84ca42416f486a7704c88ea3754decd15a3caa2e210da1ff200aede3",
+          "reserved_tokens": 16046,
+          "search_evidence_occurrences": 16,
+          "tool_messages": 3,
+          "unique_search_evidence_chunks": 16
+        }
+      ],
+      "tool_metrics": [
+        {
+          "elapsed_ms": 398.04920001188293,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 434.4316000060644,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 1385.9346999961417,
+          "name": "compare_evidence"
+        },
+        {
+          "elapsed_ms": 20.710899989353493,
+          "name": "build_report"
+        }
+      ],
+      "calls": [
+        {
+          "id": "call_00_Qxwijl0A6XtxN8A7qpM74827",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "Python 3.12 per-interpreter GIL sub-interpreters",
+            "doc_ids": [
+              "8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009"
+            ],
+            "top_k": 8
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_9Z3Y0jQtraWCfeBqRoMm9658",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "Python 3.13 experimental free-threading GIL C extensions",
+            "doc_ids": [
+              "ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29"
+            ],
+            "top_k": 8
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_M7RWuuFGMJjpCWfBZkT32970",
+          "name": "compare_evidence",
+          "arguments": {
+            "citation_ids": [
+              "E-1e523296-2e79-5433-b4bb-f23995bbd064",
+              "E-caf43b7f-ec17-594c-a192-105b0f0619e4",
+              "E-310187b1-e846-57fa-8e6b-0f1513efe6ea",
+              "E-352885dc-bee0-53d7-8d46-ba7ef1040eb0"
+            ]
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_86mjnf7zyjQBf6C9vt3s8645",
+          "name": "build_report",
+          "arguments": {
+            "title": "Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading 对比",
+            "conclusion": "3.12 的 PEP 684 为子解释器提供独立 GIL，仅经 C-API 使用；3.13 的 PEP 703 是另一项实验性 free-threading 构建，默认不启用。两者不是同一特性。3.13 文档明确：未声明支持无 GIL 的 C 扩展被导入时会重新启用 GIL，因此并非所有 C 扩展导入后都能保持无 GIL。",
+            "findings": [
+              {
+                "text": "Python 3.12（PEP 684）：引入每解释器 GIL，子解释器可各自拥有唯一 GIL，从而利用多核；该能力目前仅通过 C-API 提供（Py_NewInterpreterFromConfig 与 PyInterpreterConfig，配置项 .gil = PyInterpreterConfig_OWN_GIL），Python 层 API 预计在 3.13 提供。",
+                "citation_ids": [
+                  "E-1e523296-2e79-5433-b4bb-f23995bbd064",
+                  "E-caf43b7f-ec17-594c-a192-105b0f0619e4"
+                ]
+              },
+              {
+                "text": "Python 3.13（PEP 703）：新增实验性 free-threaded 模式，GIL 可被禁用，默认不启用，需单独的 python3.13t 可执行文件或 --disable-gil 构建；文档提示该模式仍实验性、预期有 bug 和明显的单线程性能损失。",
+                "citation_ids": [
+                  "E-310187b1-e846-57fa-8e6b-0f1513efe6ea",
+                  "E-4761ccaf-c8a9-54df-af87-c05ebd4bbd25"
+                ]
+              },
+              {
+                "text": "关于“所有 C 扩展导入后都能保持无 GIL”：3.13 文档说明 C 扩展需专门为 free-threaded 构建编译，支持无 GIL 的扩展应使用 Py_mod_gil 槽（单阶段初始化用 PyUnstable_Module_SetGIL）；未使用这些机制的 C 扩展被导入时会启用 GIL，除非显式用 PYTHON_GIL 或 -X gil=0 禁用。",
+                "citation_ids": [
+                  "E-352885dc-bee0-53d7-8d46-ba7ef1040eb0"
+                ]
+              }
+            ],
+            "quotes": {
+              "E-1e523296-2e79-5433-b4bb-f23995bbd064": "so that sub-interpreters may now be created with a unique GIL per interpreter",
+              "E-caf43b7f-ec17-594c-a192-105b0f0619e4": ".gil = PyInterpreterConfig_OWN_GIL,",
+              "E-310187b1-e846-57fa-8e6b-0f1513efe6ea": "CPython now has experimental support for running in a free-threaded mode",
+              "E-4761ccaf-c8a9-54df-af87-c05ebd4bbd25": "**The free-threaded mode is experimental**",
+              "E-352885dc-bee0-53d7-8d46-ba7ef1040eb0": "Importing C extensions that don't use these\nmechanisms will cause the GIL to be enabled"
+            },
+            "limitations": [
+              "检索到的官方发布说明未给出 free-threading 或每解释器 GIL 的吞吐量/性能量化指标，无法确认具体性能数字。",
+              "3.12 文档仅称 Python 层子解释器 API“预计 3.13 提供”，检索证据未确认该 API 是否在 3.13 实际落地。",
+              "未检索到关于具体第三方 C 扩展（如 NumPy）在 3.13t 下 GIL 状态的证据，结论仅基于文档对通用机制的描述。"
+            ],
+            "insufficient_evidence": false
+          },
+          "valid": true
+        }
+      ],
+      "invalid_calls": [],
+      "citations": 5,
+      "valid_citations": 5,
+      "report": {
+        "citations": [
+          {
+            "chunk_id": "1e523296-2e79-5433-b4bb-f23995bbd064",
+            "citation_id": "E-1e523296-2e79-5433-b4bb-f23995bbd064",
+            "doc_id": "8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009",
+            "page": null,
+            "quote": "so that sub-interpreters may now be created with a unique GIL per interpreter",
+            "section": "",
+            "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/whatsnew/3.12.rst"
+          },
+          {
+            "chunk_id": "310187b1-e846-57fa-8e6b-0f1513efe6ea",
+            "citation_id": "E-310187b1-e846-57fa-8e6b-0f1513efe6ea",
+            "doc_id": "ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29",
+            "page": null,
+            "quote": "CPython now has experimental support for running in a free-threaded mode",
+            "section": "",
+            "source": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst"
+          },
+          {
+            "chunk_id": "352885dc-bee0-53d7-8d46-ba7ef1040eb0",
+            "citation_id": "E-352885dc-bee0-53d7-8d46-ba7ef1040eb0",
+            "doc_id": "ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29",
+            "page": null,
+            "quote": "Importing C extensions that don't use these\nmechanisms will cause the GIL to be enabled",
+            "section": "",
+            "source": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst"
+          },
+          {
+            "chunk_id": "4761ccaf-c8a9-54df-af87-c05ebd4bbd25",
+            "citation_id": "E-4761ccaf-c8a9-54df-af87-c05ebd4bbd25",
+            "doc_id": "ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29",
+            "page": null,
+            "quote": "**The free-threaded mode is experimental**",
+            "section": "",
+            "source": "https://raw.githubusercontent.com/python/cpython/v3.13.0/Doc/whatsnew/3.13.rst"
+          },
+          {
+            "chunk_id": "caf43b7f-ec17-594c-a192-105b0f0619e4",
+            "citation_id": "E-caf43b7f-ec17-594c-a192-105b0f0619e4",
+            "doc_id": "8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009",
+            "page": null,
+            "quote": ".gil = PyInterpreterConfig_OWN_GIL,",
+            "section": "",
+            "source": "https://raw.githubusercontent.com/python/cpython/v3.12.0/Doc/whatsnew/3.12.rst"
+          }
+        ],
+        "conclusion": "3.12 的 PEP 684 为子解释器提供独立 GIL，仅经 C-API 使用；3.13 的 PEP 703 是另一项实验性 free-threading 构建，默认不启用。两者不是同一特性。3.13 文档明确：未声明支持无 GIL 的 C 扩展被导入时会重新启用 GIL，因此并非所有 C 扩展导入后都能保持无 GIL。",
+        "disagreements": [],
+        "findings": [
+          {
+            "citation_ids": [
+              "E-1e523296-2e79-5433-b4bb-f23995bbd064",
+              "E-caf43b7f-ec17-594c-a192-105b0f0619e4"
+            ],
+            "text": "Python 3.12（PEP 684）：引入每解释器 GIL，子解释器可各自拥有唯一 GIL，从而利用多核；该能力目前仅通过 C-API 提供（Py_NewInterpreterFromConfig 与 PyInterpreterConfig，配置项 .gil = PyInterpreterConfig_OWN_GIL），Python 层 API 预计在 3.13 提供。"
+          },
+          {
+            "citation_ids": [
+              "E-310187b1-e846-57fa-8e6b-0f1513efe6ea",
+              "E-4761ccaf-c8a9-54df-af87-c05ebd4bbd25"
+            ],
+            "text": "Python 3.13（PEP 703）：新增实验性 free-threaded 模式，GIL 可被禁用，默认不启用，需单独的 python3.13t 可执行文件或 --disable-gil 构建；文档提示该模式仍实验性、预期有 bug 和明显的单线程性能损失。"
+          },
+          {
+            "citation_ids": [
+              "E-352885dc-bee0-53d7-8d46-ba7ef1040eb0"
+            ],
+            "text": "关于“所有 C 扩展导入后都能保持无 GIL”：3.13 文档说明 C 扩展需专门为 free-threaded 构建编译，支持无 GIL 的扩展应使用 Py_mod_gil 槽（单阶段初始化用 PyUnstable_Module_SetGIL）；未使用这些机制的 C 扩展被导入时会启用 GIL，除非显式用 PYTHON_GIL 或 -X gil=0 禁用。"
+          }
+        ],
+        "insufficient_evidence": false,
+        "limitations": [
+          "检索到的官方发布说明未给出 free-threading 或每解释器 GIL 的吞吐量/性能量化指标，无法确认具体性能数字。",
+          "3.12 文档仅称 Python 层子解释器 API“预计 3.13 提供”，检索证据未确认该 API 是否在 3.13 实际落地。",
+          "未检索到关于具体第三方 C 扩展（如 NumPy）在 3.13t 下 GIL 状态的证据，结论仅基于文档对通用机制的描述。"
+        ],
+        "title": "Python 3.12 每子解释器 GIL 与 3.13 实验性 free-threading 对比"
+      },
+      "retrieved_sources": [
+        "python-3.12",
+        "python-3.13"
+      ],
+      "cited_sources": [
+        "python-3.12",
+        "python-3.13"
+      ],
+      "history_messages_before_current_question": 0,
+      "duplicate_tool_arguments": 0,
+      "tool_cache_hits": 0,
+      "search_calls": 2,
+      "overretrieval_diagnostic": false,
+      "abstained": false,
+      "unknown_acknowledged": true,
+      "events": [
+        {
+          "seq": 662,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338421.0349622,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 663,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338421.0462155,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 664,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338421.0746584,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 665,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338421.088842,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 3878,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "78f515d8d0d22c3b6d7db63a012e0e44b41a2c8ef50cf20674ab9c24046d20cd",
+            "reserved_tokens": 8558,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 666,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338422.481878,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1408,
+            "completion_tokens": 227,
+            "elapsed_ms": 1373.4441999986302,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 2524,
+            "reasoning_content_present": false,
+            "response_id": "bb12fdb7-a246-44c4-91f5-face15f32776",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 2,
+            "total_tokens": 2751,
+            "usage": 2751
+          }
+        },
+        {
+          "seq": 667,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338422.4918718,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 668,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338422.499796,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 669,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338422.9023526,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 398.04920001188293,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 670,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338422.9114723,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 671,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338423.3491924,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 434.4316000060644,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 672,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338423.36522,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 673,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338423.3826525,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 23219,
+            "input_messages": 5,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "67d3ea03bc165e739d8807ddb6325372f70c512fe0365c76b98d43d4066ec40d",
+            "reserved_tokens": 15580,
+            "search_evidence_occurrences": 16,
+            "tool_messages": 2,
+            "unique_search_evidence_chunks": 16
+          }
+        },
+        {
+          "seq": 674,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338424.2691412,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 2688,
+            "completion_tokens": 135,
+            "elapsed_ms": 870.8926000108477,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 9321,
+            "reasoning_content_present": false,
+            "response_id": "1c2bb6ab-42a1-487d-9487-e4434d5f0359",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 9456,
+            "usage": 9456
+          }
+        },
+        {
+          "seq": 675,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338424.2803128,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 676,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338424.2873085,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 677,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338424.2967882,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 5197,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "9c170e20eeee1a8a3d4b98e052598e68834634a162ce7b190b86b30c3d53f9d4",
+            "reserved_tokens": 8064,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 678,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338425.6695676,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1536,
+            "completion_tokens": 202,
+            "elapsed_ms": 1358.6540000105742,
+            "estimated": false,
+            "finish_reason": "stop",
+            "prompt_tokens": 1713,
+            "reasoning_content_present": false,
+            "response_id": "44c3beae-2cf4-47af-bffd-2a67af4c1109",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 0,
+            "total_tokens": 1915,
+            "usage": 1915
+          }
+        },
+        {
+          "seq": 679,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338425.6768525,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 1385.9346999961417,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 680,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338425.6881886,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 681,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338425.7029858,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 23937,
+            "input_messages": 7,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "7834c04b84ca42416f486a7704c88ea3754decd15a3caa2e210da1ff200aede3",
+            "reserved_tokens": 16046,
+            "search_evidence_occurrences": 16,
+            "tool_messages": 3,
+            "unique_search_evidence_chunks": 16
+          }
+        },
+        {
+          "seq": 682,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338429.7985234,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 9344,
+            "completion_tokens": 971,
+            "elapsed_ms": 4082.1077000000514,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 9675,
+            "reasoning_content_present": false,
+            "response_id": "94812e4b-0c0f-46fa-aa93-3b8226bbcf17",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 10646,
+            "usage": 10646
+          }
+        },
+        {
+          "seq": 683,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338429.8089588,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 684,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338429.8177364,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 685,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338429.8419309,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 20.710899989353493,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 686,
+          "task_id": "f819f83a7e2f4270998e19ba6a58ed4f",
+          "at": 1792338429.855157,
+          "type": "succeeded",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "name": "private_metric_unanswerable",
+      "task_id": "f9e695e129344d4dbc7d2df98552786e",
+      "session_id": "real-rag-5c6304725d1943b78d919c12fcd49233-3",
+      "question": "仅依据这些公开技术文档，能否确认我公司从未公开的私有 Web 服务在 RTX 5060 上的实测 QPS？请实际调用 knowledge_search 并核查，不能用 Python 加速比例、参数量或其他基准推算这个未知实测数值。若没有这个服务的实验依据，必须明确无法确认，报告 insufficient_evidence=true，findings、quotes 清空。请完成所需工具流程并调用 build_report。\n输出约束：最多3条 findings，conclusion不超过200个汉字，limitations最多3条。每个版本优先只选1条同时包含参数量和上下文的证据；quotes键必须是相同的E-...引用ID，每个quote尽量短于80字符且是对应那一条证据text的连续子串。不要添加训练量、KV缓存等题外指标。不要为了缺失的吞吐量制造引用；明确无法确认即可。若有已知指标但吞吐量未知，insufficient_evidence必须为false，未知部分写入limitations。只有完全没有支持性发现时才设为true并清空findings/quotes。\n可检索来源目录（只含标识，不含答案）：[{\"source_id\": \"python-3.8\", \"doc_id\": \"3694220450310b0427f75c49e14c6a54a3e4e12411902490dff904fe62528d96\"}, {\"source_id\": \"python-3.9\", \"doc_id\": \"6f93993c40648379abf1d9c98e7ba6838684ecc14253725356c3cec73806db4a\"}, {\"source_id\": \"python-3.10\", \"doc_id\": \"a1d9fe5ab4aed25e69f3cd27cee224cfb567ef54b51c5fc48ab29590687c6578\"}, {\"source_id\": \"python-3.11\", \"doc_id\": \"8462a2f087896449a9fa85cd080108f959c1e1259edcafffbfa355a3a50eac07\"}, {\"source_id\": \"python-3.12\", \"doc_id\": \"8deb82afa7e4eecdd2b568b5f74a728da03231c7f705430346e9d3a69ec37009\"}, {\"source_id\": \"python-3.13\", \"doc_id\": \"ef9ad1bbe59cbefecfa499b0172a3962dc90d88bf5fc79b412351426d5c86d29\"}, {\"source_id\": \"asyncio-task\", \"doc_id\": \"8d694ba69bfda04f3ac00134d4756937cb14f917f2f6ebd1f2b591a838c9f035\"}, {\"source_id\": \"asyncio-sync\", \"doc_id\": \"8664b3809434532fb9303a0d28ccb29c26e6881873e79479defa76702de0205c\"}, {\"source_id\": \"asyncio-queue\", \"doc_id\": \"3540aa1f8b1bdd2999a6efb58e52a481edd56b6b0e75e8728adcb96fdcd7c73b\"}, {\"source_id\": \"asyncio-stream\", \"doc_id\": \"00423b8d8984c0c273db206aa755068f9dc65e59eb09c389a36410c4b59bd7e4\"}, {\"source_id\": \"asyncio-subprocess\", \"doc_id\": \"70f3be5dce83cbba02b33744b53ecafff2b4aa77bec1a9e8bd479f2ef0085fe9\"}, {\"source_id\": \"concurrent.futures\", \"doc_id\": \"be0bd3732a9fffe3d811a1da0b96655cc7aaa9974f1ec20f41a038a3f099feb2\"}, {\"source_id\": \"DeepSeek-V2\", \"doc_id\": \"282da97eabdf36b3bb0d0ea4e84a922a1ce7bfa4568597cf1f1dbaa97e5249a2\"}, {\"source_id\": \"DeepSeek-V3\", \"doc_id\": \"72a182ebb69a168a71723162cd379de0d7d6e2f41a9a8aaad2e6d9c896de91a2\"}, {\"source_id\": \"DeepSeek-V4.1-Flash\", \"doc_id\": \"210b64255f9f3e2fd6bd4dfefec0cda772820f88beacafeddd63f1dab1326bde\"}]",
+      "success": true,
+      "status": "succeeded",
+      "error": null,
+      "elapsed_ms": 10375.869200011948,
+      "budget": {
+        "estimated": false,
+        "llm_calls": 5,
+        "pending_estimates": 0,
+        "steps": 8,
+        "tokens": 46046,
+        "tool_calls": 6
+      },
+      "limits": {
+        "max_llm_calls": 8,
+        "max_steps": 12,
+        "max_tool_calls": 12,
+        "task_timeout": 600.0,
+        "token_budget": 100000
+      },
+      "budget_consistent": true,
+      "reported_tokens": 46046,
+      "llm_responses": [
+        {
+          "cached_tokens": 1408,
+          "completion_tokens": 119,
+          "elapsed_ms": 1084.789099986665,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 2534,
+          "reasoning_content_present": false,
+          "response_id": "7b7caf4c-c9c9-48a6-a18b-32510c500ca7",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 2,
+          "total_tokens": 2653,
+          "usage": 2653
+        },
+        {
+          "cached_tokens": 2560,
+          "completion_tokens": 118,
+          "elapsed_ms": 1783.7491999962367,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 10624,
+          "reasoning_content_present": false,
+          "response_id": "d6bbdbb9-d259-465e-8875-80e3f05ce9a0",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 2,
+          "total_tokens": 10742,
+          "usage": 10742
+        },
+        {
+          "cached_tokens": 512,
+          "completion_tokens": 144,
+          "elapsed_ms": 1338.6644000129309,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 14595,
+          "reasoning_content_present": false,
+          "response_id": "5618b7b9-5669-41b0-bc12-a3658291237c",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 14739,
+          "usage": 14739
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 321,
+          "elapsed_ms": 1748.9355000143405,
+          "estimated": false,
+          "finish_reason": "stop",
+          "prompt_tokens": 1766,
+          "reasoning_content_present": false,
+          "response_id": "29faf405-8551-43fa-abb4-f5bff6e4fe5a",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 0,
+          "total_tokens": 2087,
+          "usage": 2087
+        },
+        {
+          "cached_tokens": 896,
+          "completion_tokens": 330,
+          "elapsed_ms": 2254.8761000216473,
+          "estimated": false,
+          "finish_reason": "tool_calls",
+          "prompt_tokens": 15495,
+          "reasoning_content_present": false,
+          "response_id": "8690650e-a25a-4be7-b032-da4a72c4fe2e",
+          "response_model": "deepseek-flash",
+          "temperature": 0.0,
+          "tool_call_count": 1,
+          "total_tokens": 15825,
+          "usage": 15825
+        }
+      ],
+      "context_metrics": [
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 3918,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "e83273927530a39ea0868aaf7f158d2b08979209f32934d6e3befc43c5659206",
+          "reserved_tokens": 8581,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 22138,
+          "input_messages": 5,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "dab5b2ab1aaf1a078a4f119ab8fcdc86d39d2b507d0067c55bba7a6d6082ce10",
+          "reserved_tokens": 16827,
+          "search_evidence_occurrences": 13,
+          "tool_messages": 2,
+          "unique_search_evidence_chunks": 13
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 34485,
+          "input_messages": 9,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "1ae9d748863efad47fcbcdd18668b4e2a951665df9c3441d0ab37cd784162707",
+          "reserved_tokens": 21182,
+          "search_evidence_occurrences": 21,
+          "tool_messages": 4,
+          "unique_search_evidence_chunks": 21
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 4858,
+          "input_messages": 2,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "69d777da8078841eb33772edf8ebe1d676572d71dfdca7ca13e438d99d4833fc",
+          "reserved_tokens": 8089,
+          "search_evidence_occurrences": 0,
+          "tool_messages": 0,
+          "unique_search_evidence_chunks": 0
+        },
+        {
+          "attempt": 1,
+          "duplicate_tool_messages": 0,
+          "input_characters": 35654,
+          "input_messages": 11,
+          "repeated_search_evidence_chunks": 0,
+          "request_fingerprint": "388a9ec91835989aa89fa6c2f3fe51443ab3f380966814245252992536aa75a6",
+          "reserved_tokens": 22097,
+          "search_evidence_occurrences": 21,
+          "tool_messages": 5,
+          "unique_search_evidence_chunks": 21
+        }
+      ],
+      "tool_metrics": [
+        {
+          "elapsed_ms": 444.181099999696,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 465.5055000039283,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 423.7650000141002,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 481.9687000126578,
+          "name": "knowledge_search"
+        },
+        {
+          "elapsed_ms": 1772.3414999782108,
+          "name": "compare_evidence"
+        },
+        {
+          "elapsed_ms": 23.128600005293265,
+          "name": "build_report"
+        }
+      ],
+      "calls": [
+        {
+          "id": "call_00_t46Y5gEkRr6DRGauF2vZ5241",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "RTX 5060 QPS 实测 私有 Web 服务 吞吐量",
+            "top_k": 10
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_WXtPXQygPpMsyAvfUeye8189",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "RTX 5060 benchmark throughput requests per second",
+            "top_k": 10
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_SLfQopQUM94a5FrzOHEp6468",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "RTX 5060 GPU inference serving latency QPS measurement",
+            "top_k": 10
+          },
+          "valid": true
+        },
+        {
+          "id": "call_01_GOFT1UgRCqjN07vvHgCN7732",
+          "name": "knowledge_search",
+          "arguments": {
+            "query": "私有 Web 服务 部署 实测 性能 测试 硬件",
+            "top_k": 10
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_Q1ieNmbvQkG1tSBWM7mt6789",
+          "name": "compare_evidence",
+          "arguments": {
+            "citation_ids": [
+              "E-4f787cf6-e6d7-572f-b0c5-92f25ebf602f",
+              "E-bae23a81-3fd3-52f7-86ff-17273b0656a1",
+              "E-2bd5a1e2-3063-5a4f-bd9c-7a166905256c",
+              "E-000d43a0-160c-5bce-831c-758b793f91ef"
+            ]
+          },
+          "valid": true
+        },
+        {
+          "id": "call_00_xtpIF77cRWLrO0ZqCEf01771",
+          "name": "build_report",
+          "arguments": {
+            "title": "无法确认私有 Web 服务在 RTX 5060 上的实测 QPS",
+            "conclusion": "无法确认。检索到的公开文档仅涉及 Python/asyncio 文档与 DeepSeek 模型 README（基准分数、参数量、推理框架支持），均未提及贵公司未公开的私有 Web 服务，也没有任何 RTX 5060 上的实测 QPS 数据。因此该实测数值缺乏实验依据，不能确认，也不应通过加速比例或参数量推算。",
+            "findings": [],
+            "disagreements": [],
+            "limitations": [
+              "检索来源目录仅含 Python 标准库文档与 DeepSeek 模型 README，不含任何私有服务或 RTX 5060 实测数据。",
+              "公开文档中的吞吐量表述（如 DeepSeek-V2 的最大生成吞吐提升倍数）为相对加速比例，不能用于推算未知的实测 QPS。",
+              "未找到该私有服务的部署配置、压测方法或硬件实测记录，故无法给出任何 QPS 数值。"
+            ],
+            "quotes": {},
+            "insufficient_evidence": true
+          },
+          "valid": true
+        }
+      ],
+      "invalid_calls": [],
+      "citations": 0,
+      "valid_citations": 0,
+      "report": {
+        "citations": [],
+        "conclusion": "无法确认。检索到的公开文档仅涉及 Python/asyncio 文档与 DeepSeek 模型 README（基准分数、参数量、推理框架支持），均未提及贵公司未公开的私有 Web 服务，也没有任何 RTX 5060 上的实测 QPS 数据。因此该实测数值缺乏实验依据，不能确认，也不应通过加速比例或参数量推算。",
+        "disagreements": [],
+        "findings": [],
+        "insufficient_evidence": true,
+        "limitations": [
+          "检索来源目录仅含 Python 标准库文档与 DeepSeek 模型 README，不含任何私有服务或 RTX 5060 实测数据。",
+          "公开文档中的吞吐量表述（如 DeepSeek-V2 的最大生成吞吐提升倍数）为相对加速比例，不能用于推算未知的实测 QPS。",
+          "未找到该私有服务的部署配置、压测方法或硬件实测记录，故无法给出任何 QPS 数值。"
+        ],
+        "title": "无法确认私有 Web 服务在 RTX 5060 上的实测 QPS"
+      },
+      "retrieved_sources": [
+        "python-3.9",
+        "python-3.12",
+        "python-3.13",
+        "asyncio-stream",
+        "DeepSeek-V2",
+        "DeepSeek-V3",
+        "DeepSeek-V4.1-Flash"
+      ],
+      "cited_sources": [],
+      "history_messages_before_current_question": 0,
+      "duplicate_tool_arguments": 0,
+      "tool_cache_hits": 0,
+      "search_calls": 4,
+      "overretrieval_diagnostic": false,
+      "abstained": true,
+      "unknown_acknowledged": true,
+      "events": [
+        {
+          "seq": 687,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338429.8885832,
+          "type": "queued",
+          "data": {
+            "kind": "research"
+          }
+        },
+        {
+          "seq": 688,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338429.8975737,
+          "type": "claimed",
+          "data": {
+            "resumed": false
+          }
+        },
+        {
+          "seq": 689,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338429.919107,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 690,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338429.931106,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 3918,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "e83273927530a39ea0868aaf7f158d2b08979209f32934d6e3befc43c5659206",
+            "reserved_tokens": 8581,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 691,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.0300348,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 1408,
+            "completion_tokens": 119,
+            "elapsed_ms": 1084.789099986665,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 2534,
+            "reasoning_content_present": false,
+            "response_id": "7b7caf4c-c9c9-48a6-a18b-32510c500ca7",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 2,
+            "total_tokens": 2653,
+            "usage": 2653
+          }
+        },
+        {
+          "seq": 692,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.0410974,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 693,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.0493832,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 694,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.4987118,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 444.181099999696,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 695,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.508064,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 696,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.977423,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 465.5055000039283,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 697,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338431.9891505,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 698,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338432.0035622,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 22138,
+            "input_messages": 5,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "dab5b2ab1aaf1a078a4f119ab8fcdc86d39d2b507d0067c55bba7a6d6082ce10",
+            "reserved_tokens": 16827,
+            "search_evidence_occurrences": 13,
+            "tool_messages": 2,
+            "unique_search_evidence_chunks": 13
+          }
+        },
+        {
+          "seq": 699,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338433.7982476,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 2560,
+            "completion_tokens": 118,
+            "elapsed_ms": 1783.7491999962367,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 10624,
+            "reasoning_content_present": false,
+            "response_id": "d6bbdbb9-d259-465e-8875-80e3f05ce9a0",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 2,
+            "total_tokens": 10742,
+            "usage": 10742
+          }
+        },
+        {
+          "seq": 700,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338433.808174,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 701,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338433.8157125,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 702,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338434.243516,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 423.7650000141002,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 703,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338434.2527,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 704,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338434.7389627,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 481.9687000126578,
+            "name": "knowledge_search"
+          }
+        },
+        {
+          "seq": 705,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338434.750417,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 706,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338434.767076,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 34485,
+            "input_messages": 9,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "1ae9d748863efad47fcbcdd18668b4e2a951665df9c3441d0ab37cd784162707",
+            "reserved_tokens": 21182,
+            "search_evidence_occurrences": 21,
+            "tool_messages": 4,
+            "unique_search_evidence_chunks": 21
+          }
+        },
+        {
+          "seq": 707,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338436.117236,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 512,
+            "completion_tokens": 144,
+            "elapsed_ms": 1338.6644000129309,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 14595,
+            "reasoning_content_present": false,
+            "response_id": "5618b7b9-5669-41b0-bc12-a3658291237c",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 14739,
+            "usage": 14739
+          }
+        },
+        {
+          "seq": 708,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338436.1279407,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 709,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338436.134945,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 710,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338436.1431983,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 4858,
+            "input_messages": 2,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "69d777da8078841eb33772edf8ebe1d676572d71dfdca7ca13e438d99d4833fc",
+            "reserved_tokens": 8089,
+            "search_evidence_occurrences": 0,
+            "tool_messages": 0,
+            "unique_search_evidence_chunks": 0
+          }
+        },
+        {
+          "seq": 711,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338437.903298,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 0,
+            "completion_tokens": 321,
+            "elapsed_ms": 1748.9355000143405,
+            "estimated": false,
+            "finish_reason": "stop",
+            "prompt_tokens": 1766,
+            "reasoning_content_present": false,
+            "response_id": "29faf405-8551-43fa-abb4-f5bff6e4fe5a",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 0,
+            "total_tokens": 2087,
+            "usage": 2087
+          }
+        },
+        {
+          "seq": 712,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338437.9107566,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 1772.3414999782108,
+            "name": "compare_evidence"
+          }
+        },
+        {
+          "seq": 713,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338437.9213953,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 714,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338437.9369571,
+          "type": "llm_started",
+          "data": {
+            "attempt": 1,
+            "duplicate_tool_messages": 0,
+            "input_characters": 35654,
+            "input_messages": 11,
+            "repeated_search_evidence_chunks": 0,
+            "request_fingerprint": "388a9ec91835989aa89fa6c2f3fe51443ab3f380966814245252992536aa75a6",
+            "reserved_tokens": 22097,
+            "search_evidence_occurrences": 21,
+            "tool_messages": 5,
+            "unique_search_evidence_chunks": 21
+          }
+        },
+        {
+          "seq": 715,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338440.205291,
+          "type": "llm_completed",
+          "data": {
+            "cached_tokens": 896,
+            "completion_tokens": 330,
+            "elapsed_ms": 2254.8761000216473,
+            "estimated": false,
+            "finish_reason": "tool_calls",
+            "prompt_tokens": 15495,
+            "reasoning_content_present": false,
+            "response_id": "8690650e-a25a-4be7-b032-da4a72c4fe2e",
+            "response_model": "deepseek-flash",
+            "temperature": 0.0,
+            "tool_call_count": 1,
+            "total_tokens": 15825,
+            "usage": 15825
+          }
+        },
+        {
+          "seq": 716,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338440.216334,
+          "type": "agent_step",
+          "data": {}
+        },
+        {
+          "seq": 717,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338440.2231178,
+          "type": "tool_started",
+          "data": {
+            "attempt": 1,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 718,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338440.2496438,
+          "type": "tool_completed",
+          "data": {
+            "elapsed_ms": 23.128600005293265,
+            "name": "build_report"
+          }
+        },
+        {
+          "seq": 719,
+          "task_id": "f9e695e129344d4dbc7d2df98552786e",
+          "at": 1792338440.2614303,
+          "type": "succeeded",
+          "data": {}
+        }
+      ]
+    }
+  ],
+  "note": "Small engineering acceptance sample; citation structure validity is not semantic answer accuracy.",
+  "summary": {
+    "tasks": 4,
+    "successful_tasks": 4,
+    "task_success_rate": 1.0,
+    "citations": 11,
+    "valid_citations": 11,
+    "provider_tokens": 130195,
+    "llm_calls": 17,
+    "tool_executions": 21,
+    "llm_latency_p50_ms": 1631.8994000030216,
+    "llm_latency_p95_ms": 3490.8053800114426,
+    "duplicate_tool_arguments": 0,
+    "overretrieval_flags": 0
+  },
+  "passed": true
+}
